@@ -16,8 +16,9 @@
 }
 
 .left {
+  display: flex;
+  align-items: flex-start;
   flex: 1 1 50%; /* shorthand for flex-grow, flex-shrink, flex-basis */
-  margin-right: 20px;
 }
 
 .right {
