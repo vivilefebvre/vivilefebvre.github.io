@@ -139,30 +139,10 @@ function renderItems(items) {
   printButton.textContent = 'Print';
   document.body.appendChild(printButton);
     printButton.addEventListener('click', function() {
-    console.log('print')
-    const itemsPerPage = 12;
-    printHTML(container);
-});
+    window.print();
+  });
 }
 
-function printHTML(containerId) {
-  // Create a hidden iframe for printing
-  const iframe = document.createElement('iframe');
-  iframe.style.display = 'none';
-  document.body.appendChild(iframe);
-
-  // Print the container's HTML in the iframe
-  const containerHTML = document.getElementById(containerId).innerHTML;
-  iframe.contentDocument.body.innerHTML = containerHTML;
-
-  // Print the iframe
-  iframe.contentWindow.print();
-
-  // Remove the iframe from the DOM
-  setTimeout(() => {
-    document.body.removeChild(iframe);
-  }, 100);
-}
 
 
 })();
