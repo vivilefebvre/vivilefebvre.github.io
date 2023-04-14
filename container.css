@@ -38,7 +38,7 @@
 @media print {
   /* hide the print button */
   .print-button {
-    display: none;
+    display: block;
   }
 
   /* set the page to portrait mode */
