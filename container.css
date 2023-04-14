@@ -34,3 +34,24 @@
   right: 20px;
   z-index: 1000;
 }
+
+@media print {
+  /* hide the print button */
+  .print-button {
+    display: none;
+  }
+
+  /* set the page to portrait mode */
+  @page {
+    size: portrait;
+  }
+
+  /* hide the header and footer */
+  body {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  header, footer {
+    display: none;
+  }
+}

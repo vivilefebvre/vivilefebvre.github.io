@@ -141,35 +141,19 @@ function renderItems(items) {
     printButton.addEventListener('click', function() {
     console.log('print')
     const itemsPerPage = 12;
-    printHTML(container, itemsPerPage);
+    printHTML(container);
 });
 }
 
-function printHTML(content, itemsPerPage) {
-  const pageCount = Math.ceil(content.children.length / itemsPerPage);
-
+function printHTML(containerId) {
   // Create a hidden iframe for printing
   const iframe = document.createElement('iframe');
   iframe.style.display = 'none';
   document.body.appendChild(iframe);
 
-  // Print each page
-  for (let i = 0; i < pageCount; i++) {
-    // Create a new page with a page break
-    const page = document.createElement('div');
-    page.className = 'page';
-    page.style.pageBreakAfter = 'always';
-
-    // Add items to the page
-    const startIndex = i * itemsPerPage;
-    const endIndex = startIndex + itemsPerPage;
-    for (let j = startIndex; j < endIndex && j < content.children.length; j++) {
-      page.appendChild(content.children[j].cloneNode(true));
-    }
-
-    // Add the page to the iframe
-    iframe.contentDocument.body.appendChild(page);
-  }
+  // Print the container's HTML in the iframe
+  const containerHTML = document.getElementById(containerId).innerHTML;
+  iframe.contentDocument.body.innerHTML = containerHTML;
 
   // Print the iframe
   iframe.contentWindow.print();
