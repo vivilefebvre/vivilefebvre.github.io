@@ -4,7 +4,8 @@
   grid-gap: 20px;
   margin: 20px;
   align-content: stretch;
-  width: 100%;
+  width: 794px; /* A4 width in pixels */
+  height: 1123px; /* A4 height in pixels */
 }
 
 .item {
@@ -15,8 +16,7 @@
 }
 
 .left {
-  display: flex;
-  align-items: flex-start;
+  flex: 1;
 }
 
 .right {

@@ -139,7 +139,13 @@ function renderItems(items) {
   printButton.textContent = 'Print';
   document.body.appendChild(printButton);
     printButton.addEventListener('click', function() {
-    window.print();
+      console.log('my print button')
+      // Hide the print button
+      printButton.style.display = 'none';
+      // Print the extension
+      window.print();
+      // Show the print button again
+      printButton.style.display = 'block';
   });
 }
 
