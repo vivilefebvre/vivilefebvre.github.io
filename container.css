@@ -54,4 +54,35 @@
   header, footer {
     display: none;
   }
+
+  /* add styles for printing the container */
+  .container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 20px;
+    margin: 20px;
+    align-content: stretch;
+  }
+
+  .item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+  }
+
+  .left {
+    flex: 1;
+    margin-right: 20px;
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+  }
+
+  .barcode {
+    max-width: 200px;
+    height: 60px;
+  }
 }
