@@ -35,9 +35,3 @@
   right: 20px;
   z-index: 1000;
 }
-
-@media print {
-  #print-button {
-    display: none;
-  }
-}
