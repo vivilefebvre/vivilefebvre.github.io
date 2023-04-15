@@ -119,7 +119,8 @@ items.forEach(item => {
   container.appendChild(itemContainer);
 });
 
-document.body.appendChild(container);
+  document.body.innerHTML = '';
+  document.body.appendChild(container);
 
   // Add the print button
   const printButton = document.createElement('button');
