@@ -19,9 +19,9 @@
 .item.auchan .left {
   flex-basis: 70%;
   display: flex;
+  height: 150px;
   flex-direction: column;
-  align-content: space-between;
-  justify-content: flex-start;
+  justify-content: space-between;
 }
 
 .item.auchan .right {
