@@ -2,31 +2,62 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 20px;
-  grid-row-gap: 0px;
+  grid-row-gap: 0;
   margin: auto;
   align-content: stretch;
   width: 100%;
 }
 
-.item {
+.item.auchan {
+  display: flex;
+  width: 100%;
+  height: 195px; /* Adapt this to taille des étiquettes */
+  grid-column-gap: 0;
+  padding: 5px;
+}
+
+.item.auchan .left {
+  flex-basis: 70%;
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
+  justify-content: flex-start;
+}
+
+.item.auchan .right {
+  flex-basis: 30%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 20px;
+  justify-content: center;
 }
 
-.left {
-  width: 70%;
-  padding-right: 5px;
+.item.auchan .barcode {
+  height: 60px;
 }
 
-.right {
+/* Styles specific to Aubert items */
+
+.item.aubert {
+  display: flex;
+  width: 100%;
+  height: 195px; /* Adapt this to taille des étiquettes */
+  grid-column-gap: 0;
+  padding: 5px;
+}
+
+.item.aubert .left {
+  display: none;
+}
+
+.item.aubert .right {
+  flex-basis: 100%;
   display: flex;
   align-items: center;
+  justify-content: center;
+
 }
 
-.barcode {
-  max-width: 200px;
+.item.aubert .barcode {
   height: 60px;
 }
 

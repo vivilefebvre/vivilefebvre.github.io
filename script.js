@@ -85,53 +85,41 @@
    */
 function renderItems(items) {
   const container = document.createElement('div');
-  container.className = 'container';
+container.className = 'container';
 
-  items.forEach(item => {
-    const itemContainer = document.createElement('div');
-    itemContainer.className = 'item';
+items.forEach(item => {
+  const itemContainer = document.createElement('div');
+  let itemClass = '';
+  let itemContent = '';
 
-    const leftContainer = document.createElement('div');
-    leftContainer.className = 'left';
+  if (item.tiers === 'C1510001') {
+    itemClass = 'auchan';
+    itemContent = `
+      <div class="left">
+        <p>${item.ref}</p>
+        <p>${item.designation}</p>
+        <p>Code ${item.tiers}: ${item.tiers_ref}</p>
+        <p>${item.pieces} pieces</p>
+      </div>
+      <div class="right">
+        <img class="barcode" src="https://barcode.tec-it.com/barcode.ashx?data=${item.ref}&code=Code128&translate-esc=on" alt="Barcode">
+      </div>
+    `;
+  } else if (item.tiers === 'C1290024') {
+    itemClass = 'aubert';
+    itemContent = `
+      <div class="right">
+        <img class="barcode" src="https://barcode.tec-it.com/barcode.ashx?data=${item.ref}&code=Code39&translate-esc=on" alt="Barcode">
+      </div>
+    `;
+  }
 
-    const referenceNumber = document.createElement('p');
-    referenceNumber.textContent = `${item.ref}`;
-    leftContainer.appendChild(referenceNumber);
+  itemContainer.className = `${itemClass} item`;
+  itemContainer.innerHTML = itemContent;
+  container.appendChild(itemContainer);
+});
 
-    const name = document.createElement('p');
-    name.textContent = `${item.designation}`;
-    leftContainer.appendChild(name);
-
-    const tiersName = document.createElement('p');
-    tiersName.textContent = `Code ${item.tiers}:      ${item.tiers_ref}`;
-    leftContainer.appendChild(tiersName);
-
-    const pieces = document.createElement('p');
-    pieces.textContent = `${item.pieces}      pieces`;
-    leftContainer.appendChild(pieces);
-
-    itemContainer.appendChild(leftContainer);
-
-    const rightContainer = document.createElement('div');
-    rightContainer.className = 'right';
-
-    const barcode = document.createElement('img');
-    barcode.className = 'barcode';
-    barcode.src = `https://barcode.tec-it.com/barcode.ashx?data=${item.ref}&code=Code128&translate-esc=on`;
-    barcode.alt = 'Barcode';
-
-    rightContainer.appendChild(barcode);
-
-    itemContainer.appendChild(rightContainer);
-
-    container.appendChild(itemContainer);
-  });
-
-  // Clear existing items
-  document.body.innerHTML = '';
-
-  // Add the container to the body
-  document.body.appendChild(container);
+document.body.appendChild(container);
 
   // Add the print button
   const printButton = document.createElement('button');
@@ -144,7 +132,6 @@ function renderItems(items) {
       window.print();
   });
 }
-
 
 
 })();
