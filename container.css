@@ -2,7 +2,8 @@
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 20px;
-  margin: 20px;
+  grid-row-gap: 0px;
+  margin: auto;
   align-content: stretch;
   width: 100%;
 }
@@ -15,8 +16,8 @@
 }
 
 .left {
-  flex: 1;
-  margin-right: 20px;
+  width: 70%;
+  padding-right: 5px;
 }
 
 .right {
@@ -34,10 +35,4 @@
   top: 20px;
   right: 20px;
   z-index: 1000;
-}
-
-@media print {
-  #print-button {
-    display: none;
-  }
 }
