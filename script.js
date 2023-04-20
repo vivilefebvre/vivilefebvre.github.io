@@ -125,10 +125,9 @@ items.forEach(item => {
   // Add the print button
   const printButton = document.createElement('button');
   printButton.id = 'print-button';
-  printButton.textContent = 'Print';
+  printButton.textContent = 'Imprimer';
   document.body.appendChild(printButton);
     printButton.addEventListener('click', function() {
-      console.log('my print button')
       // Print the extension
       window.print();
   });
