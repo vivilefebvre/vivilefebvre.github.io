@@ -102,7 +102,7 @@ items.forEach(item => {
         <p>${item.pieces} pieces</p>
       </div>
       <div class="right">
-        <img class="barcode" src="https://barcode.tec-it.com/barcode.ashx?data=${item.ref}&code=Code128&translate-esc=on" alt="Barcode">
+        <img class="barcode" src="https://barcode.tec-it.com/barcode.ashx?data=${item.EAN13}&code=Code128&translate-esc=on" alt="Barcode">
       </div>
     `;
   } else if (item.groupement === 'C14899SS') {
