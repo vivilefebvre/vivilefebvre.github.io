@@ -92,7 +92,7 @@ items.forEach(item => {
   let itemClass = '';
   let itemContent = '';
 
-  if ((item.groupement === 'C1359999') || (item.groupement === 'C1439999')){
+  if (item.model === 'Modèle AUC'){
     itemClass = 'auchan';
     itemContent = `
       <div class="left">
@@ -105,7 +105,7 @@ items.forEach(item => {
         <img class="barcode" src="https://barcode.tec-it.com/barcode.ashx?data=${item.EAN13}&code=Code128&translate-esc=on" alt="Barcode">
       </div>
     `;
-  } else if (item.groupement === 'C14899SS') {
+  } else if (item.model === 'Modèle AUB') {
     itemClass = 'aubert';
     itemContent = `
       <div class="right">
