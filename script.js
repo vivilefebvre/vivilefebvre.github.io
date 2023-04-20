@@ -92,7 +92,7 @@ items.forEach(item => {
   let itemClass = '';
   let itemContent = '';
 
-  if (item.tiers === 'C1510001') {
+  if ((item.groupement === 'C1359999') || (item.groupement === 'C1439999')){
     itemClass = 'auchan';
     itemContent = `
       <div class="left">
@@ -105,7 +105,7 @@ items.forEach(item => {
         <img class="barcode" src="https://barcode.tec-it.com/barcode.ashx?data=${item.ref}&code=Code128&translate-esc=on" alt="Barcode">
       </div>
     `;
-  } else if (item.tiers === 'C1290024') {
+  } else if (item.groupement === 'C14899SS') {
     itemClass = 'aubert';
     itemContent = `
       <div class="right">
