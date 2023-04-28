@@ -10,15 +10,15 @@
   margin: 0px;
 }
 
-
 @media print {
 
 .container {
-  display: grid;
+  display: flex;
+  flex-wrap: wrap;
   grid-template-columns: repeat(2, 1fr);
   align-content: stretch;
   grid-column-gap: 5%;
-  width: 900px; /* A4 width in pixels */
+  width: 29.7cm; /* A4 width in pixels */
   margin: auto;
 }
 
@@ -78,7 +78,7 @@
 }
 
 #print-button {
-    display: none;
+  display: none;
 }
 
 .item.orchestra {
@@ -89,24 +89,27 @@
   border-width: 1px;
   border-style: solid;
   border-radius: 15px;
+  border-color: lightgrey;
   position : relative;
   page-break-inside: avoid;
 }
 
 #secondcont {
   margin: 2.5mm;
-  flex: 1;
+  min-width: 50%;
 }
 
 #barcodeorchestra {
   margin-top: 10.4mm;
   margin-left: 9.4mm;
   height: 37.1mm;
-  flex: 1;
+  min-width: 50%;
 }
 
 #firstcont {
   border-right: 3px solid black;
   margin: 2.5mm;
 }
+
+
 }
