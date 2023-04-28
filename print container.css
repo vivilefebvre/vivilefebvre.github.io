@@ -6,6 +6,10 @@
   margin: 5px;
 }
 
+.item.orchestra {
+  margin: 0px;
+}
+
 
 @media print {
 
@@ -75,5 +79,34 @@
 
 #print-button {
     display: none;
+}
+
+.item.orchestra {
+  display: flex;
+  flex-direction: row;
+  width: 148mm;
+  height: 105.1mm;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 15px;
+  position : relative;
+  page-break-inside: avoid;
+}
+
+#secondcont {
+  margin: 2.5mm;
+  flex: 1;
+}
+
+#barcodeorchestra {
+  margin-top: 10.4mm;
+  margin-left: 9.4mm;
+  height: 37.1mm;
+  flex: 1;
+}
+
+#firstcont {
+  border-right: 3px solid black;
+  margin: 2.5mm;
 }
 }

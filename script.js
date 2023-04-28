@@ -112,6 +112,59 @@ items.forEach(item => {
         <img class="barcode" src="https://barcode.tec-it.com/barcode.ashx?data=${item.ref}&code=Code39&translate-esc=on" alt="Barcode">
       </div>
     `;
+  } else if (item.model === 'Modèle ORC') {
+    itemClass = 'orchestra';
+    itemContent = `
+        <div id="firstcont">
+
+            <p style=" margin-top: 12.5mm;"><span
+                    style=" font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 6mm; margin-top: 12.5mm;">réf
+                    client: </span> <span
+                    style="font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 8.8mm; margin-top: 11mm;">${item.tiers_ref}</span>
+            </p>
+            <p style=" margin-top: 12.5mm;"><span
+                    style="font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 2.7mm; margin-top: 16mm;">Réf
+                    fournisseur:</span> <span
+                    style="font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 2.5mm; margin-top: 29.6mm;">${item.ref}</span></p>
+            <p style=" margin-top: 12.5mm;"><span
+                    style="font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 5.9mm;">Désign</span>
+                <span
+                    style="font-size: 16pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 8.2mm;">${item.designation}</span>
+            </p>
+            <p style=" margin-top: 12.5mm;"><span
+                    style="font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 6mm; margin-top: 74.7mm;">PCB</span>
+                <span
+                    style="font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 5mm; margin-top: 74.1mm;">${item.pcb}</span><span
+                    style="font-size: 14px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 14.5mm; margin-top: 76.4mm;">
+                    pièces
+                </span></p>
+
+        </div>
+
+        <div id="secondcont">
+
+
+            <p
+                style="font-size: 11pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 1mm; margin-top: 14.5mm;">
+                N° du bon de commande <span style="margin-left: 2mm;">${item.pi_no_tiers}</span></p>
+            <p
+                style="font-size: 12pt; font-family: Arial, sans-serif;  font-weight:bold ; margin-left: 1mm; margin-top: 14.5mm;">
+                ORIGINE : <span
+                    style="margin-top: 14.5mm;margin-left: 2.8mm;font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal;">${item.origin_country}</span>
+            </p>
+            <p
+                style="font-size: 11pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 1mm; margin-top: 11.5mm; font-stretch: 119.5%;">
+                poids du colis<span
+                    style="margin-top: 11.5mm;margin-left: 3mm;font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal;"> ${item.weight} </span><span
+                    style="margin-top: 11.5mm;margin-left: 6.9mm;font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal;">kg</span>
+            </p>
+
+            <div id="barcode-orchestra">
+                <img src="https://barcode.tec-it.com/barcode.ashx?data=${item.barcode1}&code=${item.barcode1_type}&multiplebarcodes=true&translate-esc=true&unit=Px&imagetype=Jpg&modulewidth=1"
+                    alt="Code-barres">
+            </div>
+
+        </div>`
   }
 
   itemContainer.className = `${itemClass} item`;
