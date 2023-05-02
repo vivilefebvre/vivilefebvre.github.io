@@ -82,19 +82,20 @@
   page-break-inside: avoid;
 }
 
-#secondcont {
-  margin: 2.5mm;
-  min-width: 50%;
-}
 
 #barcodeorchestra {
   margin-top: 10.4mm;
   margin-left: 9.4mm;
   height: 37.1mm;
-  min-width: 50%;
 }
 
 #firstcont {
   border-right: 3px solid black;
   margin: 2.5mm;
+  width: 50%;
+}
+
+#secondcont {
+  margin: 2.5mm;
+  width: 50%;
 }
