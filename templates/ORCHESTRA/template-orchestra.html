@@ -5,15 +5,39 @@
 <meta charset="utf-8">
 </head>
 <style>
-#etiquetteorchestra{
-    display: flex;
-    flex-direction: row;
+#barcodeorchestra {
+  margin-top: 10.4mm;
+  margin-left: 9.4mm;
+  height: 37.1mm;
+
 }
-#secondcont{
-    margin-left: 40px;
-    margin-top: 15px;
-    border-left: 3px solid black;
-    background-color: red;
+
+#firstcont {
+  border-right: 3px solid black;
+  margin: 2.5mm;
+  width: 50%;
+}
+
+#secondcont {
+  margin: 2.5mm;
+  width: 50%;
+}
+
+#designation {
+  container-type : inline-size;
+  container-name : designation-container;
+}
+
+@container designation-container (max-width: 400px) {
+  #designation {
+    font-size : 2rem;
+  }
+}
+
+@container designation-container (min-width: 400px) and (max-width: 500px) {
+  #designation {
+    font-size : 1rem;
+  }
 }
 
 </style>
@@ -23,21 +47,21 @@
         <p style=" margin-top: 12.5mm;"><span
                 style=" font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 6mm; margin-top: 12.5mm;">réf
                 client: </span> <span
-                style="font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 8.8mm; margin-top: 11mm;">PJOWCI-CCC-UNQ</span>
+                style="font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 8.8mm; margin-top: 11mm;">${item.tiers_ref}</span>
         </p>
         <p style=" margin-top: 12.5mm;"><span
                 style="font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 2.7mm; margin-top: 16mm;">Réf
                 fournisseur:</span> <span
-                style="font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 2.5mm; margin-top: 29.6mm;">200174</span></p>
+                style="font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 2.5mm; margin-top: 29.6mm;">${item.ref}</span></p>
         <p style=" margin-top: 12.5mm;"><span
                 style="font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 5.9mm;">Désign</span>
-            <span
-                style="font-size: 16pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 8.2mm;">Désignation</span>
+            <span id="designation"
+                style="font-size: 16pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 8.2mm;">${item.designation}</span>
         </p>
         <p style=" margin-top: 12.5mm;"><span
                 style="font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 6mm; margin-top: 74.7mm;">PCB</span>
             <span
-                style="font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 5mm; margin-top: 74.1mm;">2000</span><span
+                style="font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 5mm; margin-top: 74.1mm;">${item.pcb}</span><span
                 style="font-size: 14px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 14.5mm; margin-top: 76.4mm;">
                 pièces
             </span></p>
@@ -49,21 +73,21 @@
 
         <p
             style="font-size: 11pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 1mm; margin-top: 14.5mm;">
-            N° du bon de commande <span style="margin-left: 2mm;">5055713</span></p>
+            N° du bon de commande <span style="margin-left: 2mm;">${item.pi_no_tiers}</span></p>
         <p
             style="font-size: 12pt; font-family: Arial, sans-serif;  font-weight:bold ; margin-left: 1mm; margin-top: 14.5mm;">
             ORIGINE : <span
-                style="margin-top: 14.5mm;margin-left: 2.8mm;font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal;">FR</span>
+                style="margin-top: 14.5mm;margin-left: 2.8mm;font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal;">${item.origin_country}</span>
         </p>
         <p
             style="font-size: 11pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 1mm; margin-top: 11.5mm; font-stretch: 119.5%;">
             poids du colis<span
-                style="margin-top: 11.5mm;margin-left: 3mm;font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal;"> 0.7820 </span><span
+                style="margin-top: 11.5mm;margin-left: 3mm;font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal;"> ${item.weight} </span><span
                 style="margin-top: 11.5mm;margin-left: 6.9mm;font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal;">kg</span>
         </p>
 
         <div id="barcode-orchestra">
-            <img src="https://barcode.tec-it.com/barcode.ashx?data=1305656562001744&code=Code13&multiplebarcodes=true&translate-esc=true&unit=Px&imagetype=Jpg&modulewidth=1"
+            <img style="width: 44.7mm; height: 34.7mm" src="https://barcode.tec-it.com/barcode.ashx?data=13056562003199&code=Code25IL&multiplebarcodes=true&translate-esc=true&unit=Px&imagetype=Jpg&modulewidth=1"
                 alt="Code-barres">
         </div>
 
