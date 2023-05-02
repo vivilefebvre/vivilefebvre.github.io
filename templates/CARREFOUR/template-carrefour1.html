@@ -38,21 +38,30 @@
     margin-left: 60px;
     border-left: 3px solid black;
 }
-#bigcont{
+#all{
   display: flex;
   flex-direction: row;
-  border-right: 3px solid black;
+  justify-content: space-between;
+
+}
+#contt22{
+
+    display: flex;
+    flex-direction: row;
+}
+#etiquettecarrefour2{
 
 }
 </style>
 
 
 <body>
+    <div id="etiquettecarrefour2">
   <div class="borderbottom">
-    <p>Expéditeur <span style="margin-left:40px;">81189</span><span style="margin-left:100px;">nom fournisseur </span><span style="margin-left:30px;">VULLI SAS</span></p>
+    <p>Expéditeur <span style="margin-left:40px;">81189</span><span style="margin-left:300px;">nom fournisseur </span><span style="margin-left:30px;">VULLI SAS</span></p>
    </div>
- 
-   
+ <div id="all">
+   <div id="bigcont" style="border-right: 3px solid black;">
    <div id="specialcont">
     <div id="first">
         <div style="margin-left: 20px;">
@@ -62,9 +71,9 @@
     <p>1300 Keller</p>
     <p>18 Avenue du Quebec</p>
     <p>30290 LAUDUN</p>
-</div>
-</div>
-<div id ="second">
+      </div>
+      </div>
+   <div id ="second">
     <div style="margin-left: 30px;">
 
     <p>Réf Nb colis sur palette</p>
@@ -79,6 +88,7 @@
 </div>
 
    </div>
+   
    <div class="borderbottom">
     <p >N°Commande Carrefour <span style="margin-left:40px;">00000000</span></p>
    </div>
@@ -86,11 +96,27 @@
     <p >Numéro rayon  <span style="margin-left:40px;">61</span></p>
    </div>
    <div class="borderbottom">
-    <p >Réf article fournisseur  <span style="margin-left:40px;">700200</span></p>
+    <p >Ref article fournisseur  <span style="margin-left:40px;">700200</span></p>
    </div>
-  </div>
- 
-  </div>
+   <div id="contt22">
+    <div class="border-bottom">
+    <div id="Arbre magique des klorofil" style="font-weight: bold; max-width: 130px;"><p>Arbre magique des klorofil</p>
+    </div>
+
+
+   </div> 
+
+</div>
+
+
+
+</div>
+
+    <div id="barcode" style="margin-top: 15px; transform: rotate(270deg); ">
+        <img src="https://barcode.tec-it.com/barcode.ashx?data=(00)03056560000001006&code=GS1-128&multiplebarcodes=true&translate-esc=true" alt="Code-barres">
+      </div> 
+</div>
+   
   
 
 </body>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Etiquetteorchestra</title>
+    <meta charset="utf-8">
+</head>
+<style>
+  
+    .borderbottom{
+        border-bottom: 3px solid black;
+    }
+#containerr{
+    display: flex;
+    flex-direction: row;
+    
+    border-bottom: 3px solid black;
+
+}
+#numrayon{
+    border-left: 3px solid black;
+    margin-left: 50px;
+
+}
+#couleur{
+    border-left: 3px solid black;
+    margin-left: 50px;
+}
+#containerr2{
+    display: flex;
+    flex-direction: row;
+    
+    border-bottom: 3px solid black;
+}
+#refarcticlefournisseur{
+    margin-left: 10px;
+    border-left: 3px solid black;
+}
+</style>
+
+
+<body>
+   <div id="etiquettecarrefour3">
+    <div class="borderbottom" style="line-height: 5px;">
+        <p>nom destinataire</p>
+        <p>Carrefour france S.A</p>
+    </div>
+    <div class="borderbottom"style="line-height: 5px;">
+        <p>nom fournisseur</p>
+        <p>VULLI SAS 1 AVENUE des alpres 74150 Rumilly</p>
+    </div>
+    <div id="containerr">
+        <div id="refarticle">
+            <p>Réference articke Carrefour</p>
+            <p>1758178</p>
+            <p>Anneau de dentition fraicheur</p>
+        </div>
+        <div id="numrayon" >
+            <p style="margin-left: 10px;">Numéro rayon</p>
+            <p style="margin-left: 20px;">61</p>
+        </div>
+        <div id="couleur" >
+            <p style="margin-left: 10px;"> couleur</p>
+        </div>
+    </div>
+   
+    <div id="containerr2">
+        <p>EAN13</p>
+        <div id="barcode" style="display: flex; align-items: center;">
+            
+            <img src="https://barcode.tec-it.com/barcode.ashx?data=3056562003123&code=EAN13&translate-esc=true&imagetype=Svg&rotation=0" alt="Code-barres">
+        </div>
+        <div id="refarcticlefournisseur">
+            <div class="borderbottom">
+            <p style="margin-left: 10px;">Ref article fournisseur</p>
+            <p style="margin-left: 10px;">200312</p>
+        </div>
+            <p style="margin-top: 10px;margin-left: 10px;">PCB <span style="margin-left: 10px;">6</span></p>
+        
+        </div>
+    </div>
+    <p>EAN14</p>
+    <p> 03614619292212</p>
+    
+    <div class="borderbottom">
+        <img src="https://barcode.tec-it.com/barcode.ashx?data=(01)03614619292212&multiplebarcodes=true&translate-esc=true" alt="Code-barres">
+    </div>
+   </div>
+</body>
+
+</html>
