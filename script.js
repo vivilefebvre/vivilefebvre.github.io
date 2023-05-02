@@ -92,6 +92,7 @@ items.forEach(item => {
   let itemClass = '';
   let itemContent = '';
 
+  console.log("C'EST MON ITEM : ", item);
   if (item.model === 'Modèle AUC'){
     itemClass = 'auchan';
     itemContent = `
@@ -155,7 +156,7 @@ items.forEach(item => {
             <p
                 style="font-size: 11pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 1mm; margin-top: 11.5mm; font-stretch: 119.5%;">
                 poids du colis<span
-                    style="margin-top: 11.5mm;margin-left: 3mm;font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal;"> ${item.weight} </span><span
+                    style="margin-top: 11.5mm;margin-left: 3mm;font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal;"> ${item.weight.toFixed(4)} </span><span
                     style="margin-top: 11.5mm;margin-left: 6.9mm;font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal;">kg</span>
             </p>
 
