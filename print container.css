@@ -111,5 +111,21 @@
   width: 50%;
 }
 
+#designation {
+  container-type : inline-size;
+  container-name : designation-container;
+}
+
+@container designation-container (max-width: 400px) {
+  #designation {
+    font-size : 2rem;
+  }
+}
+
+@container designation-container (min-width: 400px) and (max-width: 500px) {
+  #designation {
+    font-size : 1rem;
+  }
+}
 
 }
