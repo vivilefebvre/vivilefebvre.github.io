@@ -129,8 +129,10 @@ items.forEach(item => {
                     style="font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 2.5mm; margin-top: 29.6mm;">${item.ref}</span></p>
             <p style=" margin-top: 12.5mm;"><span
                     style="font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 5.9mm;">Désign</span>
-                <span id="designation"
+                    <div id="designation">
+                    <span
                     style="font-size: 16pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 8.2mm;">${item.designation}</span>
+                    </div>
             </p>
             <p style=" margin-top: 12.5mm;"><span
                     style="font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 6mm; margin-top: 74.7mm;">PCB</span>
@@ -161,7 +163,7 @@ items.forEach(item => {
             </p>
 
             <div id="barcode-orchestra">
-                <img src="https://barcode.tec-it.com/barcode.ashx?data=${item.barcode1}&code=${item.barcode1_type}&multiplebarcodes=true&translate-esc=true&unit=Px&imagetype=Jpg&modulewidth=1"
+                <img style="width: 44.7mm; height: 34.7mm" src="https://barcode.tec-it.com/barcode.ashx?data=${item.barcode1}&code=${item.barcode1_type}&multiplebarcodes=true&translate-esc=true&unit=Px&imagetype=Jpg&modulewidth=1"
                     alt="Code-barres">
             </div>
 

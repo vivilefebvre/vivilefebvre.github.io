@@ -5,6 +5,19 @@
 <meta charset="utf-8">
 </head>
 <style>
+  .item.orchestra {
+  display: flex;
+  flex-direction: row;
+  width: 148mm;
+  height: 105.1mm;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 15px;
+  border-color: lightgrey;
+  position : relative;
+  page-break-inside: avoid;
+}
+
 #barcodeorchestra {
   margin-top: 10.4mm;
   margin-left: 9.4mm;
@@ -24,44 +37,44 @@
 }
 
 #designation {
-  container-type : inline-size;
-  container-name : designation-container;
+  background-color: lightgreen;
+  display: inline-block;
+  box-sizing: border-box;
+  border: 1px solid black;
+  padding: 10px;
 }
 
-@container designation-container (max-width: 400px) {
-  #designation {
-    font-size : 2rem;
-  }
-}
-
-@container designation-container (min-width: 400px) and (max-width: 500px) {
-  #designation {
-    font-size : 1rem;
-  }
+#designation span.responsive{
+  font-family: Arial, sans-serif;  
+  font-weight: normal; 
+  margin-left: 8.2mm; 
+  font-size: calc(1rem + 0.1vw);
 }
 
 </style>
 <body>
+  <div class="item orchestra">
     <div id="firstcont">
 
         <p style=" margin-top: 12.5mm;"><span
                 style=" font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 6mm; margin-top: 12.5mm;">réf
                 client: </span> <span
-                style="font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 8.8mm; margin-top: 11mm;">${item.tiers_ref}</span>
+                style="font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 8.8mm; margin-top: 11mm;">PJOWCI-CCC-UNQ              </span>
         </p>
         <p style=" margin-top: 12.5mm;"><span
                 style="font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 2.7mm; margin-top: 16mm;">Réf
                 fournisseur:</span> <span
-                style="font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 2.5mm; margin-top: 29.6mm;">${item.ref}</span></p>
-        <p style=" margin-top: 12.5mm;"><span
+                style="font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 2.5mm; margin-top: 29.6mm;">200174</span></p>
+        <p style=" margin-top: 12.5mm;display: flex; flex-direction: row;"><span
                 style="font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 5.9mm;">Désign</span>
-            <span id="designation"
-                style="font-size: 16pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 8.2mm;">${item.designation}</span>
+                <div id="designation">
+                  <span>dioff oidfgoijdofig</span>
+                </div>
         </p>
         <p style=" margin-top: 12.5mm;"><span
                 style="font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 6mm; margin-top: 74.7mm;">PCB</span>
             <span
-                style="font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 5mm; margin-top: 74.1mm;">${item.pcb}</span><span
+                style="font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 5mm; margin-top: 74.1mm;">12</span><span
                 style="font-size: 14px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 14.5mm; margin-top: 76.4mm;">
                 pièces
             </span></p>
@@ -73,16 +86,16 @@
 
         <p
             style="font-size: 11pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 1mm; margin-top: 14.5mm;">
-            N° du bon de commande <span style="margin-left: 2mm;">${item.pi_no_tiers}</span></p>
+            N° du bon de commande <span style="margin-left: 2mm;">5055713</span></p>
         <p
             style="font-size: 12pt; font-family: Arial, sans-serif;  font-weight:bold ; margin-left: 1mm; margin-top: 14.5mm;">
             ORIGINE : <span
-                style="margin-top: 14.5mm;margin-left: 2.8mm;font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal;">${item.origin_country}</span>
+                style="margin-top: 14.5mm;margin-left: 2.8mm;font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal;">FR</span>
         </p>
         <p
             style="font-size: 11pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 1mm; margin-top: 11.5mm; font-stretch: 119.5%;">
             poids du colis<span
-                style="margin-top: 11.5mm;margin-left: 3mm;font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal;"> ${item.weight} </span><span
+                style="margin-top: 11.5mm;margin-left: 3mm;font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal;">  0,78  </span><span
                 style="margin-top: 11.5mm;margin-left: 6.9mm;font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal;">kg</span>
         </p>
 
@@ -92,6 +105,7 @@
         </div>
 
     </div>
+  </div>
 
 </body>
 </html>
