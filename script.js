@@ -142,7 +142,7 @@ items.forEach(item => {
                 <span
                     style="font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 5mm; margin-top: 74.1mm;">${item.pcb}</span><span
                     style="font-size: 14px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 14.5mm; margin-top: 76.4mm;">
-                    pièces
+                    ${item.pcb === 1 ? "pièce" : "pièces"}
                 </span></p>
 
         </div>
