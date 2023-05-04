@@ -126,7 +126,7 @@ items.forEach(item => {
             <p style=" margin-top: 12.5mm;"><span
                     style=" font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 6mm; margin-top: 12.5mm;">réf
                     client: </span> <span
-                    style="font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 8.8mm; margin-top: 11mm;">${item.tiers_ref}</span>
+                    style="font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 3.8mm; margin-top: 11mm;">${item.tiers_ref}</span>
             </p>
             <p style=" margin-top: 12.5mm;"><span
                     style="font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 2.7mm; margin-top: 16mm;">Réf
