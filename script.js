@@ -117,8 +117,9 @@ items.forEach(item => {
 
     item.pcb = Number.parseInt(item.pcb);
     let number = Number.parseFloat(item.designation.replace(",", ".")).toFixed(4);
-    item.weight = number < 1 ? number.substring(1) : number;
-
+    item.weight = number < 1 ? number.toString().substring(1) : number;
+    console.log("WEIGHT : ", item.weight);
+    console.log("PIECES : ", item.pcb);
     itemClass = 'orchestra';
     itemContent = `
         <div id="firstcont">
@@ -132,12 +133,10 @@ items.forEach(item => {
                     style="font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 2.7mm; margin-top: 16mm;">Réf
                     fournisseur:</span> <span
                     style="font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 2.5mm; margin-top: 29.6mm;">${item.ref}</span></p>
-            <div style=" margin-top: 12.5mm;"><div
-                    style="font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 4mm;">Désign</div>
-                    <div id="designation">
-                    <div
-                    style="font-size: ${(item.designation.length >= 16 ? "16pt" : "12pt")}; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 4.2mm;">${item.designation}</div>
-                    </div>
+            <div id="designation">
+            <div style="font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 4mm;">Désign</div>
+                <div
+                style="font-size: ${(item.designation.length < 16 ? "16pt" : "12pt")}; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 4.2mm;">${item.designation}</div>
             </div>
             <p style=" margin-top: 12.5mm;"><span
                     style="font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 6mm; margin-top: 74.7mm;">PCB</span>
