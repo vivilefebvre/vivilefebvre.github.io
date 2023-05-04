@@ -109,9 +109,9 @@ items.forEach(item => {
   } else if (item.model === 'Modèle AUB') {
     itemClass = 'aubert';
     itemContent = `
-      <div class="right">
-        <img class="barcode" src="https://barcode.tec-it.com/barcode.ashx?data=${item.ref}&code=Code39&translate-esc=on" alt="Barcode">
-      </div>
+    <div id="barcode" >
+        <img style="width : 82mm; height : 18.6mm;" src="https://barcode.tec-it.com/barcode.ashx?data=${item.barcode}&code=TelepenAlpha&multiplebarcodes=true&translate-esc=true&unit=Mm&modulewidth=0.5" alt="Code-barres">
+    </div>
     `;
   } else if (item.model === 'Modèle ORC') {
 
