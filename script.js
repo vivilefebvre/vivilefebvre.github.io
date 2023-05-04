@@ -116,13 +116,9 @@ items.forEach(item => {
   } else if (item.model === 'Modèle ORC') {
 
     item.pcb = Number.parseInt(item.pcb);
-    let number = Number.parseFloat(item.designation.replace(",", ".")).toFixed(4);
-    item.weight = number < 1 ? number.toString().substring(1) : number;
+    let number = Number.parseFloat(item.weight.replace(",", ".")).toFixed(4);
+    item.weight = number < 1 ? number.toString().substring(1) : number.toString();
 
-    console.log("NUMBER : ", number);
-
-    console.log("WEIGHT : ", item.weight);
-    console.log("PIECES : ", item.pcb);
     itemClass = 'orchestra';
     itemContent = `
         <div id="firstcont">
