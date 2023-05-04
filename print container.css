@@ -16,10 +16,10 @@
   display: flex;
   flex-wrap: wrap;
   grid-template-columns: repeat(2, 1fr);
-  align-content: stretch;
   grid-column-gap: 5%;
   width: 29.7cm; /* A4 width in pixels */
   margin: auto;
+  overflow: auto;
 }
 
 .item.auchan {
