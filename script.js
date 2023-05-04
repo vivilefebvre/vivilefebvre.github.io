@@ -114,6 +114,11 @@ items.forEach(item => {
       </div>
     `;
   } else if (item.model === 'Modèle ORC') {
+
+    item.pcb = Number.parseInt(item.pcb);
+    let number = Number.parseFloat(item.designation.replace(",", ".")).toFixed(4);
+    item.weight = number < 1 ? number.substring(1) : number;
+
     itemClass = 'orchestra';
     itemContent = `
         <div id="firstcont">
@@ -127,13 +132,13 @@ items.forEach(item => {
                     style="font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 2.7mm; margin-top: 16mm;">Réf
                     fournisseur:</span> <span
                     style="font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 2.5mm; margin-top: 29.6mm;">${item.ref}</span></p>
-            <p style=" margin-top: 12.5mm;"><span
-                    style="font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 5.9mm;">Désign</span>
+            <div style=" margin-top: 12.5mm;"><div
+                    style="font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 5.9mm;">Désign</div>
                     <div id="designation">
-                    <span
-                    style="font-size: 16pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 8.2mm;">${item.designation}</span>
+                    <div
+                    style="font-size: ${(item.designation.length >= 16 ? "16pt" : "12pt")}; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 8.2mm;">${item.designation}</div>
                     </div>
-            </p>
+            </div>
             <p style=" margin-top: 12.5mm;"><span
                     style="font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 6mm; margin-top: 74.7mm;">PCB</span>
                 <span
@@ -158,7 +163,7 @@ items.forEach(item => {
             <p
                 style="font-size: 11pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 1mm; margin-top: 11.5mm; font-stretch: 119.5%;">
                 poids du colis<span
-                    style="margin-top: 11.5mm;margin-left: 3mm;font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal;"> ${item.weight} </span><span
+                    style="margin-top: 11.5mm;margin-left: 3mm;font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal;"> ${Number(item.weight)} </span><span
                     style="margin-top: 11.5mm;margin-left: 6.9mm;font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal;">kg</span>
             </p>
 

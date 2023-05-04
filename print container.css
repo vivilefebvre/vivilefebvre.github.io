@@ -112,4 +112,12 @@
   width: 50%;
 }
 
+#designation {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  padding: 10px;
+  align-items: center;
+}
+
 }
