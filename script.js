@@ -133,10 +133,10 @@ items.forEach(item => {
                     fournisseur:</span> <span
                     style="font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 2.5mm; margin-top: 29.6mm;">${item.ref}</span></p>
             <div style=" margin-top: 12.5mm;"><div
-                    style="font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 5.9mm;">Désign</div>
+                    style="font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 4mm;">Désign</div>
                     <div id="designation">
                     <div
-                    style="font-size: ${(item.designation.length >= 16 ? "16pt" : "12pt")}; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 8.2mm;">${item.designation}</div>
+                    style="font-size: ${(item.designation.length >= 16 ? "16pt" : "12pt")}; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 4.2mm;">${item.designation}</div>
                     </div>
             </div>
             <p style=" margin-top: 12.5mm;"><span
@@ -163,12 +163,12 @@ items.forEach(item => {
             <p
                 style="font-size: 11pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 1mm; margin-top: 11.5mm; font-stretch: 119.5%;">
                 poids du colis<span
-                    style="margin-top: 11.5mm;margin-left: 3mm;font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal;"> ${Number(item.weight)} </span><span
+                    style="margin-top: 11.5mm;margin-left: 3mm;font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal;"> ${item.weight} </span><span
                     style="margin-top: 11.5mm;margin-left: 6.9mm;font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal;">kg</span>
             </p>
 
             <div id="barcode-orchestra">
-                <img style="width: 44.7mm; height: 34.7mm" src="https://barcode.tec-it.com/barcode.ashx?data=${item.barcode1}&code=${item.barcode1_type}&multiplebarcodes=true&translate-esc=true&unit=Px&imagetype=Jpg&modulewidth=1"
+                <img style="width: 44.7mm; height: 34.7mm; margin-left: 8.4mm;" src="https://barcode.tec-it.com/barcode.ashx?data=${item.barcode1}&code=${item.barcode1_type}&multiplebarcodes=true&translate-esc=true&unit=Px&imagetype=Jpg&modulewidth=1"
                     alt="Code-barres">
             </div>
 
