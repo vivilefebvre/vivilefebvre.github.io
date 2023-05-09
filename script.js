@@ -59,8 +59,6 @@
 
                 // Render filtered items
 
-                const container = document.createElement("div");
-                container.className = "container";
                 renderItems(items);
               });
             });
@@ -216,6 +214,8 @@
    */
 
   function accessCheck() {
+    const container = document.createElement("div");
+    container.className = "container";
 
     container.innerHTML = "";
 
