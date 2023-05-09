@@ -5,12 +5,6 @@
   // Event handlers for filter and parameter change
   let unregisterHandlerFunctions = [];
 
-  // Initialization of authentification
-  let authentication = false;
-
-  // Initialize the expected token
-  let expectedToken = "password";
-
   // Use the jQuery document ready signal to know when everything has been initialized
   $(document).ready(function () {
 
@@ -28,46 +22,8 @@
         })
         .catch(error => console.error(error));
 
-      // Managing Authentication
-
-
-      /**
-       * Verifies that the authentication token is correct to get the access
-       * 
-       * @return Change the text content of the target ID
-       */
-      function verifyToken() {
-        const token = document.getElementById('token-input').value;
-        
-        if (token === expectedToken) {
-          return true;
-        } else {
-          document.getElementById('result').textContent = 'Le token est incorrect!';
-          document.getElementById('result').style.color = 'red';
-          document.getElementById('access').textContent = 'false';
-          return false;
-        }
-      }
-
-      const getAccess = () => {
-
-        const button = document.getElementById('verify-button');
-        button.addEventListener("click", verifyToken);
-
-        if (!verifyToken) {
-          getAccess();
-        } else {
-          return;
-        }
-
-      }
-
-
-      getAccess();
-
       // Get data from worksheet
       const worksheet = dashboard.worksheets[0];
-
       worksheet.getSummaryDataAsync().then((sumdata) => {
         const items = convertDataToItems(sumdata);
 
@@ -85,17 +41,16 @@
           });
         }));
         tableau.extensions.dashboardContent.dashboard.getParametersAsync().then(function (parameters) {
-          const pageNumberParameter = parameters.find(p => p.name === 'Page Number');
-          if (pageNumberParameter) {
-            // Listen for changes to the Page Number parameter
-            pageNumberParameter.addEventListener(tableau.TableauEventType.ParameterChanged, function () {
-              const worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[0];
-              worksheet.getSummaryDataAsync().then((sumdata) => {
-                const items = convertDataToItems(sumdata);
+        const pageNumberParameter = parameters.find(p => p.name === 'Page Number');
+        if (pageNumberParameter) {
+        // Listen for changes to the Page Number parameter
+        pageNumberParameter.addEventListener(tableau.TableauEventType.ParameterChanged, function () {
+          const worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[0];
+          worksheet.getSummaryDataAsync().then((sumdata) => {
+            const items = convertDataToItems(sumdata);
 
-                // Render filtered items
-
-                renderItems(items);
+            // Render filtered items
+            renderItems(items);
               });
             });
           }
@@ -124,116 +79,118 @@
   }
 
 
-
-
   /**
    * Renders the items to the my-extension.html template.
    * @param {Array} items - The items to render.
    */
-  function renderItems(items) {
+function renderItems(items) {
+  const container = document.createElement('div');
+container.className = 'container';
 
-    items.forEach(item => {
-      const itemContainer = document.createElement('div');
-      let itemClass = '';
-      let itemContent = '';
+items.forEach(item => {
+  const itemContainer = document.createElement('div');
+  let itemClass = '';
+  let itemContent = '';
 
-      if (item.model === 'Modèle AUC') {
-        itemClass = 'auchan';
-        itemContent = `
-          <div class="left">
-            <p>${item.ref}</p>
-            <p>${item.designation}</p>
-            <p>Code ${item.tiers}: ${item.tiers_ref}</p>
-            <p>${item.pieces} pieces</p>
-          </div>
-          <div class="right">
-            <img class="barcode" src="https://barcode.tec-it.com/barcode.ashx?data=${item.EAN13}&code=Code128&translate-esc=on" alt="Barcode">
-          </div>
-        `;
-      } else if (item.model === 'Modèle AUB') {
-        itemClass = 'aubert';
-        itemContent = `
-        <div id="barcode" >
-            <img style="width : 82mm; height : 18.6mm;" src="https://barcode.tec-it.com/barcode.ashx?data=${item.barcode}&code=TelepenAlpha&multiplebarcodes=true&translate-esc=true&unit=Mm&modulewidth=0.5" alt="Code-barres">
-        </div>
-        `;
-      } else if (item.model === 'Modèle ORC') {
+  console.log("C'EST MON ITEM : ", item);
+  if (item.model === 'Modèle AUC'){
+    itemClass = 'auchan';
+    itemContent = `
+      <div class="left">
+        <p>${item.ref}</p>
+        <p>${item.designation}</p>
+        <p>Code ${item.tiers}: ${item.tiers_ref}</p>
+        <p>${item.pieces} pieces</p>
+      </div>
+      <div class="right">
+        <img class="barcode" src="https://barcode.tec-it.com/barcode.ashx?data=${item.EAN13}&code=Code128&translate-esc=on" alt="Barcode">
+      </div>
+    `;
+  } else if (item.model === 'Modèle AUB') {
+    itemClass = 'aubert';
+    itemContent = `
+    <div id="barcode" >
+        <img style="width : 82mm; height : 18.6mm;" src="https://barcode.tec-it.com/barcode.ashx?data=${item.barcode}&code=TelepenAlpha&multiplebarcodes=true&translate-esc=true&unit=Mm&modulewidth=0.5" alt="Code-barres">
+    </div>
+    `;
+  } else if (item.model === 'Modèle ORC') {
 
-        item.pcb = Number.parseInt(item.pcb);
-        let number = Number.parseFloat(item.weight.replace(",", ".")).toFixed(4);
-        item.weight = number < 1 ? number.toString().substring(1) : number.toString();
+    item.pcb = Number.parseInt(item.pcb);
+    let number = Number.parseFloat(item.weight.replace(",", ".")).toFixed(4);
+    item.weight = number < 1 ? number.toString().substring(1) : number.toString();
 
-        itemClass = 'orchestra';
-        itemContent = `
-            <div id="firstcont">
-    
-                <p style=" margin-top: 12.5mm;"><span
-                        style=" font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 6mm; margin-top: 12.5mm;">réf
-                        client: </span> <span
-                        style="font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 3.8mm; margin-top: 11mm;">${item.tiers_ref}</span>
-                </p>
-                <p style=" margin-top: 12.5mm;"><span
-                        style="font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 2.7mm; margin-top: 16mm;">Réf
-                        fournisseur:</span> <span
-                        style="font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 2.5mm; margin-top: 29.6mm;">${item.ref}</span></p>
-                <div id="designation">
-                <div style="font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 4mm;">Désign</div>
-                    <div
-                    style="font-size: ${(item.designation.length < 16 ? "16pt" : "12pt")}; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 4.2mm;">${item.designation}</div>
-                </div>
-                <p style=" margin-top: 12.5mm;"><span
-                        style="font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 6mm; margin-top: 74.7mm;">PCB</span>
-                    <span
-                        style="font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 5mm; margin-top: 74.1mm;">${item.pcb}</span><span
-                        style="font-size: 14px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 14.5mm; margin-top: 76.4mm;">
-                        ${item.pcb === 1 ? "pièce" : "pièces"}
-                    </span></p>
-    
+    itemClass = 'orchestra';
+    itemContent = `
+        <div id="firstcont">
+
+            <p style=" margin-top: 12.5mm;"><span
+                    style=" font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 6mm; margin-top: 12.5mm;">réf
+                    client: </span> <span
+                    style="font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 3.8mm; margin-top: 11mm;">${item.tiers_ref}</span>
+            </p>
+            <p style=" margin-top: 12.5mm;"><span
+                    style="font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 2.7mm; margin-top: 16mm;">Réf
+                    fournisseur:</span> <span
+                    style="font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 2.5mm; margin-top: 29.6mm;">${item.ref}</span></p>
+            <div id="designation">
+            <div style="font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 4mm;">Désign</div>
+                <div
+                style="font-size: ${(item.designation.length < 16 ? "16pt" : "12pt")}; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 4.2mm;">${item.designation}</div>
             </div>
-    
-            <div id="secondcont">
-    
-    
-                <p
-                    style="font-size: 11pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 1mm; margin-top: 14.5mm;">
-                    N° du bon de commande <span style="margin-left: 2mm;">${item.pi_no_tiers}</span></p>
-                <p
-                    style="font-size: 12pt; font-family: Arial, sans-serif;  font-weight:bold ; margin-left: 1mm; margin-top: 14.5mm;">
-                    ORIGINE : <span
-                        style="margin-top: 14.5mm;margin-left: 2.8mm;font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal;">${item.origin_country}</span>
-                </p>
-                <p
-                    style="font-size: 11pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 1mm; margin-top: 11.5mm; font-stretch: 119.5%;">
-                    poids du colis<span
-                        style="margin-top: 11.5mm;margin-left: 3mm;font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal;"> ${item.weight} </span><span
-                        style="margin-top: 11.5mm;margin-left: 6.9mm;font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal;">kg</span>
-                </p>
-    
-                <div id="barcode-orchestra">
-                    <img style="width: 44.7mm; height: 34.7mm; margin-left: 8.4mm;" src="https://barcode.tec-it.com/barcode.ashx?data=${item.barcode1}&code=${item.barcode1_type}&multiplebarcodes=true&translate-esc=true&unit=Px&imagetype=Jpg&modulewidth=0.20&dpi=600&unit=Mm"
-                        alt="Code-barres">
-                </div>
-    
-            </div>`
-      }
+            <p style=" margin-top: 12.5mm;"><span
+                    style="font-size: 9pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 6mm; margin-top: 74.7mm;">PCB</span>
+                <span
+                    style="font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 5mm; margin-top: 74.1mm;">${item.pcb}</span><span
+                    style="font-size: 14px; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 14.5mm; margin-top: 76.4mm;">
+                    ${item.pcb === 1 ? "pièce" : "pièces"}
+                </span></p>
 
-      itemContainer.className = `${itemClass} item`;
-      itemContainer.innerHTML = itemContent;
-      container.appendChild(itemContainer);
-    });
-  };
+        </div>
 
-  // document.body.innerHTML = '';
-  // document.body.appendChild(container);
+        <div id="secondcont">
+
+
+            <p
+                style="font-size: 11pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 1mm; margin-top: 14.5mm;">
+                N° du bon de commande <span style="margin-left: 2mm;">${item.pi_no_tiers}</span></p>
+            <p
+                style="font-size: 12pt; font-family: Arial, sans-serif;  font-weight:bold ; margin-left: 1mm; margin-top: 14.5mm;">
+                ORIGINE : <span
+                    style="margin-top: 14.5mm;margin-left: 2.8mm;font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal;">${item.origin_country}</span>
+            </p>
+            <p
+                style="font-size: 11pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 1mm; margin-top: 11.5mm; font-stretch: 119.5%;">
+                poids du colis<span
+                    style="margin-top: 11.5mm;margin-left: 3mm;font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal;"> ${item.weight} </span><span
+                    style="margin-top: 11.5mm;margin-left: 6.9mm;font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal;">kg</span>
+            </p>
+
+            <div id="barcode-orchestra">
+                <img style="width: 44.7mm; height: 34.7mm; margin-left: 8.4mm;" src="https://barcode.tec-it.com/barcode.ashx?data=${item.barcode1}&code=${item.barcode1_type}&multiplebarcodes=true&translate-esc=true&unit=Px&imagetype=Jpg&modulewidth=0.20&dpi=600&unit=Mm"
+                    alt="Code-barres">
+            </div>
+
+        </div>`
+  }
+
+  itemContainer.className = `${itemClass} item`;
+  itemContainer.innerHTML = itemContent;
+  container.appendChild(itemContainer);
+});
+
+  document.body.innerHTML = '';
+  document.body.appendChild(container);
 
   // Add the print button
   const printButton = document.createElement('button');
   printButton.id = 'print-button';
   printButton.textContent = 'Imprimer';
   document.body.appendChild(printButton);
-  printButton.addEventListener('click', function () {
-    // Print the extension
-    window.print();
+    printButton.addEventListener('click', function() {
+      // Print the extension
+      window.print();
   });
-  
+}
+
+
 })();
