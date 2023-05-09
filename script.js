@@ -89,15 +89,6 @@
 
     let authentication = false;
 
-    let authenticationContent = `
-    <h1>Vérification de token</h1>
-    <label for="token-input">Entrez votre token:</label>
-    <input type="text" id="token-input">
-    <button onclick="verifierToken()">Vérifier</button>
-    <p id="resultat"></p>
-    `;
-    
-    
     const verifyToken = () => {
       const token = document.getElementById('token-input').value; 
         const expectedToken = 'B@tt2023'; 
@@ -110,6 +101,14 @@
           authentication = true;
         }
     }
+
+    let authenticationContent = `
+    <h1>Vérification de token</h1>
+    <label for="token-input">Entrez votre token:</label>
+    <input type="text" id="token-input">
+    <button onclick="verifyToken()">Vérifier</button>
+    <p id="resultat"></p>
+    `;
 
     container.innerHTML = authenticationContent;
 
