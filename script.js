@@ -41,16 +41,16 @@
           });
         }));
         tableau.extensions.dashboardContent.dashboard.getParametersAsync().then(function (parameters) {
-        const pageNumberParameter = parameters.find(p => p.name === 'Page Number');
-        if (pageNumberParameter) {
-        // Listen for changes to the Page Number parameter
-        pageNumberParameter.addEventListener(tableau.TableauEventType.ParameterChanged, function () {
-          const worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[0];
-          worksheet.getSummaryDataAsync().then((sumdata) => {
-            const items = convertDataToItems(sumdata);
+          const pageNumberParameter = parameters.find(p => p.name === 'Page Number');
+          if (pageNumberParameter) {
+            // Listen for changes to the Page Number parameter
+            pageNumberParameter.addEventListener(tableau.TableauEventType.ParameterChanged, function () {
+              const worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[0];
+              worksheet.getSummaryDataAsync().then((sumdata) => {
+                const items = convertDataToItems(sumdata);
 
-            // Render filtered items
-            renderItems(items);
+                // Render filtered items
+                renderItems(items);
               });
             });
           }
@@ -83,19 +83,47 @@
    * Renders the items to the my-extension.html template.
    * @param {Array} items - The items to render.
    */
-function renderItems(items) {
-  const container = document.createElement('div');
-container.className = 'container';
+  function renderItems(items) {
+    const container = document.createElement('div');
+    container.className = 'container';
 
-items.forEach(item => {
-  const itemContainer = document.createElement('div');
-  let itemClass = '';
-  let itemContent = '';
+    let authentication = false;
 
-  console.log("C'EST MON ITEM : ", item);
-  if (item.model === 'Modèle AUC'){
-    itemClass = 'auchan';
-    itemContent = `
+    let authenticationContent = `
+    <h1>Vérification de token</h1>
+    <label for="token-input">Entrez votre token:</label>
+    <input type="text" id="token-input">
+    <button onclick="verifierToken()">Vérifier</button>
+    <p id="resultat"></p>
+    `;
+    
+    
+    const verifyToken = () => {
+      const token = document.getElementById('token-input').value; 
+        const expectedToken = 'B@tt2023'; 
+        
+        if (token === expectedToken) {
+          document.getElementById('resultat').textContent = 'Le token est correct!';
+          authentication = false;
+        } else {
+          document.getElementById('resultat').textContent = 'Le token est incorrect!';
+          authentication = true;
+        }
+    }
+
+    container.innerHTML = authenticationContent;
+
+    if (!authentication) {
+      container.innerHTML = authenticationContent;
+    } else {
+    items.forEach(item => {
+      const itemContainer = document.createElement('div');
+      let itemClass = '';
+      let itemContent = '';
+
+      if (item.model === 'Modèle AUC') {
+        itemClass = 'auchan';
+        itemContent = `
       <div class="left">
         <p>${item.ref}</p>
         <p>${item.designation}</p>
@@ -106,21 +134,21 @@ items.forEach(item => {
         <img class="barcode" src="https://barcode.tec-it.com/barcode.ashx?data=${item.EAN13}&code=Code128&translate-esc=on" alt="Barcode">
       </div>
     `;
-  } else if (item.model === 'Modèle AUB') {
-    itemClass = 'aubert';
-    itemContent = `
+      } else if (item.model === 'Modèle AUB') {
+        itemClass = 'aubert';
+        itemContent = `
     <div id="barcode" >
         <img style="width : 82mm; height : 18.6mm;" src="https://barcode.tec-it.com/barcode.ashx?data=${item.barcode}&code=TelepenAlpha&multiplebarcodes=true&translate-esc=true&unit=Mm&modulewidth=0.5" alt="Code-barres">
     </div>
     `;
-  } else if (item.model === 'Modèle ORC') {
+      } else if (item.model === 'Modèle ORC') {
 
-    item.pcb = Number.parseInt(item.pcb);
-    let number = Number.parseFloat(item.weight.replace(",", ".")).toFixed(4);
-    item.weight = number < 1 ? number.toString().substring(1) : number.toString();
+        item.pcb = Number.parseInt(item.pcb);
+        let number = Number.parseFloat(item.weight.replace(",", ".")).toFixed(4);
+        item.weight = number < 1 ? number.toString().substring(1) : number.toString();
 
-    itemClass = 'orchestra';
-    itemContent = `
+        itemClass = 'orchestra';
+        itemContent = `
         <div id="firstcont">
 
             <p style=" margin-top: 12.5mm;"><span
@@ -171,26 +199,27 @@ items.forEach(item => {
             </div>
 
         </div>`
-  }
+      }
 
-  itemContainer.className = `${itemClass} item`;
-  itemContainer.innerHTML = itemContent;
-  container.appendChild(itemContainer);
-});
+      itemContainer.className = `${itemClass} item`;
+      itemContainer.innerHTML = itemContent;
+      container.appendChild(itemContainer);
+    });
+    }
 
-  document.body.innerHTML = '';
-  document.body.appendChild(container);
+    document.body.innerHTML = '';
+    document.body.appendChild(container);
 
-  // Add the print button
-  const printButton = document.createElement('button');
-  printButton.id = 'print-button';
-  printButton.textContent = 'Imprimer';
-  document.body.appendChild(printButton);
-    printButton.addEventListener('click', function() {
+    // Add the print button
+    const printButton = document.createElement('button');
+    printButton.id = 'print-button';
+    printButton.textContent = 'Imprimer';
+    document.body.appendChild(printButton);
+    printButton.addEventListener('click', function () {
       // Print the extension
       window.print();
-  });
-}
+    });
+  }
 
 
 })();
