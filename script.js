@@ -106,25 +106,15 @@
     <h1>Vérification de token</h1>
     <label for="token-input">Entrez votre token:</label>
     <input type="text" id="token-input">
-    <button onclick="() => {
-        const token = document.getElementById('token-input').value; 
-        const expectedToken = 'B@tt2023'; 
-        
-        if (token === expectedToken) {
-          document.getElementById('resultat').textContent = 'Le token est correct!';
-          document.getElementById('authentication').textContent = 'true';
-        } else {
-          document.getElementById('resultat').textContent = 'Le token est incorrect!';
-          document.getElementById('authentication').textContent = 'false';
-        }
-    }">Vérifier</button>
+    <button onclick="verifyToken()">Vérifier</button>
     <p id="resultat"></p>
     <span id="authentication" style="display: none;"><!span>
     `;
 
     Promise.resolve(container.innerHTML = authenticationContent)
       .then(() => {
-      authentication = document.getElementById('authentication').textContent === 'true';
+        authentication = document.getElementById('authentication').textContent === 'true';
+        console.log("authentication : ", authentication);
     })
 
     if (!authentication) {
