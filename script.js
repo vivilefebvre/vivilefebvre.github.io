@@ -64,7 +64,7 @@
 
 
       getAccess();
-      
+
       // Get data from worksheet
       const worksheet = dashboard.worksheets[0];
 
@@ -223,8 +223,8 @@
     });
   };
 
-  document.body.innerHTML = '';
-  document.body.appendChild(container);
+  // document.body.innerHTML = '';
+  // document.body.appendChild(container);
 
   // Add the print button
   const printButton = document.createElement('button');
