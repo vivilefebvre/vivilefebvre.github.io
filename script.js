@@ -89,22 +89,22 @@
 
     let authentication = false;
 
-    const verifyToken = () => {
-      const token = document.getElementById('token-input').value; 
-        const expectedToken = 'B@tt2023'; 
+    // const verifyToken = () => {
+    //   const token = document.getElementById('token-input').value; 
+    //     const expectedToken = 'B@tt2023'; 
         
-        if (token === expectedToken) {
-          document.getElementById('resultat').textContent = 'Le token est correct!';
-          authentication = false;
-        } else {
-          document.getElementById('resultat').textContent = 'Le token est incorrect!';
-          authentication = true;
-        }
-    }
+    //     if (token === expectedToken) {
+    //       document.getElementById('resultat').textContent = 'Le token est correct!';
+    //       authentication = false;
+    //     } else {
+    //       document.getElementById('resultat').textContent = 'Le token est incorrect!';
+    //       authentication = true;
+    //     }
+    // }
 
     let authenticationContent = `
     <script>
-    const verifyToken = () => {
+    function verifyToken () {
       const token = document.getElementById('token-input').value; 
         const expectedToken = 'B@tt2023'; 
         
