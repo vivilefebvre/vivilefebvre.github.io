@@ -112,16 +112,19 @@
         
         if (token === expectedToken) {
           document.getElementById('resultat').textContent = 'Le token est correct!';
-          ${authentication = false};
+          document.getElementById('authentication').textContent = 'true';
         } else {
           document.getElementById('resultat').textContent = 'Le token est incorrect!';
-          ${authentication = true};
+          document.getElementById('authentication').textContent = 'false';
         }
     }">Vérifier</button>
     <p id="resultat"></p>
+    <span id="authentication" style="display: none;"><!span>
     `;
 
     container.innerHTML = authenticationContent;
+
+    authentication = document.getElementById('authentication').textContent == 'true';
 
     if (!authentication) {
       container.innerHTML = authenticationContent;
