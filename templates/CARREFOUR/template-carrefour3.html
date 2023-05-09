@@ -2,15 +2,24 @@
 <html>
 
 <head>
-    <title>Etiquetteorchestra</title>
+    <title>carrefour</title>
     <meta charset="utf-8">
 </head>
 <style>
-  
+ #etiquettecarrefour3{
+    width: 105mm;
+    height: 148mm;
+    border:  1px solid lightgrey;
+  border-radius: 5%;
+    
+ }
+ 
     .borderbottom{
         border-bottom: 3px solid black;
+        
+      
     }
-#containerr{
+#container{
     display: flex;
     flex-direction: row;
     
@@ -19,71 +28,81 @@
 }
 #numrayon{
     border-left: 3px solid black;
-    margin-left: 50px;
+   
+    
 
 }
 #couleur{
     border-left: 3px solid black;
-    margin-left: 50px;
+    margin-left: 2mm;
+    
+    
 }
-#containerr2{
+#carrefour-container{
     display: flex;
     flex-direction: row;
     
     border-bottom: 3px solid black;
 }
 #refarcticlefournisseur{
-    margin-left: 10px;
+    margin-left: 7.3mm;
     border-left: 3px solid black;
+    min-width: max-content;
+    width: 41mm;
 }
 </style>
 
 
 <body>
    <div id="etiquettecarrefour3">
-    <div class="borderbottom" style="line-height: 5px;">
-        <p>nom destinataire</p>
-        <p>Carrefour france S.A</p>
+    <div class="borderbottom" >
+        <p style="font-size: 9pt; font-weight: normal; font-family: 'Arial Narrow', Arial, sans-serif;margin-left: 4.7mm;margin-top: 2.7mm;">nom destinataire</p>
+        <p style="font-size: 16pt; font-weight: bold; font-family: 'Arial Narrow', Arial, sans-serif;margin-left: 4.7mm;margin-top: -2.4mm; margin-bottom: 1.6mm;">Carrefour france S.A</p>
     </div>
-    <div class="borderbottom"style="line-height: 5px;">
-        <p>nom fournisseur</p>
-        <p>VULLI SAS 1 AVENUE des alpres 74150 Rumilly</p>
+    <div class="borderbottom">
+        <p style="font-size: 9pt; font-weight: normal; font-family: 'Arial Narrow', Arial, sans-serif;margin-left: 4.7mm;margin-top: 2.7mm;">nom fournisseur</p>
+        <p style="font-size: 14pt; font-weight: bold; font-family: 'Arial Narrow', Arial, sans-serif;margin-left: 4.7mm;margin-top: -2.4mm;margin-bottom: 1.6mm;">VULLI SAS 1 AVENUE des alpres 74150 Rumilly</p>
     </div>
-    <div id="containerr">
+    <div id="container">
         <div id="refarticle">
-            <p>Réference articke Carrefour</p>
-            <p>1758178</p>
-            <p>Anneau de dentition fraicheur</p>
+            <p style="font-size: 9pt; font-weight: normal; font-family: 'Arial Narrow', Arial, sans-serif;margin-top: 2.7mm;margin-left: 6mm;">Réference article Carrefour</p>
+            <p style="font-size: 20pt; font-weight: bold; font-family: 'Arial Narrow', Arial, sans-serif;margin-left: 5.6mm;margin-top: 1.8mm;">1758178</p>
+            <p style="font-size: 16pt; font-weight: bold; font-family: 'Arial Narrow', Arial, sans-serif;margin-left: 3.4mm;margin-top: -3.4mm; min-width: max-content;margin-bottom: 2mm;">Anneau de dentition fraicheur</p>
         </div>
         <div id="numrayon" >
-            <p style="margin-left: 10px;">Numéro rayon</p>
-            <p style="margin-left: 20px;">61</p>
+            <p style="font-size: 9pt; font-weight: normal; font-family: 'Arial Narrow', Arial, sans-serif;margin-top: 4.4mm;margin-left: 3mm;min-width: max-content;">Numéro rayon</p>
+            <p style="font-size: 16pt; font-weight: bold; font-family: 'Arial Narrow', Arial, sans-serif;margin-top: 6.7mm;margin-left: 7mm;">61</p>
         </div>
         <div id="couleur" >
-            <p style="margin-left: 10px;"> couleur</p>
+            <p style="font-size: 9pt; font-weight: normal; font-family: 'Arial Narrow', Arial, sans-serif;margin-top: 4.4mm;margin-left: 2mm;"> couleur</p>
+            <p>vide</p>
         </div>
     </div>
    
-    <div id="containerr2">
-        <p>EAN13</p>
-        <div id="barcode" style="display: flex; align-items: center;">
-            
-            <img src="https://barcode.tec-it.com/barcode.ashx?data=3056562003123&code=EAN13&translate-esc=true&imagetype=Svg&rotation=0" alt="Code-barres">
+    <div id="carrefour-container">
+        
+        <div id="barcode" style="display: flex; flex-direction: column;">
+            <div>
+            <p style="font-size: 12pt; font-weight: normal; font-family: 'Arial Narrow', Arial, sans-serif;margin-left: 7.1mm;margin-top: 0.4mm;">EAN13</p>
         </div>
+        <div >
+            <img style="width: 52.5mm; height:19.6mm;margin-left: 4mm; margin-bottom: 2mm;" src="https://barcode.tec-it.com/barcode.ashx?data=3056562003123&code=EAN13&translate-esc=true&imagetype=Svg&rotation=0" alt="Code-barres">
+        </div>
+    </div>
         <div id="refarcticlefournisseur">
-            <div class="borderbottom">
-            <p style="margin-left: 10px;">Ref article fournisseur</p>
-            <p style="margin-left: 10px;">200312</p>
+            <div class="borderbottom" >
+            <p style="font-size: 9pt; font-weight: normal; font-family: 'Arial Narrow', Arial, sans-serif;margin-left: 2.7mm;">Ref article fournisseur</p>
+            <p style="font-size: 24pt; font-weight: bold; font-family: 'Arial Narrow', Arial, sans-serif;margin-left: 2.9mm ;margin-bottom: 1mm;margin-top: -4mm;">29</p>
         </div>
-            <p style="margin-top: 10px;margin-left: 10px;">PCB <span style="margin-left: 10px;">6</span></p>
+            <p style="font-size: 16pt; font-weight: normal; font-family: 'Arial Narrow', Arial, sans-serif;margin-left: 10mm;margin-top: 4mm; margin-bottom: 1mm;">PCB <span style="margin-left: 3.6mm;font-size: 16pt; font-weight: bold; font-family: 'Arial Narrow', Arial, sans-serif;">123</span></p>
         
         </div>
     </div>
-    <p>EAN14</p>
-    <p> 03614619292212</p>
+    <p style="font-size: 9pt; font-weight: normal; font-family: 'Arial Narrow', Arial, sans-serif;margin-left: 10.2mm;">EAN14</p>
+    <p style="font-size: 16pt; font-weight: bold; font-family: 'Arial Narrow', Arial, sans-serif;margin-left: 10mm;margin-top: -2.5mm;"> 03614619292212</p>
     
-    <div class="borderbottom">
-        <img src="https://barcode.tec-it.com/barcode.ashx?data=(01)03614619292212&multiplebarcodes=true&translate-esc=true" alt="Code-barres">
+    <div>
+        <img style="margin-left: 10mm; width: 87.8mm; height:36.3mm;margin-top: -5mm;" src="https://barcode.tec-it.com/barcode.ashx?data=(01)03614619292212&multiplebarcodes=true&translate-esc=true" alt="Code-barres">
     </div>
    </div>
 </body>

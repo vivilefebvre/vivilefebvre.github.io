@@ -7,66 +7,85 @@
 </head>
 <style>
     #vulli-logo {
-        text-align: left;
-        align-items: center;
+       
         object-fit: contain;
-        margin-right: 10px;
+        flex: 1;
+        width: 28.8mm;
+        height: 23mm;
+        
+        
     }
 
     #partie-encadree {
-        border: 2px solid black;
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        margin-left: 100px;
-        font-weight: bold;
-        width: 1000px;
-        
-        
-       
-        
-
-       
-        width: 420px;
-        height: 120px;
-        
-
-       
-        
+        display: grid;
+  grid-template-columns: 1fr 1fr;
+        width: 74.3mm;
+        height: 25.3mm;
+        margin-left: 28.1mm;
+        border : 3px solid black; 
     }
 
     #etiquettefnac {
-        width: 420px;
+        width: 104.3mm;
+        height: 74.1mm;
+        border: 2px solid lightgray;
+        border-radius: 5%;
+        
     }
 
+   
     #informations {
-        line-height: 2px;
-    }
+  line-height: 2.1mm;
+  width: 35.6mm;
+  height: 21.5mm;
+  font-size: 12pt;
+  font-weight: normal;
+  margin-left: 3mm;
+  margin-right: 11.9mm;
+  min-width: 445px;
+  font-family: Arial;
+  text-align: left;
+  flex: 1;
+  text-size-adjust: 80%;
+  
+}
+
+  
+  
+
+
+
 </style>
 
 <body>
-    <div id="etiquettefnac">
-      
-        <div id="partie-encadree">
-            <img id="vulli-logo" src="./images/Vulli_logo-modified.jpg" alt="Code-barres"
-                style="height : 120px;align-items: center;" />
-            <div id="informations" >
-                <p>VULLI S.A</p>
-                <p>Z.I.Des Granges</p>
-                <p>74150 RUMILLY FRANCE</p>
-                <p>Tél. +33(0)450010620</p>
-            </div>
-    </div></div>
+    <div id="etiquettefnac"  >
         
 
-        <div style="line-height : 70px;font-weight: bolder;">
+      
+        <div id="partie-encadree"  >
+            <div id="vulli-logo">
+            <img  style= "width: 28.8mm; height: 23mm; filter: grayscale(100%);" src="https://upload.wikimedia.org/wikipedia/fr/f/f1/Vulli_logo.jpg" >
+            </div>
+            <div id="informations" >
+                <p class="paragraphe" >{{VULLI S.A}}</p> <!-- coucou -->
+                <p class="paragraphe" >{{Z.I.Des Granges}}</p>
+                <p class="paragraphe" >{{74150 RUMILLY / FRANCE}}</p>
+                <p class="paragraphe" >{{Tél. +33(0)450010620}}</p>
+            </div>
+            
+    </div>
+      
+
+
+        
             <p>Fnac</p>
             <p>REF</p>
-        </div>
-        <div style="text-align: right;"><b>3/3</b></div>
+        
+        <p>{{vide}} <span style="margin-left: 71mm; margin-right: 7.4mm;"><sub>{{1/3}}</sub></span></p>
 
     </div>
+    
+    
 
 
 </body>
