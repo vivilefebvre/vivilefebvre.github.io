@@ -91,16 +91,23 @@
 
     const verifyToken = () => {
       const token = document.getElementById('token-input').value; 
-        const expectedToken = 'B@tt2023'; 
+      const expectedToken = 'B@tt2023'; 
+
+      let access = false;
       
-        if (token === expectedToken) {
-          document.getElementById('resultat').textContent = 'Le token est correct!';
-          authentication = true;
-        } else {
-          document.getElementById('resultat').textContent = 'Le token est incorrect!';
-          authentication = false;
-        }
+      if (token === expectedToken) {
+        document.getElementById('resultat').textContent = 'Le token est correct!';
+        document.getElementById('access').textContent = 'true';
+        access = true;
+      } else {
+        document.getElementById('resultat').textContent = 'Le token est incorrect!';
+        document.getElementById('access').textContent = 'false';
+        access = false;
+      }
+
+      return access
     }
+
 
     let authenticationContent = `
     <h1>Vérification de token</h1>
@@ -108,15 +115,25 @@
     <input type="text" id="token-input">
     <button id="verify-button">Vérifier</button>
     <p id="resultat"></p>
-    <span id="authentication" style="display: none;"></span>
+    <span id="access" style="display: none;"></span>
     `;
 
-    Promise.resolve(container.innerHTML = authenticationContent)
+    let result;
+
+    Promise.resolve(
+      container.innerHTML = authenticationContent
+    )
       .then(() => {
         document.getElementById("verify-button").addEventListener("click", verifyToken, false);
-      }).then(() => {
-        console.log('authentication test : ', authentication);
+      })
+      
+      .then(() => {
+        console.log('authentication test 2 : ', authentication);
 
+        authentication = document.getElementById('access').textContent === 'true';
+
+        console.log('authentication test après le changement ! : ', authentication);
+        
         if (!authentication) {
           container.innerHTML = authenticationContent;
         } else {
