@@ -89,46 +89,34 @@
 
     let authentication = false;
 
-    // const verifyToken = () => {
-    //   const token = document.getElementById('token-input').value; 
-    //     const expectedToken = 'B@tt2023'; 
-        
-    //     if (token === expectedToken) {
-    //       document.getElementById('resultat').textContent = 'Le token est correct!';
-    //       authentication = false;
-    //     } else {
-    //       document.getElementById('resultat').textContent = 'Le token est incorrect!';
-    //       authentication = true;
-    //     }
-    // }
-
-    let authenticationContent = `
-    <script>
-    function verifyToken () {
+    const verifyToken = () => {
       const token = document.getElementById('token-input').value; 
         const expectedToken = 'B@tt2023'; 
-        
+      
         if (token === expectedToken) {
           document.getElementById('resultat').textContent = 'Le token est correct!';
-          adocument.getElementById('resultat').textContent = 'true';
+          authentication = false;
         } else {
           document.getElementById('resultat').textContent = 'Le token est incorrect!';
-          document.getElementById('resultat').textContent = 'false';
+          authentication = true;
         }
-    }</script>
+    }
+
+    let authenticationContent = `
     <h1>Vérification de token</h1>
     <label for="token-input">Entrez votre token:</label>
     <input type="text" id="token-input">
-    <button onclick="verifyToken()">Vérifier</button>
+    <button id="verify-button">Vérifier</button>
     <p id="resultat"></p>
-    <span id="authentication" style="display: none;"><!span>
+    <span id="authentication" style="display: none;"></span>
     `;
 
     Promise.resolve(container.innerHTML = authenticationContent)
       .then(() => {
-        authentication = document.getElementById('authentication').textContent === 'true';
-        console.log("authentication : ", authentication);
-    })
+        document.getElementById("verify-button").addEventListener("click", verifyToken, false);
+      });
+    
+    console.log('authentication test : ', authentication);
 
     if (!authentication) {
       container.innerHTML = authenticationContent;
