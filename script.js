@@ -217,6 +217,8 @@
 
   function accessCheck() {
 
+    container.innerHTML = "";
+
     const itemContainer = document.createElement("div");
     let itemClass = 'authentication-container';
 
