@@ -51,7 +51,7 @@
 
       const getAccess = () => {
 
-        const button = document.getElementById('verify-token');
+        const button = document.getElementById('verify-button');
         button.addEventListener("click", verifyToken);
 
         if (!verifyToken) {
