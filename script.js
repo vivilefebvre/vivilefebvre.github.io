@@ -5,6 +5,12 @@
   // Event handlers for filter and parameter change
   let unregisterHandlerFunctions = [];
 
+  // Initialization of authentification
+  let authentication = false;
+
+  // Initialize the expected token
+  let expectedToken = "password";
+
   // Use the jQuery document ready signal to know when everything has been initialized
   $(document).ready(function () {
 
@@ -24,6 +30,8 @@
 
       // Get data from worksheet
       const worksheet = dashboard.worksheets[0];
+
+      accessCheck();
       worksheet.getSummaryDataAsync().then((sumdata) => {
         const items = convertDataToItems(sumdata);
 
@@ -50,6 +58,9 @@
                 const items = convertDataToItems(sumdata);
 
                 // Render filtered items
+
+                const container = document.createElement("div");
+                container.className = "container";
                 renderItems(items);
               });
             });
@@ -79,72 +90,22 @@
   }
 
 
+
+
   /**
    * Renders the items to the my-extension.html template.
    * @param {Array} items - The items to render.
    */
   function renderItems(items) {
-    const container = document.createElement('div');
-    container.className = 'container';
 
-    let authentication = false;
+    items.forEach(item => {
+      const itemContainer = document.createElement('div');
+      let itemClass = '';
+      let itemContent = '';
 
-    const verifyToken = () => {
-      const token = document.getElementById('token-input').value; 
-      const expectedToken = 'B@tt2023'; 
-
-      let access = false;
-      
-      if (token === expectedToken) {
-        document.getElementById('resultat').textContent = 'Le token est correct!';
-        document.getElementById('access').textContent = 'true';
-        access = true;
-      } else {
-        document.getElementById('resultat').textContent = 'Le token est incorrect!';
-        document.getElementById('access').textContent = 'false';
-        access = false;
-      }
-
-      return access
-    }
-
-
-    let authenticationContent = `
-    <h1>Vérification de token</h1>
-    <label for="token-input">Entrez votre token:</label>
-    <input type="text" id="token-input">
-    <button id="verify-button">Vérifier</button>
-    <p id="resultat"></p>
-    <span id="access" style="display: none;"></span>
-    `;
-
-    let result;
-
-    Promise.resolve(
-      container.innerHTML = authenticationContent
-    )
-      .then(() => {
-        document.getElementById("verify-button").addEventListener("click", verifyToken, false);
-      })
-      
-      .then(() => {
-        console.log('authentication test 2 : ', authentication);
-
-        authentication = document.getElementById('access').textContent === 'true';
-
-        console.log('authentication test après le changement ! : ', authentication);
-        
-        if (!authentication) {
-          container.innerHTML = authenticationContent;
-        } else {
-          items.forEach(item => {
-            const itemContainer = document.createElement('div');
-            let itemClass = '';
-            let itemContent = '';
-    
-            if (item.model === 'Modèle AUC') {
-              itemClass = 'auchan';
-              itemContent = `
+      if (item.model === 'Modèle AUC') {
+        itemClass = 'auchan';
+        itemContent = `
           <div class="left">
             <p>${item.ref}</p>
             <p>${item.designation}</p>
@@ -155,21 +116,21 @@
             <img class="barcode" src="https://barcode.tec-it.com/barcode.ashx?data=${item.EAN13}&code=Code128&translate-esc=on" alt="Barcode">
           </div>
         `;
-            } else if (item.model === 'Modèle AUB') {
-              itemClass = 'aubert';
-              itemContent = `
+      } else if (item.model === 'Modèle AUB') {
+        itemClass = 'aubert';
+        itemContent = `
         <div id="barcode" >
             <img style="width : 82mm; height : 18.6mm;" src="https://barcode.tec-it.com/barcode.ashx?data=${item.barcode}&code=TelepenAlpha&multiplebarcodes=true&translate-esc=true&unit=Mm&modulewidth=0.5" alt="Code-barres">
         </div>
         `;
-            } else if (item.model === 'Modèle ORC') {
-    
-              item.pcb = Number.parseInt(item.pcb);
-              let number = Number.parseFloat(item.weight.replace(",", ".")).toFixed(4);
-              item.weight = number < 1 ? number.toString().substring(1) : number.toString();
-    
-              itemClass = 'orchestra';
-              itemContent = `
+      } else if (item.model === 'Modèle ORC') {
+
+        item.pcb = Number.parseInt(item.pcb);
+        let number = Number.parseFloat(item.weight.replace(",", ".")).toFixed(4);
+        item.weight = number < 1 ? number.toString().substring(1) : number.toString();
+
+        itemClass = 'orchestra';
+        itemContent = `
             <div id="firstcont">
     
                 <p style=" margin-top: 12.5mm;"><span
@@ -220,28 +181,82 @@
                 </div>
     
             </div>`
-            }
-    
-            itemContainer.className = `${itemClass} item`;
-            itemContainer.innerHTML = itemContent;
-            container.appendChild(itemContainer);
-          });
-        }
-      });
+      }
 
-    document.body.innerHTML = '';
-    document.body.appendChild(container);
-
-    // Add the print button
-    const printButton = document.createElement('button');
-    printButton.id = 'print-button';
-    printButton.textContent = 'Imprimer';
-    document.body.appendChild(printButton);
-    printButton.addEventListener('click', function () {
-      // Print the extension
-      window.print();
+      itemContainer.className = `${itemClass} item`;
+      itemContainer.innerHTML = itemContent;
+      container.appendChild(itemContainer);
     });
+  };
+
+  /**
+   * Verifies that the authentication token is correct to get the access
+   * 
+   * @return Change the text content of the target ID
+   */
+  function verifyToken() {
+    const token = document.getElementById('token-input').value;
+    
+    if (token === expectedToken) {
+      document.getElementById('result').textContent = 'Le token est correct!';
+      document.getElementById('result').style.color = 'green';
+      document.getElementById('access').textContent = 'true';
+      authentication = true;
+    } else {
+      document.getElementById('result').textContent = 'Le token est incorrect!';
+      document.getElementById('result').style.color = 'red';
+      document.getElementById('access').textContent = 'false';
+      authentication = false;
+    }
+  }
+  /**
+   * Manage the authentication to the Tableau extension
+   * 
+   * @returns Change the container to an authentication page
+   */
+
+  function accessCheck() {
+
+    const itemContainer = document.createElement("div");
+    let itemClass = 'authentication-container';
+
+    let authenticationContent = `
+    <h1>Vérification de token</h1>
+    <label for="token-input">Entrez votre token:</label>
+    <input type="text" id="token-input">
+    <button id="verify-button">Vérifier</button>
+    <p id="result"></p>
+    <span id="access" style="display: none;"></span>
+    `;
+
+    itemContainer.className = itemClass;
+    itemContainer.innerHTML = authenticationContent;
+    container.appendChild(itemContainer);
+
+    const token = document.getElementById('token-input').value;
+
+    const verifyButton = document.getElementById('verify-button');
+
+    verifyButton.addEventListener("click", verifyToken, false);
+    
+    if (!authentication) {
+      accessCheck()
+    }
+
+    container.innerHTML = ""
   }
 
+  document.body.innerHTML = '';
+  document.body.appendChild(container);
 
+  // Add the print button
+  const printButton = document.createElement('button');
+  printButton.id = 'print-button';
+  printButton.textContent = 'Imprimer';
+  document.body.appendChild(printButton);
+  printButton.addEventListener('click', function () {
+    // Print the extension
+    window.print();
+  });
+  
 })();
