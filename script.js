@@ -122,9 +122,10 @@
     <span id="authentication" style="display: none;"><!span>
     `;
 
-    container.innerHTML = authenticationContent;
-
-    authentication = document.getElementById('authentication').textContent == 'true';
+    Promise.resolve(container.innerHTML = authenticationContent)
+      .then(() => {
+      authentication = document.getElementById('authentication').textContent === 'true';
+    })
 
     if (!authentication) {
       container.innerHTML = authenticationContent;
