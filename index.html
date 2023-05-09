@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <html lang="fr-FR">
-  <head>
-    <title>My Tableau Extension</title>
-    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+
+<head>
+  <title>My Tableau Extension</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
     crossorigin="anonymous">
     </script>
-    <link rel="stylesheet" href="container.css" media="screen">
-    <link rel="stylesheet" href="print container.css" media="print">
-    <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/tableau/extensions-api/lib/tableau.extensions.1.latest.js"></script>
-    <script src="script.js"></script>
-  </head>
-  <body>
-  </body>
+  <link rel="stylesheet" href="container.css" media="screen">
+  <link rel="stylesheet" href="print container.css" media="print">
+  <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/tableau/extensions-api/lib/tableau.extensions.1.latest.js"></script>
+  <script src="script.js"></script>
+</head>
+
+<body>
+  <div>
+    <h1>Vérification de token</h1>
+    <label for="token-input">Entrez votre token:</label>
+    <input type="text" id="token-input">
+    <button id="verify-button">Vérifier</button>
+    <p id="result"></p>
+    <span id="access" style="display: none;"></span>
+  </div>
+
+</body>
+
 </html>

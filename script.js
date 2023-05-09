@@ -28,10 +28,46 @@
         })
         .catch(error => console.error(error));
 
+      // Managing Authentication
+
+
+      /**
+       * Verifies that the authentication token is correct to get the access
+       * 
+       * @return Change the text content of the target ID
+       */
+      function verifyToken() {
+        const token = document.getElementById('token-input').value;
+        
+        if (token === expectedToken) {
+          return true;
+        } else {
+          document.getElementById('result').textContent = 'Le token est incorrect!';
+          document.getElementById('result').style.color = 'red';
+          document.getElementById('access').textContent = 'false';
+          return false;
+        }
+      }
+
+      const getAccess = () => {
+
+        const button = document.getElementById('verify-token');
+        button.addEventListener("click", verifyToken);
+
+        if (!verifyToken) {
+          getAccess();
+        } else {
+          return;
+        }
+
+      }
+
+
+      getAccess();
+      
       // Get data from worksheet
       const worksheet = dashboard.worksheets[0];
 
-      accessCheck();
       worksheet.getSummaryDataAsync().then((sumdata) => {
         const items = convertDataToItems(sumdata);
 
@@ -186,67 +222,6 @@
       container.appendChild(itemContainer);
     });
   };
-
-  /**
-   * Verifies that the authentication token is correct to get the access
-   * 
-   * @return Change the text content of the target ID
-   */
-  function verifyToken() {
-    const token = document.getElementById('token-input').value;
-    
-    if (token === expectedToken) {
-      document.getElementById('result').textContent = 'Le token est correct!';
-      document.getElementById('result').style.color = 'green';
-      document.getElementById('access').textContent = 'true';
-      authentication = true;
-    } else {
-      document.getElementById('result').textContent = 'Le token est incorrect!';
-      document.getElementById('result').style.color = 'red';
-      document.getElementById('access').textContent = 'false';
-      authentication = false;
-    }
-  }
-  /**
-   * Manage the authentication to the Tableau extension
-   * 
-   * @returns Change the container to an authentication page
-   */
-
-  function accessCheck() {
-    const container = document.createElement("div");
-    container.className = "container";
-
-    container.innerHTML = "";
-
-    const itemContainer = document.createElement("div");
-    let itemClass = 'authentication-container';
-
-    let authenticationContent = `
-    <h1>Vérification de token</h1>
-    <label for="token-input">Entrez votre token:</label>
-    <input type="text" id="token-input">
-    <button id="verify-button">Vérifier</button>
-    <p id="result"></p>
-    <span id="access" style="display: none;"></span>
-    `;
-
-    itemContainer.className = itemClass;
-    itemContainer.innerHTML = authenticationContent;
-    container.appendChild(itemContainer);
-
-    const token = document.getElementById('token-input').value;
-
-    const verifyButton = document.getElementById('verify-button');
-
-    verifyButton.addEventListener("click", verifyToken, false);
-    
-    if (!authentication) {
-      accessCheck()
-    }
-
-    container.innerHTML = ""
-  }
 
   document.body.innerHTML = '';
   document.body.appendChild(container);
