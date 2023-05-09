@@ -106,7 +106,18 @@
     <h1>Vérification de token</h1>
     <label for="token-input">Entrez votre token:</label>
     <input type="text" id="token-input">
-    <button onclick="verifyToken()">Vérifier</button>
+    <button onclick="() => {
+        const token = document.getElementById('token-input').value; 
+        const expectedToken = 'B@tt2023'; 
+        
+        if (token === expectedToken) {
+          document.getElementById('resultat').textContent = 'Le token est correct!';
+          ${authentication = false};
+        } else {
+          document.getElementById('resultat').textContent = 'Le token est incorrect!';
+          ${authentication = true};
+        }
+    }">Vérifier</button>
     <p id="resultat"></p>
     `;
 
