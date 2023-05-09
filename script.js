@@ -103,6 +103,19 @@
     }
 
     let authenticationContent = `
+    <script>
+    const verifyToken = () => {
+      const token = document.getElementById('token-input').value; 
+        const expectedToken = 'B@tt2023'; 
+        
+        if (token === expectedToken) {
+          document.getElementById('resultat').textContent = 'Le token est correct!';
+          adocument.getElementById('resultat').textContent = 'true';
+        } else {
+          document.getElementById('resultat').textContent = 'Le token est incorrect!';
+          document.getElementById('resultat').textContent = 'false';
+        }
+    }</script>
     <h1>Vérification de token</h1>
     <label for="token-input">Entrez votre token:</label>
     <input type="text" id="token-input">
