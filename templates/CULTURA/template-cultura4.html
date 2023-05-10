@@ -5,50 +5,59 @@
 <meta charset="utf-8">
 </head>
 <style>
-.myclass{text-transform: uppercase;font-weight: 700;}
-.mysecondclass{text-transform: capitalize;font-weight: 700;}
+.myclass{text-transform: uppercase;}
+.mysecondclass{text-transform: capitalize;}
 
-#cont2{
+#fourth-template-cultura{
+    width: 210mm;
+  height: 74mm;
+  border:  1px solid lightgrey;
+  border-radius: 5%;
   display: flex;
   flex-direction: row;
 
-  justify-content: right; 
-  justify-content: space-between;
-  width: 30%;
+  
   
 }
-#border{
-    border-left: 3px solid black;
-    padding-left: 30px;
+#firstcontainer{
+  width: 105mm;
+ 
 }
+#secondcontainer{
+  width: 105mm; 
+  
+  
+}
+
+
 
 </style>
 <body>
     
-   
-        <div id="cont2">
-            <div>
-          <p>Arbre magique des klorofil</p>
-          <p>Réf:700200</p>
-          <p>4PIECE(S)</p>
-          <div id="barcode4" style="display: flex; align-items: center;">
-            <img src="https://barcode.tec-it.com/barcode.ashx?data=13056567002005&code=Code25IL&multiplebarcodes=true&unit=Min" alt="Code-barres">
-          </div> 
+   <div id="fourth-template-cultura">
+        
+            <div id="firstcontainer" >
+          <p style="font-size: 18pt; font-weight: normal; font-family: 'Arial Narrow', Arial, sans-serif; margin-left: 10.4mm;margin-top: 3mm;">Arbre magique des klorofil</p>
+          <p style="font-size: 18pt; font-weight: normal; font-family: 'Arial Narrow', Arial, sans-serif;margin-left: 10.4mm;margin-top: -4mm;">Réf.700200</p>
+          <p style="font-size: 18pt; font-weight: normal; font-family: 'Arial Narrow', Arial, sans-serif;margin-left: 10.4mm;margin-top: -2mm;">4 PIECE(S)</p>
+          
+            <img style="width: 91mm; height:35mm ; margin-left: 5.6mm;margin-top: -3.21mm" src="https://barcode.tec-it.com/barcode.ashx?data=13056567002005&code=Code25IL&multiplebarcodes=true&unit=Min" alt="Code-barres"/>
+         
             </div>
        
         
-        <div style="padding-right: 30px;">
-            <div id="border">
-          <p>Arbre magique des klorofil</p>
-          <p>Réf:700200</p>
+        <div id="secondcontainer">
+            <div style="border-left: 3px solid black; display:flow-root;">
+          <p style="font-size: 18pt; font-weight: normal; font-family: 'Arial Narrow', Arial, sans-serif;margin-left: 21mm;margin-top: 3mm; ">Arbre magique des klorofil</p>
+          <p style="font-size: 18pt; font-weight: normal; font-family: 'Arial Narrow', Arial, sans-serif;margin-left: 21mm;margin-top: -4mm;">Réf.700200</p>
             </div>
-          <p style="padding-left: 30px;">4PIECE(S)</p>
-          <div id="barcode4" style="display: flex; align-items: center;padding-left: 30px;">
-            <img src="https://barcode.tec-it.com/barcode.ashx?data=13056567002005&code=Code25IL&multiplebarcodes=true&unit=Min" alt="Code-barres">
+          <p style="font-size: 18pt; font-weight: normal; font-family: 'Arial Narrow', Arial, sans-serif;margin-left: 21mm;margin-top: -2mm;">4 PIECE(S)</p>
+          <div id="barcode4" >
+            <img  style="width: 91mm; height:35mm ; margin-top: -3.21mm;margin-left: 10mm;" src="https://barcode.tec-it.com/barcode.ashx?data=13056567002005&code=Code25IL&multiplebarcodes=true&unit=Min" alt="Code-barres">
           </div> 
-        </div>
         
-       
+        
+      </div>
       
 
      
