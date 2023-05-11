@@ -6,49 +6,34 @@
 </head>
 <style>
 
-  #container {
+  #etiquette-auchan {
     display: flex;
     flex-direction: row;
     
-    font-style:normal;
-    font-size:medium;
-    height: 73.2mm;
-    width: 202.7mm;
-    border: 2px solid black;
+  width: 201mm;
+  height: 73mm;
+  border:  1px solid lightgrey;
+  border-radius: 5%;
   }
 
-  #nbr-pieces {
-    font-size:small
-
-  }
-
-  #informations {
-    
-    width: 300px;
-  }
-  #barcode{
-    width: 51.2mm;
-    height: 36mm;
-    margin-right: 53.5mm;
-    margin-left: 20mm;
-    margin-top: 18mm;
-  }
+ 
+ 
   </style>
 <body>
    
-      <div id="container" >
+      <div id="etiquette-auchan" >
 
-        <div id="informations">
-            <div style=" justify-content: space-between;">
-                <p id="reference">700200</p>
-                <p id="title">Arbre magique des Klorofil</p>
-            </div>
-            <p id="code">Code Auchan 258032</p>
-            <p id="nbrpieces"><span>4</span> pièces</p>
+        <div id="informations" style="margin-left: 8mm;">
+            
+                <p id="reference" style="font-size: 16pt; font-weight: normal; font-family:  Arial, sans-serif;">700200</p>
+                <p id="title"  style="font-size: 16pt; font-weight: normal; font-family:  Arial, sans-serif;">Arbre magique des Klorofil</p>
+            
+            <p id="code" style="font-size: 16pt; font-weight: normal; font-family:  Arial, sans-serif;">Code Auchan <span  style="font-size: 20pt; font-weight: normal; font-family:  Arial, sans-serif;" >xxxxxxx</span></p>
+            <p id="nbrpieces" style="font-size: 22pt; font-weight: normal; font-family:  Arial, sans-serif;">4<span  style="margin-left: 12.6mm; font-size: 20pt; font-weight: normal; font-family:  Arial, sans-serif;">pièces</span></p>
         </div>
 
-        <div id="barcode" style="display: flex; align-items: center;">
-            <img  style="width: 51.2mm; height: 36mm;" src="https://barcode.tec-it.com/barcode.ashx?data=1123456781&code=Code11&multiplebarcodes=true" alt="Code-barres">
+        <div id="barcode" style="margin-left: 12.1mm;margin-top: 20.8mm;">
+            <img  style="width: 50.9mm; height: 37mm;" src="https://barcode.tec-it.com/barcode.ashx?data=1123456781&code=Code11&multiplebarcodes=true" alt="Code-barres">
         </div>
       </div>
       
