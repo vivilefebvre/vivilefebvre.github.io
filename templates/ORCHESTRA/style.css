@@ -1,0 +1,163 @@
+#orchestra {
+    display: flex;
+    flex-direction: row;
+    width: 148mm;
+    height: 105.1mm;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 15px;
+    position : relative;
+}
+
+#secondcont {
+    margin: 2.5mm;
+    flex: 1;
+}
+
+#barcodeorchestra {
+    margin-top: 10.4mm;
+    margin-left: 9.4mm;
+    height: 37.1mm;
+    flex: 1;
+
+}
+
+#firstcont {
+    border-right: 3px solid black;
+    margin: 2.5mm;
+}
+#barcodeorchestra {
+    margin-top: 10.4mm;
+    margin-left: 9.4mm;
+    width: 44.7mm; 
+    height: 34.7mm;
+  }
+  
+  #firstcont {
+    border-right: 3px solid black;
+    margin: 2.5mm;
+    width: 50%;
+  }
+  
+  #secondcont {
+    margin: 2.5mm;
+    width: 50%;
+  }
+  
+  #designation {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+    padding: 10px;
+    align-items: center;
+  }
+  .item.orchestra {
+    display: flex;
+    flex-direction: row;
+    width: 148mm;
+    height: 105.1mm;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 15px;
+    border-color: lightgrey;
+    position : relative;
+    page-break-inside: avoid;
+  }
+
+#firstcont p {
+    margin-top: 12.5mm;
+  }
+
+  #firstcont span {
+    font-family: Arial, sans-serif;
+    font-weight: normal;
+  }
+  
+ 
+  #firstcont p > span:first-child {
+    font-size: 9pt;
+    margin-left: 6mm;
+  }
+  
+ 
+  #firstcont p > span:nth-child(2) {
+    font-size: 16px;
+    margin-left: 3.8mm;
+    margin-top: 11mm;
+  }
+  
+
+  #firstcont > div:nth-child(4) {
+    font-size: 16pt;
+    margin-left: 4.2mm;
+  }
+  
+
+  #designation > div:first-child {
+    font-size: 9pt;
+    margin-left: 4mm;
+  }
+  
+
+  #designation > div:nth-child(2) {
+    font-size: 16pt;
+    margin-left: 4.2mm;
+  }
+  
+
+  #firstcont span[style*="margin-top"] {
+    font-size: 14px;
+    margin-left: 14.5mm;
+  }
+
+ 
+  #secondcont p {
+    font-family: Arial, sans-serif;
+    font-weight: normal;
+    margin-left: 1mm;
+    margin-top: 14.5mm;
+  }
+  
+  #secondcont p:first-child {
+    font-size: 11pt;
+  }
+  
+  #secondcont p:nth-child(2) {
+    font-size: 12pt;
+    font-weight: bold;
+  }
+  
+  #secondcont p:nth-child(3) {
+    font-size: 11pt;
+    font-stretch: 119.5%;
+  }
+  
+  #secondcont span {
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    font-weight: normal;
+  }
+  
+  #secondcont span:first-child {
+    margin-left: 2mm;
+  }
+  
+  #secondcont span:nth-child(2) {
+    margin-left: 2.8mm;
+  }
+  
+  #secondcont span:last-child {
+    margin-left: 6.9mm;
+  }
+  
+ 
+  #barcode-orchestra {
+    margin-top: 14.5mm;
+    margin-left: 8.4mm;
+  }
+  
+  #barcode-orchestra img {
+    width: 44.7mm;
+    height: 34.7mm;
+  }
+  
