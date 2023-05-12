@@ -115,21 +115,25 @@
     font-family: Arial, sans-serif;
     font-weight: normal;
     margin-left: 1mm;
-    margin-top: 14.5mm;
+   
+    
   }
   
   #secondcont p:first-child {
     font-size: 11pt;
+   
   }
   
   #secondcont p:nth-child(2) {
     font-size: 12pt;
     font-weight: bold;
+    margin-top: 14.5mm;
   }
   
   #secondcont p:nth-child(3) {
     font-size: 11pt;
     font-stretch: 119.5%;
+    margin-top: 14.5mm;
   }
   
   #secondcont span {
@@ -144,20 +148,24 @@
   
   #secondcont span:nth-child(2) {
     margin-left: 2.8mm;
+    margin-top: 14.5mm;
   }
   
   #secondcont span:last-child {
     margin-left: 6.9mm;
+    margin-top: 14.5mm;
   }
   
  
   #barcode-orchestra {
     margin-top: 14.5mm;
     margin-left: 8.4mm;
+    margin-top: 14.5mm;
   }
   
   #barcode-orchestra img {
     width: 44.7mm;
     height: 34.7mm;
+    margin-top: 14.5mm;
   }
   

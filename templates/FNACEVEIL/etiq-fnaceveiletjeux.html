@@ -5,40 +5,46 @@
 </head>
 <style>
 #templatefnaceveil{
-justify-content: space-between;
-font-style: normal;
-font-size: xx-small;
-font-weight: 700;
-font-family: sans-serif;
-text-align:justify;
+   width: 148.5mm;
+  height: 102.4mm;
+  border:  1px solid lightgrey;
+  border-radius: 5%;
+  
+  }
 
-}
+
 #templatefnaceveil{
    text-transform: uppercase;
 }
 #pays{
    text-transform: uppercase;
 }
-#fournisseur{margin-left: 100px;font-weight: 700; }
-.my-class{text-transform: uppercase;font-weight: 700;}
+#fournisseur{margin-left: 100px;}
+.my-class{
+   text-transform: uppercase;
+   font-size: 12.1pt; 
+   font-weight: normal; 
+   font-family: Arial, sans-serif;
+   margin-left: 5.3mm;
+}
 
 </style>
 <body>
    
  
      <div id="templatefnaceveil" >
-        <p><b>EVEIL ET JEUX</b> </p>
-        <p id="pays">{{ pays }}</p>
-        <P>NOM DU FOURNISSEUR :<span id="fournisseur " style="margin-left:30px;">{{fournisseur}}</span></P>
-        <p class="my-class">reference fournisseur : <span style="margin-left:70px;">{{referencefournisseur}}</span></p>
-        <P class="my-class">reference fnac eveil & jeux <span style="margin-left:10px;">: </span>  <span style="margin-left:70px;">{{referencefnaceveiletjeux}}</span></P>
-        <P class="my-class">ean <span style="margin-left:10px;">:</span> <span style="margin-left:20px;">{{ean}}</span></P>
-        <P style="min-width: 200px;">LIBELLE PRODUIT: <span style="min-width: 200px;margin-left:70px;">{{libeleproduit}} </span></P>
-        <p class="my-class">nombre de pieces   <span style="margin-left:50px;">{{nombredepieces}}</span></p>
-        <P class="my-class">poids du carton: <span style="margin-left:30px;">{{poidsducarton}}</span></P>
-        <p class="my-class">dimension du carton:      <SPAN style="margin-left:60px;">{{dimcarton}}</SPAN></p>
-        <P class="my-class">commande n°:     <span style="margin-left:50px;">{{commandenum}}</span></P>
-        <p style="min-width: 200px;">CARTON N° :     <span style="margin-right: 30px ; margin-left: 50px;">{{nbrepartie}}</span> {{partie}}<span style="margin-left: 30px; margin-right: 40px;">{{nbredecolis}}</span>{{colis}}</p>
+        <p style="font-size: 24.2pt; font-weight: normal; font-family: Arial, sans-serif;margin-top: 6mm; margin-left: 5.3mm;  ">EVEIL ET JEUX </p>
+        <p class="my-class" style="margin-top:-8mm;">France</p>
+        <P class="my-class" style="margin-top: 4mm;">NOM DU FOURNISSEUR :<span  style="margin-left: 6mm;">{{fournisseur}}</span></P>
+        <p class="my-class" style="margin-top: 4mm;">reference fournisseur : <span style="margin-left:22.5mm;">700200</span></p>
+        <P class="my-class" style="margin-top: -5mm;">reference fnac eveil & jeux  <span style="margin-left:17.3mm;">123456</span></P>
+        <P class="my-class" style="margin-top: -1mm;">ean  :<span style="margin-left:6.7mm; ">{{ean}}</span></P>
+        <P class="my-class"style="margin-top: -1mm;">LIBELLE PRODUIT: <span style="margin-left: 15.7mm;">{{libeleproduit}} </span></P>
+        <p class="my-class" style="margin-top: -1mm;">nombre de pieces   <span style="margin-left:18.3mm;">{{nombredepieces}}</span></p>
+        <P class="my-class" style="margin-left: 16.9mm; margin-top: -1mm;">poids du carton: <span style="margin-left:7mm;">{{poidsducarton}}</span></P>
+        <p class="my-class" style="margin-left: 11mm; margin-top: -1mm;">dimension du carton:      <SPAN style="margin-left:13.3mm;">{{dimcarton}}</SPAN></p>
+        <P class="my-class" style="margin-top: -4mm;">commande n°:     <span style="margin-left:16.6mm;">{{commandenum}}</span></P>
+        <p class="my-class" style="min-width: max-content;">CARTON N° :     <span  style="margin-left: 13mm;">1</span><span style="margin-left: 9.7mm;">partie de :</span> <span style="margin-left: 6mm;">267</span> <span style="margin-left: 8.7mm;">colis</span> </p>
      </div>
     
 
