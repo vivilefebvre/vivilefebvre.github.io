@@ -1,171 +1,139 @@
-#orchestra {
-    display: flex;
-    flex-direction: row;
-    width: 148mm;
-    height: 105.1mm;
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 15px;
-    position : relative;
-}
-
-#secondcont {
-    margin: 2.5mm;
-    flex: 1;
+.item.orchestra {
+  display: flex;
+  flex-direction: row;
+  width: 148mm;
+  height: 105.1mm;
+  border-width: 1px;
+  border-style: solid;
+  border-radius: 15px;
+  border-color: lightgrey;
+  position: relative;
+  page-break-inside: avoid;
 }
 
 #barcodeorchestra {
-    margin-top: 10.4mm;
-    margin-left: 9.4mm;
-    height: 37.1mm;
-    flex: 1;
-
+  margin-top: 10.4mm;
+  margin-left: 9.4mm;
+  height: 37.1mm;
+  object-fit: fill;
 }
 
 #firstcont {
-    border-right: 3px solid black;
-    margin: 2.5mm;
+  border-right: 3px solid black;
+  margin: 2.5mm;
+  width: 50%;
+
 }
-#barcodeorchestra {
-    margin-top: 10.4mm;
-    margin-left: 9.4mm;
-    width: 44.7mm; 
-    height: 34.7mm;
-  }
-  
-  #firstcont {
-    border-right: 3px solid black;
-    margin: 2.5mm;
-    width: 50%;
-  }
-  
-  #secondcont {
-    margin: 2.5mm;
-    width: 50%;
-  }
-  
-  #designation {
-    display: flex;
-    flex-direction: row;
-    box-sizing: border-box;
-    padding: 10px;
-    align-items: center;
-  }
-  .item.orchestra {
-    display: flex;
-    flex-direction: row;
-    width: 148mm;
-    height: 105.1mm;
-    border-width: 1px;
-    border-style: solid;
-    border-radius: 15px;
-    border-color: lightgrey;
-    position : relative;
-    page-break-inside: avoid;
-  }
+
+#secondcont {
+  margin: 2.5mm;
+  width: 50%;
+}
+
+#designation {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  padding: 10px;
+  align-items: center;
+}
 
 #firstcont p {
-    margin-top: 12.5mm;
-  }
+  margin-top: 12.5mm;
+}
 
-  #firstcont span {
-    font-family: Arial, sans-serif;
-    font-weight: normal;
-  }
-  
- 
-  #firstcont p > span:first-child {
-    font-size: 9pt;
-    margin-left: 6mm;
-  }
-  
- 
-  #firstcont p > span:nth-child(2) {
-    font-size: 16px;
-    margin-left: 3.8mm;
-    margin-top: 11mm;
-  }
-  
+.item.orchestra span {
+  font-family: Arial, sans-serif;
+}
 
-  #firstcont > div:nth-child(4) {
-    font-size: 16pt;
-    margin-left: 4.2mm;
-  }
-  
+.item.orchestra div {
+  font-family: Arial, sans-serif;
+}
 
-  #designation > div:first-child {
-    font-size: 9pt;
-    margin-left: 4mm;
-  }
-  
+.item.orchestra p {
+  font-family: Arial, sans-serif;
+}
 
-  #designation > div:nth-child(2) {
-    font-size: 16pt;
-    margin-left: 4.2mm;
-  }
-  
+#barcodeorchestra img {
+  height: 34.7mm;
+  margin-left: 8.4mm;
+}
 
-  #firstcont span[style*="margin-top"] {
-    font-size: 14px;
-    margin-left: 14.5mm;
-  }
+#firstcont span:first-child {
+  font-size: 9pt;
+  font-weight: normal;
+  margin-left: 6mm;
+  margin-top: 12.5mm;
+}
 
- 
-  #secondcont p {
-    font-family: Arial, sans-serif;
-    font-weight: normal;
-    margin-left: 1mm;
-   
-    
-  }
-  
-  #secondcont p:first-child {
-    font-size: 11pt;
-   
-  }
-  
-  #secondcont p:nth-child(2) {
-    font-size: 12pt;
-    font-weight: bold;
-    margin-top: 14.5mm;
-  }
-  
-  #secondcont p:nth-child(3) {
-    font-size: 11pt;
-    font-stretch: 119.5%;
-    margin-top: 14.5mm;
-  }
-  
-  #secondcont span {
-    font-size: 16px;
-    font-family: Arial, sans-serif;
-    font-weight: normal;
-  }
-  
-  #secondcont span:first-child {
-    margin-left: 2mm;
-  }
-  
-  #secondcont span:nth-child(2) {
-    margin-left: 2.8mm;
-    margin-top: 14.5mm;
-  }
-  
-  #secondcont span:last-child {
-    margin-left: 6.9mm;
-    margin-top: 14.5mm;
-  }
-  
- 
-  #barcode-orchestra {
-    margin-top: 14.5mm;
-    margin-left: 8.4mm;
-    margin-top: 14.5mm;
-  }
-  
-  #barcode-orchestra img {
-    width: 44.7mm;
-    height: 34.7mm;
-    margin-top: 14.5mm;
-  }
-  
+#firstcont span:nth-child(2) {
+  font-size: 16px;
+  font-weight: normal;
+  margin-left: 8.8mm;
+  margin-top: 11mm;
+  width: auto;
+}
+
+#firstcont p:nth-child(2) span:first-child {
+  font-size: 9pt;
+  font-weight: normal;
+  margin-left: 2.7mm;
+  margin-top: 16mm;
+}
+
+#firstcont p:nth-child(2) span:nth-child(2) {
+  font-size: 16px;
+  font-weight: normal;
+  margin-left: 2.5mm;
+  margin-top: 29.6mm;
+}
+
+#designation div:first-child {
+  font-size: 9pt;
+  font-weight: normal;
+  margin-left: 4mm;
+}
+
+#designation div:nth-child(2) {
+  font-size: 16pt;
+  font-weight: normal;
+  margin-left: 4.2mm;
+}
+
+#firstcont p:nth-child(3) span:first-child {
+  font-size: 9pt;
+  font-weight: normal;
+  margin-left: 6mm;
+  margin-top: 74.7mm;
+}
+
+#nb-pieces {
+  font-size: 16px;
+  font-weight: normal;
+  margin-left: 5mm;
+  margin-top: 74.1mm;
+}
+#pièces{
+  font-size: 14px;  font-weight: normal; margin-left: 14.5mm; margin-top: 76.4mm;
+}
+#secondcont p:first-child{
+  font-size: 11pt;  font-weight: normal; margin-left: 1mm; margin-top: 14.5mm;
+}
+#secondcont  span:first-child{
+  margin-left: 2mm;
+}
+#secondcont p:nth-child(2){
+  font-size: 12pt;  font-weight:bold ; margin-left: 1mm; margin-top: 14.5mm;
+}
+#secondcont p:nth-child(2)  span:first-child{
+  margin-top: 14.5mm;margin-left: 2.8mm;font-size: 16px;  font-weight: normal;
+}
+#secondcont p:nth-child(3){
+  font-size: 11pt;  font-weight: normal; margin-left: 1mm; margin-top: 11.5mm; font-stretch: 119.5%;
+}
+#secondcont p:nth-child(3)  span:first-child{
+  margin-top: 11.5mm;margin-left: 3mm;font-size: 16px;  font-weight: normal;
+}
+#secondcont p:nth-child(3)  span:nth-child(2){
+  margin-top: 11.5mm;margin-left: 6.9mm;font-size: 16px;  font-weight: normal;
+}
