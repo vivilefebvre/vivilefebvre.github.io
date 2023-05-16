@@ -6,127 +6,106 @@
     <meta charset="utf-8">
 </head>
 <style>
-    #exp-desti {
-        display: flex;
-        flex-direction: row;
-        font-weight: bold;
-        border-bottom: 3px solid black;
-
-    }
 
     #etiquetteverbaudet {
-        font-weight: bolder;
+        width: 146mm; 
+        height: 100mm; 
+        border:  1px solid lightgrey;
+         border-radius: 5%;
 
 
 
     }
-
-    #contttwo {
+    #first-cont{
         display: flex;
         flex-direction: row;
-        font-weight: bolder;
-
-    }
-
-    #num-colis {
-        
-        line-height: 40px;
-        border-right: 2px solid black;
-        
-       
-    }
-
-    #ref-refproduit {
-        
-      
-        min-width: 2px;
-      
-        overflow: visible;
-        line-height: 60px;
+        border-bottom: 3px solid black;
         
     }
-
-    #date-envoi {
-       
-       
-        border-left: 2px solid black;
-        
-
+    #second-cont{
+        display: flex;
+        flex-direction: row;
+        height: 53mm;
+    }
+    #expediteur{
+        font-size: 12pt;
+        font-weight: bold;
+        font-family: Arial, Helvetica, sans-serif;
+        margin-left: 12.6mm;
+        width: 73mm;
+        margin-top: 5mm;
+    }
+    #destinataire{
+        font-size: 12pt;
+        font-weight: bold;
+        font-family: Arial, Helvetica, sans-serif;
+        width: 73mm;
+        border-left: 3px solid black;
+        margin-top: 4mm;
+    }
+    #ref{
+        border-left: 3px solid black;
+    }
+    #envoie{
+        border-left: 3px solid black;
     }
 </style>
 
 
 <body>
-
-    <div id="etiquetteverbaudet">
-        <div id="exp-desti">
-            <div style="margin-left: 30px;">
-                <div style="line-height : 15px;">
-                    <p >Expéditeur:</p>
-                    <p>VULLI SAS</p>
-                </div>
-                <div style="line-height : 5px;">
-                    <p>1 avenue des alpes</p>
-                    <p>74150 RUMILLY</p>
-                </div>
-            </div>
-            <div style="margin-left: 100px; border-left: 2px solid black;">
-                <div style="line-height : 15px;">
-                    <p style="margin-left: 70px;">Destinataire:</p>
-
-                    <p style="margin-left: 70px;">VERTBAUDET</p>
-                </div>
-                <div style="line-height : 5px;">
-                    <p style="margin-left: 70px;">12/14 Avenue industrielle</p>
-                    <p style="margin-left: 70px;">59520 MARQUETTE LEZ</p>
-                    <p style="margin-left: 70px;">LILLE</p>
-                </div>
-            </div>
-
+    <div id="etiquetteverbaudet" >
+     <div id="first-cont">
+        <div id="expediteur">
+           <p>Expéditeur</p>
+           <div style="line-height: 1mm;">
+           <p style="margin-top: 10mm;" >VULLI SAS</p>
+           <p >1 avenue des alpes </p>
+           <p >74150 RUMILLY</p>
         </div>
-    </div>
-    <div id="contttwo">
-
-        <div id="num-colis">
-            <p>numero de colis:</p>
-
-            <p style="align-content: center;margin-left: 50px;">1</p>
-
-            <p>nbre de colis:</p>
-            <p style="align-content: center;margin-left: 50px;">1</p>
-
-
-
-
+        </div>
+        <div id="destinataire">
+            <p style="margin-left: 15mm;">Destinataire:</p>
+            <div style="line-height: 1mm;">
+             <p style="margin-left: 15mm;margin-top: 10mm;">VERTBAUDET</p>
+             <p style="margin-left: 15mm;">12/14 Avenue industrielle</p>
+             <p style="margin-left: 15mm;">59520 MARQUETTE LEZ</p>
+             <p style="margin-left: 15mm; margin-bottom: 7mm;">LILLE</p>
+            </div>
         </div>
 
-        <div id="ref-refproduit">
-            <p style="font-size:x-large;">Réf . reference <span style="margin-left: 10px">produit</span></p>
-            <div id="barcode" style="display: flex; align-items: center;">
-                <img src="https://barcode.tec-it.com/barcode.ashx?data=0000003056561&code=EAN13&translate-esc=true&imagetype=Svg&rotation=0" alt="Code-barres">
+        </div>
+    <div id="second-cont">
+        <div id="colis" style="width: 37mm;">
+            <div style="border-bottom: 3px solid black;">
+                <p style="font-size: 12pt; font-weight: bold;font-family: Arial, Helvetica, sans-serif;">numero colis</p>
+                <p style="font-size: 17.5pt; font-weight: bold;font-family: Arial, Helvetica, sans-serif; margin-left: 16.5mm;">1</p>
+            </div>
+            <div>
+                <p style="font-size: 12pt; font-weight: bold;font-family: Arial, Helvetica, sans-serif;margin-left: 3mm;">nbre de colis</p>
+                <p style="font-size: 12pt; font-weight: bold;font-family: Arial, Helvetica, sans-serif;margin-left: 11.5mm;">27</p>
             </div>
 
         </div>
-
-        <div id="date-envoi">
-            <p style="margin-left: 17px;">Date d'envoie </p>
-
-            <p style="align-content: center;margin-left: 17px;">27/03/2019</p>
-            <div style="line-height:70px";>
-            <hr style="color: black;">
-        
-           
-            <p style="margin-left: 17px;">123 Pièces</p>
+        <div id="ref" style="width: 68mm;min-width: max-content;">
+             <p style="font-size: 14.2pt; font-weight: normal;font-family: Arial, Helvetica, sans-serif;margin-left: 2.4mm;">Réf.<span style="margin-left: 2mm;">reference </span> <span style="margin-left: 2mm;">produit </span>  </p>
+             <img id="barcode1" style="height: 26mm; width:52mm;margin-top: 8mm;margin-left: 7mm; "  src="https://barcode.tec-it.com/barcode.ashx?data=0000003056561&code=EAN13&multiplebarcodes=true&translate-esc=true&unit=Fit&imagetype=Jpg&modulewidth=1" alt="Code-barres"\>
 
         </div>
+        <div id="envoie" style="width: 40mm;">
+            <div style="border-bottom: 3px solid black;">
+                <p style="font-size: 12pt; font-weight: bold;font-family: Arial, Helvetica, sans-serif;margin-left: 6.5mm;">Date d'envoi</p>
+                <p style="font-size: 16pt; font-weight: bold;font-family: Arial, Helvetica, sans-serif;margin-left: 5.9mm;">27/03/2019</p>
+            </div>
+            
+                <p style="font-size: 14pt; font-weight: bold;font-family: Arial, Helvetica, sans-serif;margin-left: 6.9mm;margin-top: 10mm;"> 123 pièces</p>
+            
+
         </div>
-
-
-
     </div>
-
+    
+    
     </div>
-    </div>
+    
 
 </body>
 
