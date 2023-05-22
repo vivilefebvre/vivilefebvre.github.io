@@ -7,6 +7,12 @@
 
 </head>
 <style>
+ #etiquette-casino{
+    width: 146mm;
+  height: 208mm;
+  border:  1px solid lightgrey;
+  border-radius: 5%;
+}
 
 .myclass{text-transform: uppercase;font-weight: 700;}
 .mysecondclass{text-transform: capitalize;font-weight: 700;}
@@ -14,45 +20,37 @@
     display: flex;
     flex-direction: row;
     
-    width: 30%;
+    
     border-bottom: 3px solid black;
 }
-#border1{
-    border-left: 3px solid black;
-    padding-left: 10px;
-}
-#secondcontainer{
-    display: flex;
-    flex-direction: row;
-    
-    width: 30%;
-}
+
+
 #infodestinataire{
-    text-transform: uppercase;
-    font-weight: 700;
+    text-transform: uppercase;  
+    border-left: 2px solid black;
+   
 }
-#containertwo{
-    width: 30%;
-    font-weight: 700;
-}
+
+
   </style>
 <body>
- <div id="etiquette">
+    <div id="etiquette-casino">
+ 
     <div id="firstcontainer">
-        <div id="infofournisseur" style="margin-right: 100px;" >
-            <p>Nom fournisseur</p>
-            <div style="line-height : 2px;">
+        <div id="infofournisseur" style="width: 55mm;">
+            <p style="font-size: 13pt; font-weight: normal; font-family: Arial,sans-serif;margin-top: 7.5mm;margin-left: 6.2mm;">Nom fournisseur</p>
+            <div style="font-size: 16pt; font-weight: normal; font-family: Arial,sans-serif;line-height: 1mm;margin-left: 5.2mm;">
             <p >VULLI SAS</p>
             <p>1Avenue des </p>
             <p>ALPES</p>
             <p>74150RUMILLY</p>
             </div>
-
         </div>
-        <div id="border1">
-            <p>Nom destinataire </p>
+        
+        
         <div id="infodestinataire" >
-            <div style="line-height : 2px;">
+            <p style="font-size: 13pt; font-weight: normal; font-family: Arial,sans-serif;margin-top: 7.5mm;margin-left: 27.5mm;">Nom destinataire</p>
+            <div style="font-size: 18pt; font-weight: bold; font-family: Arial,sans-serif;line-height: 1mm;margin-left: 3.6mm;">
             <p>ENTREPOT CORBAS</p>
             <p>BOULEVARD DES</p>
             <p>NATIONS</p>
@@ -61,34 +59,36 @@
             </div>
         </div>
         </div>
-        </div>
-    </div>
-    <div id="containertwo" >
+       
+       
+    
+    
    
-               <p >Réf . article<span style ="min-width: 20px;margin-left: 30px;font-size: larger;"><b>700200</b></span></p>  
-               <p style="min-width: 0px;"> designation <span class="mysecondclass" style="margin-left: 30px;font-size: larger;"><b><sub>Arbre magique des Klorofil </sub></b></span></p>
+               <p style="font-size: 14pt; font-weight: bold; font-family: Arial,sans-serif;margin-top: 10mm;margin-left: 10.1mm;" >Réf . article<span  style="font-size: 24pt; font-weight: bold; font-family: Arial,sans-serif;margin-left: 11.1mm;">700200</span></p>  
+               <p  style="font-size: 14pt; font-weight: bold; font-family: Arial,sans-serif;margin-left: 10.1mm;margin-top: -2mm;"> designation <span class="mysecondclass" style="font-size: 18pt; font-weight: bold; font-family: Arial,sans-serif;margin-left: 2.9mm;">Arbre magique des Klorofil </span></p>
                
                <div style="line-height : 2px;">
-               <p>nombre de colis<span style="margin-left: 10px;">XXXXXX</span></p>
-               <p>numero de lot XXXXXX</p>
+               <p style="font-size: 18pt; font-weight: bold; font-family: Arial,sans-serif;margin-left: 10.1mm;">nombre de colis<span style="margin-left: 7mm;">XXXXXX</span></p>
+               <p style="font-size: 21pt; font-weight: bold; font-family: Arial,sans-serif;margin-left: 10.1mm;">numero de lot XXXXXX</p>
                </div>
-               <p>nombre de pièces sur la palette  <sup>XXXXXXX</sup></p>
+               <p style="font-size: 18pt; font-weight: bold; font-family: Arial,sans-serif;margin-left: 4.9mm;">nombre de pièces sur la palette  XXXXXXX</p>
 
                
        
           
-          <div id="barcode2" style="display: flex; align-items: center;margin-left:30px;">
-           <img src="https://barcode.tec-it.com/barcode.ashx?data=(00)03056560000000221&code=GS1-128&multiplebarcodes=true&translate-esc=true&unit=Min" alt="Code-barres">
+          <div id="barcode2" style="margin-left: 16mm;">
+           <img style="width: 111.4mm; height:23mm;" src="https://barcode.tec-it.com/barcode.ashx?data=(00)03056560000000221&code=GS1-128&multiplebarcodes=true&translate-esc=true&unit=Min" alt="Code-barres">
        </div>
-       <p > SCC PALETTE<span style ="min-width: 20px;margin-left: 50px;"><b>03056560000000221</b></span></P> 
+       <p  style="font-size: 14pt; font-weight: bold; font-family: Arial,sans-serif;margin-left: 6.9mm;"> SCC PALETTE<span style="font-size: 15.5pt; font-weight: bold; font-family: Arial,sans-serif;margin-left: 8.2mm;">03056560000000221</span></P> 
     
-        <div style="line-height : 0.005px;">
-       <div id="barcode2" style="display: flex; align-items: center;margin-left:30px;">
-         <img src="https://barcode.tec-it.com/barcode.ashx?data=(01)13056567002005(10)xxxxxx&code=GS1-128&multiplebarcodes=true&translate-esc=true&unit=Min" alt="Code-barres">
+       
+       <div id="barcode2" style="margin-left: 12.1mm;">
+         <img style="width: 118.9mm; height:32mm;" src="https://barcode.tec-it.com/barcode.ashx?data=(01)13056567002005(10)xxxxxx&code=GS1-128&multiplebarcodes=true&translate-esc=true&unit=Min" alt="Code-barres">
      </div>   
-     <p><sup>SCC COLIS</sup></p>
+     <p style="font-size: 14pt; font-weight: bold; font-family: Arial,sans-serif;margin-left: 3.9mm;">SCC COLIS</p>
+    
+
     </div>
-</div>
      
 </body>
  </html>
