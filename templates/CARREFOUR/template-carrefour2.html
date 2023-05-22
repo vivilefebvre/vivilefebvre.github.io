@@ -6,82 +6,86 @@
     <meta charset="utf-8">
 </head>
 <style>
- #carrefour2{
-    font-weight: bold;
+ #etiquette-carrefour2{
+    
+  width: 146mm;
+  height: 208mm;
+  border:  1px solid lightgrey;
+  border-radius: 5%;
+
  }   
     .borderbottom{
-        border-bottom: 3px solid black;
+        border-bottom: 5px solid black;
     }
     #specialcont{
-        border-bottom: 3px solid black;
+        border-bottom: 5px solid black;
         display: flex;
         flex-direction: row;
     }
-#first{
 
-}
 #second{
-    line-height: 30px;
-    margin-left: 60px;
-    border-left: 3px solid black;
+   
+    border-left: 5px solid black;
 }
 #numberpal{
-    border-left: 3px solid black;
-    line-height: 30px;
-    margin-left: 60px;
+    border-left: 5px solid black;
+  
 
 }
 </style>
 
 
 <body>
-    <div id="carrefour2">
-    <div class="borderbottom">
- <p>Expéditeur <span style="margin-left:40px;">81189</span><span style="margin-left:60px;">nom fournisseur </span><span style="margin-left:30px;">VULLI SAS</span></p>
+    <div id="etiquette-carrefour2">
+    
+    <div style="border-bottom: 5px solid black;">
+ <p style="font-size: 11pt; font-weight: normal; font-family:'Arial Narrow',sans-serif; margin-left: 4.2mm; margin-bottom: 6mm;margin-top: 7.7mm; ">Expéditeur <span style=" font-size: 11pt; font-weight: bold; font-family:'Arial Narrow',sans-serif; margin-left:15.7mm;">81189</span><span style="font-size: 11pt; font-weight: normal; font-family:'Arial Narrow',sans-serif; margin-left:26.7mm;">nom fournisseur </span><span style=" font-size: 14pt; font-weight: bold; font-family:'Arial Narrow',sans-serif; margin-left:  8.9mm;">VULLI SAS</span></p>
 </div>
 <div class="borderbottom">
-    <p>N°Commande Carrefour <span style="margin-left:40px;">00000000</span></p>
+    <p style="font-size: 9pt; font-weight: normal; font-family:'Arial Narrow',sans-serif; margin-left: 4.2mm; margin-bottom: 6mm;margin-top: 7.7mm; ">N°Commande Carrefour <span  style=" font-size: 14pt; font-weight: bold; font-family:'Arial Narrow',sans-serif; margin-left:9.3mm;">00000000</span></p>
    </div>
    <div class="borderbottom">
-    <p>Numéro rayon <span style="margin-left:40px;">61</span></p>
+    <p style="font-size: 9pt; font-weight: normal; font-family:'Arial Narrow',sans-serif; margin-left: 4.2mm; margin-bottom: 6mm;margin-top: 7.7mm; ">Numéro rayon <span style=" font-size: 16pt; font-weight: bold; font-family:'Arial Narrow',sans-serif; margin-left:17.8mm;">61</span></p>
    </div>
    <div id="specialcont">
-    <div id="first">
-        <div style="margin-left: 20px;">
+    <div style=" font-size: 16pt; font-weight: bold; font-family:'Arial Narrow',sans-serif; margin-left:6.1mm;line-height: 1mm;margin-bottom:10mm ;width: 102.7mm;">
+       
 
     <p>CARREFOUR LAUDUN-695-PFE</p>
     <p>PROLOG</p>
     <p>1300 Keller</p>
     <p>18 Avenue du Quebec</p>
     <p>30290 LAUDUN</p>
-</div>
-</div>
-<div id ="second">
-    <div style="margin-left: 30px;">
 
-    <p>Réf Nb colis sur palette</p>
-    <p style="margin-left: 30px;">20</p>
-    </div>
 </div>
+
+    <div style="border-left: 5px solid black;" >
+
+    <p style=" font-size: 9pt; font-weight: normal; font-family:'Arial Narrow',sans-serif; margin-left:4mm;margin-top: 12.3mm;">Réf Nb colis sur palette</p>
+    <p style=" font-size: 16pt; font-weight: bold; font-family:'Arial Narrow',sans-serif; margin-left:11.3mm;margin-top:7.7mm ;">20</p>
+    </div>
+
    </div>
    <div class="borderbottom">
-    <p>Date livraison Carrefour: <span style="margin-left:40px;">17/03/2023</span></p>
+    <p style="font-size: 9pt; font-weight: normal; font-family:'Arial Narrow',sans-serif; margin-left: 4.2mm; margin-bottom: 6mm;margin-top: 5.7mm; ">Date livraison carrefour <span style=" font-size: 16pt; font-weight: bold; font-family:'Arial Narrow',sans-serif; margin-left:8.3mm;">22/05/2023</span></p>
    </div>
    <div class="borderbottom">
-    <p>SCC PALETTE <span style="margin-left:40px;">030560000001006</span></p>
+    <p style="font-size: 9pt; font-weight: normal; font-family:'Arial Narrow',sans-serif; margin-left: 4.2mm; margin-bottom: 6mm;margin-top: 5.7mm; ">SCC PALETTE <span style=" font-size: 16pt; font-weight: bold; font-family:'Arial Narrow',sans-serif; margin-left:14.1mm;">030560000001006</span></p>
    </div>
    <div style="display: flex; flex-direction: row;">
-    <div id="barcode" style="margin-top: 20px; margin-left: 30px;">
-        <img src="https://barcode.tec-it.com/barcode.ashx?data=(00)03056560000001006&code=GS1-128&multiplebarcodes=true&translate-esc=true" alt="Code-barres">
+    <div id="barcode" style="width: 115mm;margin-top: 5mm; margin-left: 7mm;">
+        <img style="width: 111mm; height: 46.4mm;" src="https://barcode.tec-it.com/barcode.ashx?data=(00)03056560000001006&code=GS1-128&multiplebarcodes=true&translate-esc=true" alt="Code-barres">
       </div> 
-    <div id="numberpal">
-        <div style="margin-left: 10px;">
-        <p> Nb Palette</p>
-        <p style="margin-left: 30px;">1/1</p>
-    </div>
+   
+        <div style="border-left: 5px solid black;" >
+        <p style="font-size: 10pt; font-weight: normal; font-family:'Arial Narrow',sans-serif; margin-left: 2mm; margin-top: 8.1mm; "> Nb Palette</p>
+        <p style="font-size: 16pt; font-weight: bold; font-family:'Arial Narrow',sans-serif; margin-left: 5.3mm;margin-top: 16.6mm; " >1/1</p>
+    
     </div>
 </div>
-</div>
+
+    </div>
+    
 
 </body>
 
