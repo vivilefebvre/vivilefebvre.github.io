@@ -7,82 +7,44 @@
 
 </head>
 <style>
-#firstpart{
-    display: flex;
-    flex-direction: row;
-    border-bottom: 3px solid black ;
-}
-#border1{
-    border-left: 3px solid black;
-    padding-left: 10px;
-}
-#containernumbertwo{
-    font-weight: 700;
-   
 
-}
-#barcode{
+
+#barcode1{
     display: flex; 
-    align-items: center;  
-    font-weight: 700;
-     transform: rotate(270deg);
-     margin-right: 1000px;
-    
+    margin-left: 18mm;
+    margin-top: -4mm;
+  
 
 }
-#etiquetecdiscount{
-    display: flex;
-    flex-direction: row;
- 
-}
-#Etiquette4{
-    width: 146mm;
-  height: 98mm;
+
+#etiquette5{
+    width: 105mm;
+  height: 73.9mm;
   border:  1px solid lightgrey;
   border-radius: 5%;
 }
-
-#secondpart{
-    margin-left:17mm;
-    
-}
 </style>
-<body>
 
-<div id="Etiquette4">
-  <div id="firstpart">
-    <div  id="partie-destinataire" style="width: 81mm;">
-        <p style=" text-decoration: underline; font-size: 12pt; font-weight: bold; font-family: Arial, sans-serif;margin-top: 3mm; margin-left: 6mm;">DESTINATAIRE</p>
-        <div style="font-size: 24pt; font-weight: bold; font-family: Calibri, sans-serif;line-height: 2mm;margin-left:5mm;transform: scaleX(0.7); transform-origin: left;">
-        <p style="margin-top: 9mm;" >CDISCOUNT SA</p>
-        <p style="min-width: max-content;">BATIMENT  <span style="font-size: 18pt; font-weight: bold; font-family: Calibri, sans-serif;">N° BAT:</span> <span>{}</span></p>
-        <p style="min-width: max-content;">entrepot  <span style="font-size: 18pt; font-weight: bold; font-family: Calibri, sans-serif;">N° ENT:</span><span>{}</span> </p>
-        <p >ZA POT AU PIN</p>
-        <p style="min-width: max-content; ">33610 CESTAS FRANCE</p>
+ <body>
+    <div id="etiquette5">
+    <p style="font-size: 14pt; font-weight: bold; font-family:  Arial, sans-serif;margin-top: 3mm;margin-left: 6.5mm;">Désignation : <span style="margin-left: 3mm">Désignation</span></p>
+    <p style="font-size: 14pt; font-weight: bold; font-family:  Arial, sans-serif;margin-left: 6.5mm;margin-top:-2mm;">Référence:<span style="font-size: 16pt; font-weight: normal; font-family:  Arial, sans-serif;margin-left: 3mm;">Référence VULLI</span></p>
+    <p style="font-size: 12.1pt; font-weight: normal; font-family:  Arial, sans-serif;margin-left: 11mm;margin-top: -2mm;">EAN 13<span style="margin-left: 3.5mm">:</span> <span style="margin-left: 3.5mm">305656700200</span></p>
+    <p style="font-size: 16pt; font-weight: bold; font-family:  Arial, sans-serif;margin-left: 7.7mm;margin-top: -2mm;">123<span style="margin-left: 8.9mm;font-size: 16pt;">pièces</span></p>
+
+    
+        
+            <img id="barcode1" style="height: 24mm; width:52mm; "  src="https://barcode.tec-it.com/barcode.ashx?data=3056567002008&code=EAN13&multiplebarcodes=true&translate-esc=true&unit=Fit&imagetype=Jpg&modulewidth=1" alt="Code-barres"\>
+         
+
+          <p style="font-size: 14pt; font-weight: bold; font-family:  Arial, sans-serif;margin-left: 9mm;margin-top: 4mm;">Carton n° <span style="margin-left:2.3mm">2</span><span style="margin-left:14.5mm">sur 2</span></p>
+
+
+
+
+
         </div>
 
-    </div>
-    <div id="border1"  >
-        <div id="partie-expediteur"  >
-        <p style=" text-decoration: underline; font-size: 12pt; font-weight: bold; font-family: Arial, sans-serif;margin-top: 7mm;margin-left: 14mm;">EXPEDITEUR </p>
-    
-        <div style="font-size: 12pt; font-weight: normal; font-family: Calibri, sans-serif;margin-left: 15mm;line-height: 1.5mm;">
-        <p style="margin-top: 15mm;">VULLI SAS</p>
-        <p>1 avenue des alpes</p>
-        <p>74150 RUMILLY</p>
-    </div>
-        
-        
-    </div>
-    
-    </div>
-</div>
-    <div id="secondpart"  >
-        <p style="font-size: 16pt; font-weight: bold; font-family: Arial, sans-serif;margin-left:2mm;"> n°commande : <span>XXXXXX</span></p>
-        <p style="font-size: 14pt; font-weight: bold; font-family: Arial, sans-serif;margin-left: 3.5mm;margin-top: -3mm;">palette n° <span style="margin-left:3mm">1</span><span style="margin-left:14.5mm">sur 1</span></p>
 
-    
-    </div>
-</div>
 </body>
 </html>

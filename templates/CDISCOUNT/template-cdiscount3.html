@@ -7,12 +7,10 @@
 
 </head>
 <style>
-#firstcontainer{
+#firstpart{
     display: flex;
     flex-direction: row;
-    font-weight: 700;
-   width: 30%;
-    border-bottom: 3px solid black;
+    border-bottom: 3px solid black ;
 }
 #border1{
     border-left: 3px solid black;
@@ -37,32 +35,54 @@
     flex-direction: row;
  
 }
+#Etiquette4{
+    width: 146mm;
+  height: 98mm;
+  border:  1px solid lightgrey;
+  border-radius: 5%;
+}
+
+#secondpart{
+    margin-left:17mm;
+    
+}
 </style>
 <body>
 
-
-<div id="firstcontainer">
-    <div  style="margin-right: 100px;" >
-        <p><u>DESTINATAIRE</u></p>
-        <div style="line-height : 2px;">
-        <p >Cdiscount Sa Prologis</p>
-        <p> batiment N° BAT: </p>
-        <p>entrepot N° ENT:</p>
-        <p>parc d'activité chanleloup</p>
-        <p>77550 MOISSY CRAMAYEL</p>
+<div id="Etiquette4">
+  <div id="firstpart">
+    <div  id="partie-destinataire" style="width: 81mm;">
+        <p style=" text-decoration: underline; font-size: 12pt; font-weight: bold; font-family: Arial, sans-serif;margin-top: 3mm; margin-left: 6mm;">DESTINATAIRE</p>
+        <div style="font-size: 24pt; font-weight: bold; font-family: Calibri, sans-serif;line-height: 2mm;margin-left:5mm;transform: scaleX(0.7); transform-origin: left;">
+        <p style="margin-top: 9mm;" >CDISCOUNT SA</p>
+        <p style="min-width: max-content;">BATIMENT  <span style="font-size: 18pt; font-weight: bold; font-family: Calibri, sans-serif;">N° BAT:</span> <span>{}</span></p>
+        <p style="min-width: max-content;">entrepot  <span style="font-size: 18pt; font-weight: bold; font-family: Calibri, sans-serif;">N° ENT:</span><span>{}</span> </p>
+        <p >ZA POT AU PIN</p>
+        <p style="min-width: max-content; ">33610 CESTAS FRANCE</p>
         </div>
 
     </div>
-    <div id="border1">
-        <div style="line-height : 45px;">
-        <p style="margin-left: 50px;"><u>EXPEDITEUR</u> </p>
-       
-        <div style="line-height : 2px; margin-left: 50px;">
-        <p>VULLI SAS</p>
+    <div id="border1"  >
+        <div id="partie-expediteur"  >
+        <p style=" text-decoration: underline; font-size: 12pt; font-weight: bold; font-family: Arial, sans-serif;margin-top: 7mm;margin-left: 14mm;">EXPEDITEUR </p>
+    
+        <div style="font-size: 12pt; font-weight: normal; font-family: Calibri, sans-serif;margin-left: 15mm;line-height: 1.5mm;">
+        <p style="margin-top: 15mm;">VULLI SAS</p>
         <p>1 avenue des alpes</p>
         <p>74150 RUMILLY</p>
     </div>
+        
+        
     </div>
+    
     </div>
+</div>
+    <div id="secondpart"  >
+        <p style="font-size: 16pt; font-weight: bold; font-family: Arial, sans-serif;margin-left:2mm;"> n°commande : <span>XXXXXX</span></p>
+        <p style="font-size: 14pt; font-weight: bold; font-family: Arial, sans-serif;margin-left: 3.5mm;margin-top: -3mm;">palette n° <span style="margin-left:3mm">1</span><span style="margin-left:14.5mm">sur 1</span></p>
+
+    
+    </div>
+</div>
 </body>
 </html>
