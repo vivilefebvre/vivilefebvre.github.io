@@ -10,42 +10,40 @@
 #firstcontainer{
     display: flex;
     flex-direction: row;
-    font-weight: 700;
    
     border-bottom: 3px solid black;
 }
-#border1{
-    border-left: 3px solid black;
-    padding-left: 10px;
-}
-#containernumbertwo{
-    font-weight: 700;
-   
 
-}
+
 #barcode{
     display: flex; 
-    align-items: center;  
-    font-weight: 700;
+  margin-left: 5mm;
+    margin-top: 32mm;
      transform: rotate(270deg);
-     margin-right: 1000px;
+     
     
 
 }
 #etiquetecdiscount{
     display: flex;
     flex-direction: row;
+    width: 147.9mm;
+  height: 97.6mm;
+  border:  1px solid lightgrey;
+  border-radius: 5%;
  
 }
+
 </style>
 
  <body>
+   
     <div id="etiquetecdiscount">
-        <div id="etiquettefirstpart" style="margin-left:50px">
+        <div id="etiquettefirstpart" >
             <div id="firstcontainer">
-                <div  style="margin-right: 100px;" >
-                    <p><u>DESTINATAIRE</u></p>
-                    <div style="line-height : 2px;">
+                <div style="width: 64mm;height: 50mm;" >
+                    <p style="font-size: 12pt; font-weight: bold; font-family: Arial,sans-serif;text-decoration: underline;margin-top: 4mm;margin-left: 7mm; ">DESTINATAIRE</p>
+                    <div style="font-size: 22pt; font-weight: bold; font-family: Arial,sans-serif;margin-left: 5mm; transform: scaleX(0.5); transform-origin: left;min-width: max-content;line-height: 2mm;">
                     <p >CDISCOUNT SA</p>
                     <p>CEM BATIMENT N° BAT: </p>
                     <p>ZA POT AU PIN</p>
@@ -53,11 +51,11 @@
                     </div>
         
                 </div>
-                <div id="border1">
-                    <p><u>EXPEDITEUR</u> </p>
+                <div style="border-left: 2px solid black; margin-left: 8mm; width: 46mm;" >
+                    <p style="font-size: 12pt; font-weight: bold; font-family: Arial,sans-serif;text-decoration: underline;margin-left: 4mm;margin-top: 4mm;">EXPEDITEUR</p>
                 
-                    <div style="line-height : 2px;">
-                    <p>VULLI SAS</p>
+                    <div style="line-height : 2mm; font-size: 12pt; font-weight: normal; font-family: Arial,sans-serif;min-width: max-content;margin-left: 5mm;">
+                    <p style="margin-top: 3mm;">VULLI SAS</p>
                     <p>1 avenue des alpes</p>
                     <p>74150 RUMILLY</p>
                     
@@ -69,13 +67,11 @@
             </div>
             
             <div id="containernumbertwo">
-                <div style="line-height : 40px;">
-                    <p style="min-width: 20px;">Réference :<span style="margin-left:40px">700200</span></p>
-                    
-                        <p style="min-width: 20px;">EAN 13 : <span style="margin-left: 10px;">3056567002008</span></p>
-                    </div>
-                        <p style="min-width: 20px;">N°commande:<span style="margin-left:40px">XXXXXX</span></p>
-                        <p style="min-width: 20px;">palette n° <span style="margin-left:40px">1</span><span style="margin-left:50px">sur 2</span></p>
+                
+                    <p style=" font-size: 14pt; font-weight: bold; font-family: Arial,sans-serif;margin-top: 6mm;margin-left: 3mm;">Réference :<span style="margin-left:11mm;font-size: 16pt; font-weight: normal; font-family: Arial,sans-serif;">700200</span></p>
+                    <p style="font-size: 12.1pt; font-weight: normal; font-family: Arial,sans-serif;margin-left: 10mm;margin-top: 6mm;">EAN 13 : <span >3056567002008</span></p>
+                    <p style="font-size: 16pt; font-weight: bold; font-family: Arial,sans-serif;margin-left: 4mm;margin-top: 4mm;">N°commande:<span style="margin-left:40px; ">XXXXXX</span></p>
+                    <p style="font-size: 14pt; font-weight: bold; font-family: Arial,sans-serif;margin-left: 3mm;margin-top: 2mm;">palette n° <span style="margin-left: 3mm;">1</span><span style="margin-left:15mm;">sur 2</span></p>
 
 
 
@@ -87,7 +83,7 @@
 
         </div>
         <div id="barcode">
-            <img src="https://barcode.tec-it.com/barcode.ashx?data=3056567002008&code=EAN13&multiplebarcodes=true&translate-esc=true&unit=Fit&imagetype=Jpg&modulewidth=1" alt="Code-barres">
+            <img style="height: 24mm; width:62mm ;"  src="https://barcode.tec-it.com/barcode.ashx?data=3056567002008&code=EAN13&multiplebarcodes=true&translate-esc=true&unit=Fit&imagetype=Jpg&modulewidth=1" alt="Code-barres">
           </div> 
 
 
@@ -95,7 +91,7 @@
 
 
     </div>
-
+   
 
 </body>
 </html>
