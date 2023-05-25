@@ -1,53 +1,94 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Etiquette1</title>
-<meta charset="utf-8">
+    <title>Etiquette1</title>
+    <meta charset="utf-8">
 </head>
 <style>
-#Vulli_logo{ text-align: left;}
-#partieencadree{ 
-    padding-left: 50px;
    
-    display: flex;
-    flex-direction: row;
-}
-#etiquettefnac{
-    width: 40%;
-}
-#informationss{
-    margin-top: 40px;
+        
+        
+   
 
+    #partie-encadree {
+    display:flex;
+    flex-direction: row;
+    margin-top: 1mm;
+    width: 74.3mm;
+    
+        
+        border : 3px solid black; 
+        margin-left: 26mm;
+        transform: scaleX(0.95);
+        transform-origin: left;
+    }
+
+    #etiquette-galerielafayet {
+        width: 104mm;
+        height: 74mm;
+        border: 2px solid lightgray;
+        border-radius: 5%;
+        
+    }
+
+   
+    #informations {
+  line-height: 2.1mm;
+  font-size: 12pt;
+  font-weight: normal;
+  margin-left: 3mm;
+  min-width: max-content;
+  font-family: Arial;
+  transform: scaleX(0.7);
+  transform-origin: left;
+  
+  
+  
 }
+
+  
+  
+
 
 
 </style>
+
 <body>
-    <div id="etiquettefnac">
-        <div style=" border: 3px solid black;margin-left: 100px;">
-        <div id="partieencadree">
-            <div id="Vulli_logo">
-                <img src=".images/Vulli_logo-modified.jpg" alt="Code-barres">
-                </div>
-            <div id="informationss" >
-                <p>VULLI S.A</p>
-                <p>Z.I.Des Granges</p>
-                <p style="min-width: 10px;">74150 RUMILLY FRANCE</p>
-                <p>Tél. +33(0)450010620</p>
+    <div id="etiquette-galerielafayet"  >
+        
 
+      
+        <div id="partie-encadree"  >
+            
+            <img  style= "width: 29mm; height: 31mm; filter: grayscale(100%);" src="https://upload.wikimedia.org/wikipedia/fr/f/f1/Vulli_logo.jpg"\ >
+            
+            <div id="informations" >
+                <p >VULLI S.A</p> 
+                <p >Z.I.Des Granges</p>
+                <p >74150 RUMILLY / FRANCE</p>
+                <p >Tél. +33(0)450010620</p>
             </div>
-        </div>
-
-        </div>
-        <div style="line-height : 70px;font-weight: bolder;">
-        <p>GALERIES LAFAYETTE</p>
-        <p>REF :</p>
-
+            
     </div>
-    <div style="text-align: right;"><b>3/3</b></div>
+      
 
+<div style="line-height: 2mm;font-size: 12pt; font-family: Arial, Helvetica, sans-serif; font-weight: normal;">
+        
+            <p style="margin-left:5mm ;margin-top: 3mm;">GALERIES LAFAYETTE</p>
+            <p style="margin-left: 5mm;">{{vide}}</p>
+            <p style="margin-left:5mm ;">{{vide}}</p>
+            <p style="margin-left:5mm ;">REF</p>
+            <p style="margin-left: 5mm;">{{vide}}</p>
+        
+        <p  style="margin-left: 5mm;">{{vide}} </p>
     </div>
-
+        <p style="font-size: 12pt; font-family: Arial, Helvetica, sans-serif; font-weight: normal;margin-left: 90mm; margin-top: -6mm;">{{1/3}}</p>
+    </div>
     
+    
+
+
 </body>
+
 </html>
