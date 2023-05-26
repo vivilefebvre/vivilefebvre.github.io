@@ -1,0 +1,19 @@
+#barcode{
+    margin-top: 15.4mm;
+    margin-left: 64.1mm;
+    margin-right: 17.2mm;
+    object-fit:cover;
+    
+    
+}
+#etiquetteaubert{
+  width: 163.4mm;
+  height: 50.4mm;
+  border:  1px solid lightgrey;
+  border-radius: 5%;
+}
+#barcode img{
+    width : 82mm; 
+    height : 18.6mm;
+}
+
