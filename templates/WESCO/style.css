@@ -1,0 +1,28 @@
+
+#etiquette-wesco {
+   
+    
+    width: 40mm;
+    height: 28mm;
+    border:  1px solid lightgrey;
+    border-radius: 5%;
+    }
+    #etiquette-wesco img{
+        width:31mm ;
+         height: 7.5mm;
+    }
+    #firtpart{
+        font-size: 23.5pt; 
+        font-family: Arial, Helvetica, sans-serif;
+         font-weight: normal;
+         margin-left: 1mm;
+         margin-top: 1mm;
+
+    } 
+    #second-part{
+        font-size: 10pt; 
+        font-family: Arial, Helvetica, sans-serif;
+         font-weight: normal;
+          margin-top: -8mm;
+          margin-left: 1mm;
+    }
