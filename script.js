@@ -93,19 +93,25 @@
       let itemContent = '';
 
       switch (item.model) {
-        case "Modèle AUC":
+        case 'Modèle AUC':
           itemClass = 'auchan';
           itemContent = `
-      <div class="left">
-        <p>${item.ref}</p>
-        <p>${item.designation}</p>
-        <p>Code ${item.tiers}: ${item.tiers_ref}</p>
-        <p>${item.pieces} pieces</p>
-      </div>
-      <div class="right">
-        <img class="barcode" src="https://barcode.tec-it.com/barcode.ashx?data=${item.EAN13}&code=Code128&translate-esc=on" alt="Barcode">
-      </div>
-    `;
+          <div id="etiquette-auchan" >
+
+            <div id="informations" >
+                
+                    <p id="reference" >700200</p>
+                    <p id="title"  >Arbre magique des Klorofil</p>
+                
+                <p id="code" >Code Auchan <span>xxxxxxx</span></p>
+                <p id="nbrpieces" >4<span>pièces</span></p>
+            </div>
+
+            <div id="barcode" >
+                <img   src="https://barcode.tec-it.com/barcode.ashx?data=1123456781&code=Code11&multiplebarcodes=true" alt="Code-barres">
+            </div>
+          </div>
+          `;
           break;
 
         case "Modèle ORC":
@@ -174,26 +180,6 @@
         <img style="width : 82mm; height : 18.6mm;" src="https://barcode.tec-it.com/barcode.ashx?data=${item.barcode}&code=TelepenAlpha&multiplebarcodes=true&translate-esc=true&unit=Mm&modulewidth=0.5" alt="Code-barres">
     </div>
     `;
-          break;
-        case 'Modèle AUC':
-          itemClass = 'auchan';
-          itemContent = `
-          <div id="etiquette-auchan" >
-
-            <div id="informations" >
-                
-                    <p id="reference" >700200</p>
-                    <p id="title"  >Arbre magique des Klorofil</p>
-                
-                <p id="code" >Code Auchan <span  >xxxxxxx</span></p>
-                <p id="nbrpieces" >4<span>pièces</span></p>
-            </div>
-
-            <div id="barcode" >
-                <img   src="https://barcode.tec-it.com/barcode.ashx?data=1123456781&code=Code11&multiplebarcodes=true" alt="Code-barres">
-            </div>
-          </div>
-          `;
           break;
       }
 
