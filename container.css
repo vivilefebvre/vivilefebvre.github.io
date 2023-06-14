@@ -149,8 +149,8 @@
  }
 
 
- .item.oxybul #templatefnaceveil{
-  text-transform: uppercase;
+.item.oxybul #templatefnaceveil{
+text-transform: uppercase;
 }
 
 .item.oxybul #pays{
@@ -167,4 +167,35 @@
   font-weight: normal; 
   font-family: Arial, sans-serif;
   margin-left: 5.3mm;
+}
+
+.item.fnac #partie-encadree {
+  display:flex;
+  flex-direction: row;
+  margin-top: 1mm;
+  width: 74.3mm;
+  border : 3px solid black; 
+  margin-left: 26mm;
+  transform: scaleX(0.95);
+  transform-origin: left;
+  }
+
+.item.fnac #etiquettefnac {
+  width: 104mm;
+  height: 74mm;
+  border: 2px solid lightgray;
+  border-radius: 5%;
+    
+}
+
+ 
+.item.fnac  #informations {
+  line-height: 2.1mm;
+  font-size: 12pt;
+  font-weight: normal;
+  margin-left: 3mm;
+  min-width: max-content;
+  font-family: Arial;
+  transform: scaleX(0.7);
+  transform-origin: left;
 }

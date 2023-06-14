@@ -201,6 +201,43 @@
           </div>
           `;
           break;
+
+        case "Modèle FNA":
+          itemClass = 'fnac';
+          itemContent = `
+          <div id="etiquettefnac"  >
+        
+
+      
+            <div id="partie-encadree"  >
+            
+              <img  style= "width: 29mm; height: 31mm; " src="./images/vulli_logo.jpg" \>
+            
+              <div id="informations" >
+                  <p >VULLI S.A</p> 
+                  <p >Z.I.Des Granges</p>
+                  <p >74150 RUMILLY / FRANCE</p>
+                  <p >Tél. +33(0)450010620</p>
+              </div>
+            
+            </div>
+      
+
+            <div style="line-height: 2mm;font-size: 12pt; font-family: Arial, Helvetica, sans-serif; font-weight: normal;">
+          
+              <p style="margin-left:5mm ;margin-top: 3mm;">Fnac</p>
+              <p style="margin-left: 5mm;">{{vide}}</p>
+              <p style="margin-left:5mm ;">{{vide}}</p>
+              <p style="margin-left:5mm ;">REF</p>
+              <p style="margin-left: 5mm;">{{vide}}</p>
+          
+              <p  style="margin-left: 5mm;">{{vide}} </p>
+            </div>
+          <p style="font-size: 12pt; font-family: Arial, Helvetica, sans-serif; font-weight: normal;margin-left: 90mm; margin-top: -6mm;">{{1/3}}</p>
+      </div>
+          
+          `;
+          break;
       }
 
       itemContainer.className = `${itemClass} item`;
