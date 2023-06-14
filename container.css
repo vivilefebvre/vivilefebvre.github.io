@@ -139,3 +139,32 @@
   margin-right: 17.2mm;
   object-fit:cover;
 }
+
+.item.oxybul #templatefnaceveil{
+  width: 148.5mm;
+ height: 102.4mm;
+ border:  1px solid lightgrey;
+ border-radius: 5%;
+ 
+ }
+
+
+ .item.oxybul #templatefnaceveil{
+  text-transform: uppercase;
+}
+
+.item.oxybul #pays{
+  text-transform: uppercase;
+}
+
+.item.oxybul #fournisseur {
+  margin-left: 100px;
+}
+
+.item.oxybul .my-class{
+  text-transform: uppercase;
+  font-size: 12.1pt; 
+  font-weight: normal; 
+  font-family: Arial, sans-serif;
+  margin-left: 5.3mm;
+}

@@ -181,6 +181,26 @@
     </div>
     `;
           break;
+        
+        case "Modèle OXY":
+          itemClass = 'oxybul';
+          itemContent = `
+          <div id="templatefnaceveil" >
+            <p style="font-size: 24.2pt; font-weight: normal; font-family: Arial, sans-serif;margin-top: 6mm; margin-left: 5.3mm;  ">EVEIL ET JEUX </p>
+            <p class="my-class" style="margin-top:-8mm;">France</p>
+            <P class="my-class" style="margin-top: 4mm;">NOM DU FOURNISSEUR :<span  style="margin-left: 6mm;">{{fournisseur}}</span></P>
+            <p class="my-class" style="margin-top: 4mm;">reference fournisseur : <span style="margin-left:22.5mm;">700200</span></p>
+            <P class="my-class" style="margin-top: -5mm;">reference fnac eveil & jeux  <span style="margin-left:17.3mm;">123456</span></P>
+            <P class="my-class" style="margin-top: -1mm;">ean  :<span style="margin-left:6.7mm; ">{{ean}}</span></P>
+            <P class="my-class"style="margin-top: -1mm;">LIBELLE PRODUIT: <span style="margin-left: 15.7mm;">{{libeleproduit}} </span></P>
+            <p class="my-class" style="margin-top: -1mm;">nombre de pieces   <span style="margin-left:18.3mm;">{{nombredepieces}}</span></p>
+            <P class="my-class" style="margin-left: 16.9mm; margin-top: -1mm;">poids du carton: <span style="margin-left:7mm;">{{poidsducarton}}</span></P>
+            <p class="my-class" style="margin-left: 11mm; margin-top: -1mm;">dimension du carton:      <SPAN style="margin-left:13.3mm;">{{dimcarton}}</SPAN></p>
+            <P class="my-class" style="margin-top: -4mm;">commande n°:     <span style="margin-left:16.6mm;">{{commandenum}}</span></P>
+            <p class="my-class" style="min-width: max-content;">CARTON N° :     <span  style="margin-left: 13mm;">1</span><span style="margin-left: 9.7mm;">partie de :</span> <span style="margin-left: 6mm;">267</span> <span style="margin-left: 8.7mm;">colis</span> </p>
+          </div>
+          `;
+          break;
       }
 
       itemContainer.className = `${itemClass} item`;
