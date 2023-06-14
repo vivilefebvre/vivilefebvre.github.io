@@ -22,34 +22,6 @@
 /*  overflow: auto;*/
 /*}*/
 
-.item.auchan {
-  display: flex;
-  width: 100%;
-  height: 195px; /* Adapt this to taille des étiquettes */
-  grid-column-gap: 0;
-  padding: 5px;
-  page-break-inside: avoid;
-}
-
-.item.auchan .left {
-  flex-basis: 70%;
-  display: flex;
-  height: 150px;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-.item.auchan .right {
-  flex-basis: 30%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.item.auchan .barcode {
-  height: 60px;
-}
-
 /* Styles specific to Aubert items */
 
 .item.aubert {
@@ -127,6 +99,67 @@
   height: 50.4mm;
   border:  1px solid lightgrey;
   border-radius: 5%;
+}
+
+.item.auchan #etiquette-auchan {
+  display: flex;
+  flex-direction: row;
+
+  width: 201mm;
+  height: 73mm;
+  border: 1px solid lightgrey;
+  border-radius: 5%;
+}
+
+.item.auchan #informations {
+  margin-left: 8mm;
+}
+
+.item.auchan #reference {
+  font-size: 16pt;
+  font-weight: normal;
+  font-family: Arial, sans-serif;
+}
+
+.item.auchan #title {
+  font-size: 16pt;
+  font-weight: normal;
+  font-family: Arial, sans-serif;
+}
+
+.item.auchan #code {
+  font-size: 16pt;
+  font-weight: normal;
+  font-family: Arial, sans-serif;
+}
+
+.item.auchan #nbrpieces {
+  font-size: 22pt;
+  font-weight: normal;
+  font-family: Arial, sans-serif;
+}
+
+.item.auchan #barcode {
+  margin-left: 12.1mm;
+  margin-top: 20.8mm;
+}
+
+.item.auchan #barcode img {
+  width: 50.9mm;
+  height: 37mm;
+}
+
+.item.auchan #code span {
+  font-size: 20pt;
+  font-weight: normal;
+  font-family: Arial, sans-serif;
+}
+
+.item.auchan #nbrpieces span {
+  margin-left: 12.6mm;
+  font-size: 20pt;
+  font-weight: normal;
+  font-family: Arial, sans-serif;
 }
 
 }
