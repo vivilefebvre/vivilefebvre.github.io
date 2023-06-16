@@ -59,6 +59,17 @@
     });
   });
 
+  function duplicateObjects(list) {
+    return list.reduce((acc, obj) => {
+      const duplicatedObjects = Array.from({ length : Number.parseInt(obj["CDQTE (Custom SQL Query1)"]) * Number.parseInt(obj.pcb)}, () => ({
+        ...obj
+      }));
+
+      return [...acc, ...duplicatedObjects];
+
+    }, []);
+  };
+
   /**
    * Converts summary data to items array.
    * @param {Tableau summary data} sumdata - The summary data to convert.
@@ -76,25 +87,9 @@
       return item;
     });
 
-    for(const item of items) {
-      item["CDQTE (Custom SQL Query1)"] = Number.parseInt(item["CDQTE (Custom SQL Query1)"]);
-      item.pcb = Number.parseInt(item.pcb);
+    const duplicatedItems = duplicateObjects(items);
 
-      let labelQuantity = Number.parseInt(item["CDQTE (Custom SQL Query1)"]) / item.pcb;
-
-      console.log("item CDQTE : ", item["CDQTE (Custom SQL Query1)"]);
-      console.log("item PCB : ", item.pcb);
-      console.log("Label Quantity : ", labelQuantity);
-
-      for(let copyNumber = 1; copyNumber < labelQuantity; copyNumber++) {
-        console.log("Number of push : ", copyNumber);
-        items.push(item);
-      }
-
-    }
-
-    console.log("Mes Items : ", items);
-    return items;
+    return duplicatedItems;
   }
 
 
