@@ -78,7 +78,7 @@
 
     for(const item of items) {
 
-      let labelQuantity = Number.parseInt(item["CDQTE (Custom SQL Query1)"]) / Number.parseInt(item.pcb);
+      let labelQuantity = Number.parseInt(item["CDQTE (Custom SQL Query1)"]) / item.pcb;
 
       console.log("item CDQTE : ", item["CDQTE (Custom SQL Query1)"]);
       console.log("item PCB : ", item.pcb);
