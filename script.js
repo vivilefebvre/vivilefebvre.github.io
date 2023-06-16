@@ -61,7 +61,10 @@
 
   function duplicateObjects(list) {
     return list.reduce((acc, obj) => {
-      const duplicatedObjects = Array.from({ length : Number.parseInt(obj["CDQTE (Custom SQL Query1)"]) * Number.parseInt(obj.pcb)}, () => ({
+
+      const length = Number.parseInt(obj["CDQTE (Custom SQL Query1)"]) / Number.parseInt(obj.pcb);
+
+      const duplicatedObjects = Array.from({ length : length < 1 ? 1 : length}, () => ({
         ...obj
       }));
 
