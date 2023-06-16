@@ -92,6 +92,8 @@
       let itemClass = '';
       let itemContent = '';
 
+      let labelQuantity = item.CDQTE / item.pcb;
+
       switch (item.model) {
         case 'Modèle AUC':
           itemClass = 'auchan';
@@ -111,13 +113,14 @@
                 <img   src="https://barcode.tec-it.com/barcode.ashx?data=1123456781&code=Code11&multiplebarcodes=true" alt="Code-barres">
             </div>
           </div>
-          `;
+          `.repeat(labelQuantity);
           break;
 
         case "Modèle ORC":
           item.pcb = Number.parseInt(item.pcb);
           let number = Number.parseFloat(item.weight.replace(",", ".")).toFixed(4);
           item.weight = number < 1 ? number.toString().substring(1) : number.toString();
+
 
           itemClass = 'orchestra';
           itemContent = `
@@ -170,7 +173,7 @@
                     alt="Code-barres">
             </div>
 
-        </div>`;
+        </div>`.repeat(labelQuantity);
           break;
 
         case "Modèle AUB":
@@ -199,7 +202,7 @@
             <P class="my-class" style="margin-top: -4mm;">commande n°:     <span style="margin-left:16.6mm;">{{commandenum}}</span></P>
             <p class="my-class" style="min-width: max-content;">CARTON N° :     <span  style="margin-left: 13mm;">1</span><span style="margin-left: 9.7mm;">partie de :</span> <span style="margin-left: 6mm;">267</span> <span style="margin-left: 8.7mm;">colis</span> </p>
           </div>
-          `;
+          `.repeat(labelQuantity);
           break;
 
         case "Modèle FNA":
@@ -236,7 +239,7 @@
           <p style="font-size: 12pt; font-family: Arial, Helvetica, sans-serif; font-weight: normal;margin-left: 90mm; margin-top: -6mm;">{{1/3}}</p>
       </div>
           
-          `;
+          `.repeat(labelQuantity);
           break;
       }
 
