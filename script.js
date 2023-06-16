@@ -107,7 +107,7 @@
       switch (item.model) {
         case 'Modèle AUC':
           itemClass = 'auchan';
-          itemContent = multiplyStringStructure(`
+          itemContent = `
           <div id="etiquette-auchan" >
 
             <div id="informations" >
@@ -123,7 +123,7 @@
                 <img   src="https://barcode.tec-it.com/barcode.ashx?data=1123456781&code=Code11&multiplebarcodes=true" alt="Code-barres">
             </div>
           </div>
-          `, labelQuantity);
+          `;
           break;
 
         case "Modèle ORC":
@@ -133,7 +133,7 @@
 
 
           itemClass = 'orchestra';
-          itemContent = multiplyStringStructure(`
+          itemContent =`
         <div id="firstcont">
 
             <p style=" margin-top: 12.5mm;"><span
@@ -183,21 +183,21 @@
                     alt="Code-barres">
             </div>
 
-        </div>`, labelQuantity);
+        </div>`;
           break;
 
         case "Modèle AUB":
           itemClass = 'aubert';
-          itemContent = multiplyStringStructure(`
+          itemContent = `
     <div id="barcode" >
         <img style="width : 82mm; height : 18.6mm;" src="https://barcode.tec-it.com/barcode.ashx?data=${item.barcode}&code=TelepenAlpha&multiplebarcodes=true&translate-esc=true&unit=Mm&modulewidth=0.5" alt="Code-barres">
     </div>
-    `, labelQuantity);
+    `;
           break;
         
         case "Modèle OXY":
           itemClass = 'oxybul';
-          itemContent = multiplyStringStructure(`
+          itemContent = `
           <div id="templatefnaceveil" >
             <p style="font-size: 24.2pt; font-weight: normal; font-family: Arial, sans-serif;margin-top: 6mm; margin-left: 5.3mm;  ">EVEIL ET JEUX </p>
             <p class="my-class" style="margin-top:-8mm;">France</p>
@@ -212,12 +212,12 @@
             <P class="my-class" style="margin-top: -4mm;">commande n°:     <span style="margin-left:16.6mm;">{{commandenum}}</span></P>
             <p class="my-class" style="min-width: max-content;">CARTON N° :     <span  style="margin-left: 13mm;">1</span><span style="margin-left: 9.7mm;">partie de :</span> <span style="margin-left: 6mm;">267</span> <span style="margin-left: 8.7mm;">colis</span> </p>
           </div>
-          `, labelQuantity);
+          `;
           break;
 
         case "Modèle FNA":
           itemClass = 'fnac';
-          itemContent = multiplyStringStructure(`
+          itemContent = `
           <div id="etiquettefnac"  >
         
 
@@ -249,7 +249,7 @@
           <p style="font-size: 12pt; font-family: Arial, Helvetica, sans-serif; font-weight: normal;margin-left: 90mm; margin-top: -6mm;">{{1/3}}</p>
       </div>
           
-          `, labelQuantity);
+          `;
           break;
       }
 
