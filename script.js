@@ -78,13 +78,15 @@
 
     for(const item of items) {
 
-      let labelQuantity = items[i].CDQTE / items[i].pcb;
+      let labelQuantity = item.CDQTE / item.pcb;
 
       for(let _ = 1; _ < labelQuantity; _++) {
         items.push(item);
       }
 
     }
+
+    console.log("Mes Items : ", items);
     return items;
   }
 
