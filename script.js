@@ -75,17 +75,17 @@
       console.log(item);
       return item;
     });
-    return items;
-  }
 
-  const multiplyStringStructure = (string, number) => {
+    for(const item of items) {
 
-    let init = '';
-    for(let i = 0; i < number; i++) {
-      init += string;
+      let labelQuantity = items[i].CDQTE / items[i].pcb;
+
+      for(let _ = 1; _ < labelQuantity; _++) {
+        items.push(item);
+      }
+
     }
-
-    return init;
+    return items;
   }
 
 
