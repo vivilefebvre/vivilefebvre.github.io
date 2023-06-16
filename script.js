@@ -78,7 +78,10 @@
 
     for(const item of items) {
 
-      let labelQuantity = item.CDQTE / item.pcb;
+      let labelQuantity = Number.parseInt(item.CDQTE) / item.pcb;
+
+      console.log("item CDQTE : ", item.CDQTE);
+      console.log("item PCB : ", item.pcb);
 
       for(let _ = 1; _ < labelQuantity; _++) {
         items.push(item);
@@ -103,8 +106,6 @@
       const itemContainer = document.createElement('div');
       let itemClass = '';
       let itemContent = '';
-
-      let labelQuantity = item.CDQTE / item.pcb;
 
       switch (item.model) {
         case 'Modèle AUC':
