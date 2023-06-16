@@ -77,6 +77,8 @@
     });
 
     for(const item of items) {
+      item["CDQTE (Custom SQL Query1)"] = Number.parseInt(item["CDQTE (Custom SQL Query1)"]);
+      item.pcb = Number.parseInt(item.pcb);
 
       let labelQuantity = Number.parseInt(item["CDQTE (Custom SQL Query1)"]) / item.pcb;
 
@@ -132,7 +134,6 @@
           break;
 
         case "Modèle ORC":
-          item.pcb = Number.parseInt(item.pcb);
           let number = Number.parseFloat(item.weight.replace(",", ".")).toFixed(4);
           item.weight = number.toString();
 
