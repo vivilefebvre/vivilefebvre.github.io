@@ -117,15 +117,15 @@
 
             <div id="informations" >
                 
-                    <p id="reference" >700200</p>
-                    <p id="title"  >Arbre magique des Klorofil</p>
+                    <p id="reference" >${item.ref}</p>
+                    <p id="title"  >${item.designation}</p>
                 
-                <p id="code" >Code Auchan <span>xxxxxxx</span></p>
-                <p id="nbrpieces" >4<span>pièces</span></p>
+                <p id="code" >Code Auchan <span>${item.tiers_ref}</span></p>
+                <p id="nbrpieces" >${item.pcb}<span>pièces</span></p>
             </div>
 
             <div id="barcode" >
-                <img   src="https://barcode.tec-it.com/barcode.ashx?data=1123456781&code=Code11&multiplebarcodes=true" alt="Code-barres">
+                <img   src="https://barcode.tec-it.com/barcode.ashx?data=${item.barcode1}&code=${item.barcode1_type}&multiplebarcodes=true" alt="Code-barres">
             </div>
           </div>
           `;
