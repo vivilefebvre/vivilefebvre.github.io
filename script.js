@@ -62,9 +62,8 @@
   function duplicateObjects(list) {
     return list.reduce((acc, obj) => {
 
-      const length = Number.parseInt(obj["CDQTE (Custom SQL Query1)"]) / Number.parseInt(obj.pcb);
 
-      const duplicatedObjects = Array.from({ length : length < 1 ? 1 : length}, () => ({
+      const duplicatedObjects = Array.from({ length : obj.nb_colis < 1 ? 1 : obj.nb_colis}, () => ({
         ...obj
       }));
 
@@ -251,7 +250,7 @@
           
               <p  style="margin-left: 5mm;">{{vide}} </p>
             </div>
-          <p style="font-size: 12pt; font-family: Arial, Helvetica, sans-serif; font-weight: normal;margin-left: 90mm; margin-top: -6mm;">${index + 1}/${item.nb_colis}</p>
+          <p style="font-size: 12pt; font-family: Arial, Helvetica, sans-serif; font-weight: normal;margin-left: 90mm; margin-top: -6mm;">${index + 1}/${item.nb_colis_bp}</p>
       </div>
           
           `;
