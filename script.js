@@ -215,7 +215,7 @@
             <P class="my-class" style="margin-left: 16.9mm; margin-top: -1mm;">poids du carton: <span style="margin-left:7mm;">{{poidsducarton}}</span></P>
             <p class="my-class" style="margin-left: 11mm; margin-top: -1mm;">dimension du carton:      <SPAN style="margin-left:13.3mm;">{{dimcarton}}</SPAN></p>
             <P class="my-class" style="margin-top: -4mm;">commande n°:     <span style="margin-left:16.6mm;">{{commandenum}}</span></P>
-            <p class="my-class" style="min-width: max-content;">CARTON N° :     <span  style="margin-left: 13mm;">1</span><span style="margin-left: 9.7mm;">partie de :</span> <span style="margin-left: 6mm;">267</span> <span style="margin-left: 8.7mm;">colis</span> </p>
+            <p class="my-class" style="min-width: max-content;">CARTON N° :     <span  style="margin-left: 13mm;">${index + 1}</span><span style="margin-left: 9.7mm;">partie de :</span> <span style="margin-left: 6mm;">${item.nb_colis}</span> <span style="margin-left: 8.7mm;">colis</span> </p>
           </div>
           `;
           break;
