@@ -251,7 +251,7 @@
           
               <p  style="margin-left: 5mm;">{{vide}} </p>
             </div>
-          <p style="font-size: 12pt; font-family: Arial, Helvetica, sans-serif; font-weight: normal;margin-left: 90mm; margin-top: -6mm;">${index}/${item.nb_colis}</p>
+          <p style="font-size: 12pt; font-family: Arial, Helvetica, sans-serif; font-weight: normal;margin-left: 90mm; margin-top: -6mm;">${index + 1}/${item.nb_colis}</p>
       </div>
           
           `;
