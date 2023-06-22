@@ -1,7 +1,7 @@
 #etiquette-auchan {
     display: flex;
     flex-direction: row;
-
+    justify-content: space-between;
     width: 201mm;
     height: 73mm;
     border: 1px solid lightgrey;
@@ -37,8 +37,8 @@
 }
 
 #barcode {
-    margin-left: 12.1mm;
     margin-top: 20.8mm;
+    margin-right : 10mm;
 }
 
 #barcode img {
