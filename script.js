@@ -104,7 +104,7 @@
     const container = document.createElement('div');
     container.className = 'container';
 
-    items.forEach(item => {
+    items.forEach((item, index) => {
       const itemContainer = document.createElement('div');
       let itemClass = '';
       let itemContent = '';
@@ -134,6 +134,7 @@
         case "Modèle ORC":
           let number = Number.parseFloat(item.weight.replace(",", ".")).toFixed(4);
           item.weight = number.toString();
+          item.pcb = Number.parseInt(item.pcb);
 
 
           itemClass = 'orchestra';
@@ -168,10 +169,10 @@
 
 
             <p
-                style="font-size: 11pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 1mm; margin-top: 14.5mm;">
-                N° du bon de commande <span style="margin-left: 2mm;">${item.pi_no_tiers}</span></p>
+                style="font-size: 11pt; font-family: Arial, sans-serif;  font-weight: normal; margin-left: 1mm; margin-top: 14.5mm; display: flex; flex-direction: column;">
+                N° du bon de commande <span style="margin-left: 2mm; margin-top : 2mm;">${item.pi_no_tiers}</span></p>
             <p
-                style="font-size: 12pt; font-family: Arial, sans-serif;  font-weight:bold ; margin-left: 1mm; margin-top: 14.5mm;">
+                style="font-size: 12pt; font-family: Arial, sans-serif;  font-weight:bold ; margin-left: 1mm; margin-top: 8mm;">
                 ORIGINE : <span
                     style="margin-top: 14.5mm;margin-left: 2.8mm;font-size: 16px; font-family: Arial, sans-serif;  font-weight: normal;">${item.origin_country}</span>
             </p>
