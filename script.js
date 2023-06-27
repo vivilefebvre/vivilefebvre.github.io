@@ -243,11 +243,11 @@
             <div style="line-height: 2mm;font-size: 12pt; font-family: Arial, Helvetica, sans-serif; font-weight: normal;">
           
               <p style="margin-left:5mm ;margin-top: 3mm;">Fnac</p>
-              <p style="margin-left: 5mm;color:white;">{{vide}}</p>
-              <p style="margin-left: 5mm;color:white;">{{vide}}</p>
+              <p style="margin-left: 5mm;">​</p>
+              <p style="margin-left: 5mm;color:white;">​</p>
               <p style="margin-left:5mm ;">REF : ${item.ref}</p>
-              <p style="margin-left: 5mm;color:white;">{{vide}}</p>
-              <p style="margin-left: 5mm;color:white;">{{vide}}</p>
+              <p style="margin-left: 5mm;color:white;">​</p>
+              <p style="margin-left: 5mm;color:white;">​</p>
             </div>
           <p style="font-size: 12pt; font-family: Arial, Helvetica, sans-serif; font-weight: normal;margin-left: 90mm; margin-top: -6mm;">${index + 1}/${item.nb_colis_bp}</p>
       </div>
