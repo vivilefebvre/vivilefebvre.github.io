@@ -25,7 +25,7 @@
       // Get data from worksheet
       const worksheet = dashboard.worksheets[0];
       worksheet.getSummaryDataAsync().then((sumdata) => {
-        const items = convertDataToItems(sumdata);
+        const items = convertDataToItems(sumdata, false);
 
         // Render all items initially
         renderItems(items);
@@ -34,7 +34,7 @@
         unregisterHandlerFunctions.push(worksheet.addEventListener(tableau.TableauEventType.FilterChanged, function (filterEvent) {
           // Get filtered data
           worksheet.getSummaryDataAsync().then((sumdata) => {
-            const items = convertDataToItems(sumdata);
+            const items = convertDataToItems(sumdata, false);
 
             // Render filtered items
             renderItems(items);
@@ -92,7 +92,7 @@
       return item;
     });
 
-    if (isDuplicated) {
+    if (!isDuplicated) {
       const duplicatedItems = duplicateObjects(items);
     
       return duplicatedItems;
