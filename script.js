@@ -41,10 +41,11 @@
           });
         }));
         tableau.extensions.dashboardContent.dashboard.getParametersAsync().then(function (parameters) {
-          const pageNumberParameter = parameters.find(p => p.name === 'Page Number');
+          const pageNumberParameter = parameters.find(p => p.name === 'unique_ref');
           if (pageNumberParameter) {
             // Listen for changes to the Page Number parameter
-            pageNumberParameter.addEventListener(tableau.TableauEventType.ParameterChanged, function () {
+            pageNumberParameter.addEventListener(tableau.TableauEventType.ParameterChanged, function (parameter) {
+              console.log('Parameter : ', parameter);
               const worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[0];
               worksheet.getSummaryDataAsync().then((sumdata) => {
                 const items = convertDataToItems(sumdata);
@@ -88,10 +89,10 @@
       console.log(item);
       return item;
     });
-
     const duplicatedItems = duplicateObjects(items);
-
+  
     return duplicatedItems;
+
   }
 
 
