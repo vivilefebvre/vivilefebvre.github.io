@@ -222,7 +222,7 @@
             <P class="my-class" style="margin-left: 16.9mm; margin-top: -1mm;">poids du carton: <span style="margin-left:7mm;">{{poidsducarton}}</span></P>
             <p class="my-class" style="margin-left: 11mm; margin-top: -1mm;">dimension du carton:      <SPAN style="margin-left:13.3mm;">{{dimcarton}}</SPAN></p>
             <P class="my-class" style="margin-top: -4mm;">commande n°:     <span style="margin-left:16.6mm;">{{commandenum}}</span></P>
-            <p class="my-class" style="min-width: max-content;">CARTON N° :     <span  style="margin-left: 13mm;">${index + 1}</span><span style="margin-left: 9.7mm;">partie de :</span> <span style="margin-left: 6mm;">${item.nb_colis}</span> <span style="margin-left: 8.7mm;">colis</span> </p>
+            <p class="my-class" style="min-width: max-content;">CARTON N° :     <span  style="margin-left: 13mm;">${index + 1}</span><span style="margin-left: 9.7mm;">partie de :</span> <span style="margin-left: 6mm;">${item.nb_colis_bp}</span> <span style="margin-left: 8.7mm;">colis</span> </p>
           </div>
           `;
           break;
@@ -257,7 +257,7 @@
               <p style="margin-left: 5mm;color:white;">​</p>
               <p style="margin-left: 5mm;color:white;">​</p>
             </div>
-          <p style="font-size: 12pt; font-family: Arial, Helvetica, sans-serif; font-weight: normal;margin-left: 90mm; margin-top: -6mm;">${index + 1}/${item.nb_colis_bp}</p>
+          <p style="font-size: 12pt; font-family: Arial, Helvetica, sans-serif; font-weight: normal;margin-left: ${item.nb_colis_bp >= 100 ? '87mm;': '90mm;'} 90mm; margin-top: -6mm;">${index + 1}/${item.nb_colis_bp}</p>
       </div>
           
           `;
