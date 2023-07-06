@@ -42,18 +42,19 @@
         }));
         tableau.extensions.dashboardContent.dashboard.getParametersAsync().then(function (parameters) {
           const pageNumberParameter = parameters.find(p => p.name === 'unique_ref');
-          console.log('Parameters : ', parameters);
           if (pageNumberParameter) {
             // Listen for changes to the Page Number parameter
-            pageNumberParameter.addEventListener(tableau.TableauEventType.ParameterChanged, function (parameter) {
-              console.log('Parameter : ', parameter);
-              const worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[0];
-              worksheet.getSummaryDataAsync().then((sumdata) => {
-                const items = convertDataToItems(sumdata);
-
-                // Render filtered items
-                renderItems(items);
-              });
+            pageNumberParameter.addEventListener(tableau.TableauEventType.ParameterChanged, function (parameterChangedEvent) {
+              parameterChangedEvent.getParameterAsync().then((parameter) => {
+                const isDuplicated = parameter.currentValue.nativeValue;
+                const worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[0];
+                worksheet.getSummaryDataAsync().then((sumdata) => {
+                  const items = convertDataToItems(sumdata, isDuplicated);
+  
+                  // Render filtered items
+                  renderItems(items);
+                });
+              })
             });
           }
         });
@@ -79,7 +80,7 @@
    * @param {Tableau summary data} sumdata - The summary data to convert.
    * @returns {Array} The items array.
    */
-  function convertDataToItems(sumdata) {
+  function convertDataToItems(sumdata, isDuplicated) {
     const { columns, data } = sumdata;
     const items = data.map((row) => {
       const item = {};
@@ -90,9 +91,14 @@
       console.log(item);
       return item;
     });
-    const duplicatedItems = duplicateObjects(items);
-  
-    return duplicatedItems;
+
+    if (isDuplicated) {
+      const duplicatedItems = duplicateObjects(items);
+    
+      return duplicatedItems;
+    } else {
+      return items;
+    }
 
   }
 
