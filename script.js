@@ -42,6 +42,7 @@
         }));
         tableau.extensions.dashboardContent.dashboard.getParametersAsync().then(function (parameters) {
           const pageNumberParameter = parameters.find(p => p.name === 'unique_ref');
+          console.log('Parameters : ', parameters);
           if (pageNumberParameter) {
             // Listen for changes to the Page Number parameter
             pageNumberParameter.addEventListener(tableau.TableauEventType.ParameterChanged, function (parameter) {
