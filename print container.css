@@ -19,7 +19,7 @@
   grid-column-gap: 5%;
   width: 100mm;
   height: 150mm;
-  margin: auto;
+  margin: 0px;
   overflow: auto;
 }
 
@@ -54,8 +54,8 @@
 .item.orchestra {
   display: flex;
   flex-direction: row;
-  width: 148mm;
-  height: 105.1mm;
+  width: 150mm;
+  height: 100mm;
   border-width: 1px;
   border-style: solid;
   border-radius: 15px;
