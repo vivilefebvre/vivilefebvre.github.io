@@ -12,16 +12,16 @@
 
 @media print {
 
-.container {
-  display: flex;
-  flex-wrap: wrap;
-  grid-template-columns: repeat(2, 1fr);
-  grid-column-gap: 5%;
-  width: 210mm;
-  height: 148mm;
-  margin: auto;
-  overflow: auto;
-}
+/*.container {*/
+/*  display: flex;*/
+/*  flex-wrap: wrap;*/
+/*  grid-template-columns: repeat(2, 1fr);*/
+/*  grid-column-gap: 5%;*/
+/*  width: 210mm;*/
+/*  height: 148mm;*/
+/*  margin: auto;*/
+/*  overflow: auto;*/
+/*}*/
 
 /* Styles specific to Aubert items */
 
