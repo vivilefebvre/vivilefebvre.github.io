@@ -262,6 +262,41 @@
           
           `;
           break;
+
+          case "Modèle MAN":
+            itemClass = 'manual';
+            itemContent = `<div class="subcontainer">
+            <div class="informations">
+                <p class="reference">Référence : ${item.reference}</p>
+                <p class="designation">xxxx</p>
+                <div style="display: flex; flex-direction: row;">
+                    <p class="bn">BN: xxxxxx</p>
+                    <p class="pcb">PCB: 1234</p>
+                </div>
+            </div>
+            <div id="barcode">
+                <img style="height: 33.5mm; width: 90mm;"
+                  src="https://barcode.tec-it.com/barcode.ashx?data=011305656200318210013060&code=GS1-128&translate-esc=true"
+                  alt="Code-barres">
+              </div>
+        </div>
+    
+        <div class="subcontainer">
+            <div class="informations">
+                <p class="reference">Référence : xxxx</p>
+                <p class="designation">xxxx</p>
+                <div style="display: flex; flex-direction: row;">
+                    <p class="bn">BN: xxxxxx</p>
+                    <p class="pcb">PCB: 1234</p>
+                </div>
+            </div>
+            <div id="barcode">
+                <img style="height: 33.5mm; width: 90mm;"
+                  src="https://barcode.tec-it.com/barcode.ashx?data=011305656200318210013060&code=GS1-128&translate-esc=true"
+                  alt="Code-barres">
+            </div>
+        </div>`;
+        break;
       }
 
       itemContainer.className = `${itemClass} item`;
