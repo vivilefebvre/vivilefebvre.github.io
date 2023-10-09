@@ -266,3 +266,17 @@ text-transform: uppercase;
 .item.manual .pcb {
   margin-left: 35.5mm;
 }
+.item.smallable .myclass{
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.item.smallable .mysecondclass{
+  text-transform: capitalize;
+  font-weight: 700;
+}
+.item.smallable #smallable{
+  text-transform: uppercase; 
+  font-weight: 700;width: 10%;
+  font-size: larger;
+ text-align: center ;
+}
