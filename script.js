@@ -8,12 +8,11 @@
   // Use the jQuery document ready signal to know when everything has been initialized
   $(document).ready(function () {
 
+    console.log("Test changement de déploiement")
+
     tableau.extensions.initializeAsync().then(function () {
 
-      const dashboard = tableau.extensions.dashboardContent.dashboard;
       const container = document.getElementById('my-extension');
-      const dashboardObjects = dashboard.objects;
-      const worksheets = dashboard.worksheets;
 
       let extensionName = ["manuel_ref", "manuel_bn"];
       
@@ -29,23 +28,15 @@
         })
         .catch(error => console.error(error));
 
-        let worksheet = worksheets[0];
+        let worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[0];
 
-        worksheet.getSummaryDataAsync().then((sumdata) => {
-          console.log("=> Initialisation de l'affichage");
-          const items = convertDataToItems(sumdata, false);
-
-          // Render filtered items
-          renderItems(items);
-        });
-
-        dashboard.getParametersAsync().then((parameters) => {
+        tableau.extensions.dashboardContent.dashboard.getParametersAsync().then((parameters) => {
           const entryTypeParameter = parameters.find(p => p.name === 'type_entree');
           const pageNumberParameter = parameters.find(p => p.name === "unique_ref");
           const manualBNParameter = parameters.find(p => p.name === "manuel_bn");
           const manualReferenceParameter = parameters.find(p => p.name === "manuel_ref");
 
-          worksheet.getSummaryDataAsync().then((sumdata) => {
+          tableau.extensions.dashboardContent.dashboard.worksheets[0].getSummaryDataAsync().then((sumdata) => {
             console.log("=> Initialisation de l'affichage");
             const items = convertDataToItems(sumdata, false);
   
@@ -74,8 +65,8 @@
               parameterChangedEvent.getParameterAsync().then((parameter) => {
                 const entryTypeValue = parameter.currentValue.nativeValue;
                 if(entryTypeValue === "Manuel"){
-                    worksheet = dashboard.worksheets[1];
-                    dashboardObjects.forEach((object) => {
+                    worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[1];
+                    tableau.extensions.dashboardContent.dashboard.objects.forEach((object) => {
                       if(extensionName.includes(object.name)){
                         extensionVisibilityObject[object.id] = tableau.ZoneVisibilityType.Show;
                       }
@@ -90,8 +81,8 @@
               
                     });
                 } else if (entryTypeValue === "Course") {
-                    worksheet = dashboard.worksheets[0];
-                    dashboardObjects.forEach((object) => {
+                    worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[0];
+                    tableau.extensions.dashboardContent.dashboard.objects.forEach((object) => {
                       if(extensionName.includes(object.name)){
                         extensionVisibilityObject[object.id] = tableau.ZoneVisibilityType.Hide
                       }
