@@ -15,10 +15,6 @@
       const dashboardObjects = dashboard.objects;
       const worksheets = dashboard.worksheets;
 
-      worksheets.forEach((worksheet) => {
-        console.log("WORKSHEET : ", worksheet.name);
-      })
-
       let extensionName = ["manuel_ref", "manuel_bn"];
       
       let extensionVisibilityObject = {};
@@ -34,6 +30,13 @@
         .catch(error => console.error(error));
 
         let worksheet = worksheets[0];
+
+        worksheet.getSummaryDataAsync().then((sumdata) => {
+          const items = convertDataToItems(sumdata, isDuplicated);
+
+          // Render filtered items
+          renderItems(items);
+        });
 
         dashboard.getParametersAsync().then((parameters) => {
           const entryTypeParameter = parameters.find(p => p.name === 'type_entree');
