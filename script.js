@@ -32,6 +32,7 @@
         let worksheet = worksheets[0];
 
         worksheet.getSummaryDataAsync().then((sumdata) => {
+          console.log("=> Initialisation de l'affichage");
           const items = convertDataToItems(sumdata, false);
 
           // Render filtered items
@@ -44,12 +45,21 @@
           const manualBNParameter = parameters.find(p => p.name === "manuel_bn");
           const manualReferenceParameter = parameters.find(p => p.name === "manuel_ref");
 
+          worksheet.getSummaryDataAsync().then((sumdata) => {
+            console.log("=> Initialisation de l'affichage");
+            const items = convertDataToItems(sumdata, false);
+  
+            // Render filtered items
+            renderItems(items);
+          });
+
           if (pageNumberParameter) {
             // Listen for changes to the Page Number parameter
             pageNumberParameter.addEventListener(tableau.TableauEventType.ParameterChanged, function (parameterChangedEvent) {
               parameterChangedEvent.getParameterAsync().then((parameter) => {
                 const isDuplicated = parameter.currentValue.nativeValue;
                 worksheet.getSummaryDataAsync().then((sumdata) => {
+                  console.log("=> Récupération 'Voir étiquette unique'");
                   const items = convertDataToItems(sumdata, isDuplicated);
   
                   // Render filtered items
