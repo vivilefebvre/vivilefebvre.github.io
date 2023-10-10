@@ -31,6 +31,7 @@
         let worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[0];
 
         tableau.extensions.dashboardContent.dashboard.getParametersAsync().then((parameters) => {
+          console.log("Afficher tout les paramètres : ", parameters);
           const entryTypeParameter = parameters.find(p => p.name === 'type_entree');
           const pageNumberParameter = parameters.find(p => p.name === "unique_ref");
           const manualBNParameter = parameters.find(p => p.name === "manuel_bn");
