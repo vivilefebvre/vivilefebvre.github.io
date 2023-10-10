@@ -291,7 +291,7 @@
             <p class="my-class" style="margin-top: 4mm;">reference fournisseur : <span style="margin-left:22.5mm;">${item.tiers_ref}</span></p>
             <P class="my-class" style="margin-top: -5mm;">reference fnac eveil & jeux  <span style="margin-left:17.3mm;">xxxxxxxx</span></P>
             <P class="my-class" style="margin-top: -1mm;">ean  :<span style="margin-left:6.7mm; ">${item.EAN13}</span></P>
-            <P class="my-class"style="margin-top: -1mm;">LIBELLE PRODUIT: <span style="margin-left: 15.7mm;">{{libeleproduit}} </span></P>
+            <P class="my-class"style="margin-top: -1mm;">LIBELLE PRODUIT: <span style="margin-left: 15.7mm;">${item.designation} </span></P>
             <p class="my-class" style="margin-top: -1mm;">nombre de pieces   <span style="margin-left:18.3mm;">${item.nb_colis_bp}</span></p>
             <P class="my-class" style="margin-left: 4.899999999999999mmmm; margin-top: -1mm;">poids du carton: <span style="margin-left:7mm;">${item.weight}</span></P>
             <p class="my-class" style="margin-left: 5mm; margin-top: -1mm;">dimension du carton:      <SPAN style="margin-left:13.3mm;">xxxxx</SPAN></p>
@@ -375,7 +375,7 @@
           itemClass = 'smallable';
           itemContent = `
           <p id="smallable"> smallable </p>
-          <p style="font-weight: 700;font-size: larger; ">COLIS n° <span style="margin-left:20px;">2</span><span style="margin-left:20px;">Sur <span style="margin-left:10px;">2</span>
+          <p style="font-weight: 700;font-size: larger; ">COLIS n° <span style="margin-left:20px;">${index + 1}</span><span style="margin-left:20px;">Sur <span style="margin-left:10px;">2</span>
           </p>  
           `;
           break;
@@ -527,6 +527,37 @@
       
               `;
               break; 
+      case "Modèle BTW":
+                itemClass = 'btw';
+                itemContent = `
+                <div id="etiquettebtw">
+      
+                <div id="partie-encadreebtw">
+                    <img id="vulli-logo" src="./images/Vulli_logo-modified.jpg" alt="Code-barres"
+                        style="height : 120px;align-items: center;" />
+                    <div id="informations" >
+                        <p>VULLI S.A</p>
+                        <p>Z.I.Des Granges</p>
+                        <p>74150 RUMILLY FRANCE</p>
+                        <p>Tél. +33(0)450010620</p>
+                    </div>
+            </div></div>
+                
+        
+                <div style="line-height : 10px; margin-left: 42px;font-family: Arial, sans-serif;font-size: large;">
+                    <p>Sophie Giraf</p>
+                    <p>C/O Precious Toy ApS</p>
+                    <p>Havremarken 4, Hal V</p>
+                </div>
+                    <div style= "line-height : 10px; margin-left: 42px;margin-top: 40px;font-family: Arial, sans-serif;font-size: large;">
+                  <p>3650 <span style="margin-left: 20px;">0elstykke</span>  </p>
+                    <p>DANEMARK</p>
+                </div>
+                <div style="margin-left: 478px;margin-top: -28px;"><b>1/1</b></div>
+        
+            </div>
+                `;
+                break;        
       }
 
       itemContainer.className = `${itemClass} item`;
