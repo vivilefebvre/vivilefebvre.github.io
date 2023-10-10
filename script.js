@@ -32,7 +32,7 @@
         let worksheet = worksheets[0];
 
         worksheet.getSummaryDataAsync().then((sumdata) => {
-          const items = convertDataToItems(sumdata, isDuplicated);
+          const items = convertDataToItems(sumdata, false);
 
           // Render filtered items
           renderItems(items);
