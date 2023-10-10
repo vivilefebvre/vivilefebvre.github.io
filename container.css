@@ -280,3 +280,47 @@ text-transform: uppercase;
   font-size: larger;
  text-align: center ;
 }
+
+.item.verbaudet #exp-desti {
+  display: flex;
+  flex-direction: row;
+  font-weight: bold;
+  border-bottom: 3px solid black;
+
+}
+
+.item.verbaudet #etiquetteverbaudet {
+  font-weight: bolder;
+
+}
+.item.verbaudet #contttwo {
+  display: flex;
+  flex-direction: row;
+  font-weight: bolder;
+
+}
+
+.item.verbaudet #num-colis {
+        
+  line-height: 40px;
+  border-right: 2px solid black;
+  
+ 
+}
+.item.verbaudet #ref-refproduit {
+        
+      
+  min-width: 2px;
+
+  overflow: visible;
+  line-height: 60px;
+  
+}
+
+.item.verbaudet #date-envoi {
+       
+       
+  border-left: 2px solid black;
+  
+
+}

@@ -291,7 +291,7 @@
             <p class="my-class" style="margin-top: 3mm;">reference fournisseur : <span style="margin-left:22.5mm;">${item.tiers_ref}</span></p>
             <P class="my-class" style="margin-top: -5mm;">reference fnac eveil & jeux  <span style="margin-left:17.3mm;">xxxxxxxx</span></P>
             <P class="my-class" style="margin-top: -1mm;">ean  :<span style="margin-left:6.7mm; ">${item.EAN13}</span></P>
-            <P class="my-class"style="margin-top: -1mm;">LIBELLE PRODUIT: <span style="margin-left: 15.7mm;">${item.designation} </span></P>
+            <P class="my-class"style="margin-top: -1mm;">LIBELLE PRODUIT: <span style="margin-left: 15.7mm;text-align: right;">${item.designation} </span></P>
             <p class="my-class" style="margin-top: -1mm;">nombre de pieces   <span style="margin-left:18.3mm;">${item.nb_colis_bp}</span></p>
             <P class="my-class" style="margin-left: 4.899999999999999mmmm; margin-top: -1mm;">poids du carton: <span style="margin-left:7mm;">${item.weight}</span></P>
             <p class="my-class" style="margin-left: 5mm; margin-top: -3mm;">dimension du carton:      <SPAN style="margin-left:13.3mm;">xxxxx</SPAN></p>
