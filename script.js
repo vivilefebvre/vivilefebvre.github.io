@@ -30,6 +30,16 @@
 
         let worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[0];
 
+        unregisterHandlerFunctions.push(worksheet.addEventListener(tableau.TableauEventType.FilterChanged, function (filterEvent) {
+          // Get filtered data
+          worksheet.getSummaryDataAsync().then((sumdata) => {
+            const items = convertDataToItems(sumdata, false);
+
+            // Render filtered items
+            renderItems(items);
+          });
+        }));
+
         tableau.extensions.dashboardContent.dashboard.getParametersAsync().then((parameters) => {
           console.log("Afficher tout les paramètres : ", parameters);
           const entryTypeParameter = parameters.find(p => p.name === 'type_entree');
