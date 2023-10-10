@@ -542,12 +542,12 @@
       
               `;
               break; 
-      case "Modèle BTW":
-                itemClass = 'btw';
+      case "Modèle ADRESSE":
+                itemClass = 'adresse';
                 itemContent = `
-                <div id="etiquettebtw">
+                <div id="etiquetteadresse">
       
-                <div id="partie-encadreebtw">
+                <div id="partie-encadreeadresse">
                     <img id="vulli-logo" src="./images/Vulli_logo-modified.jpg" alt="Code-barres"
                         style="height : 120px;align-items: center;" />
                     <div id="informations" >

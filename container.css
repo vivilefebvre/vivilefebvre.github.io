@@ -308,19 +308,74 @@ text-transform: uppercase;
  
 }
 .item.verbaudet #ref-refproduit {
-        
-      
   min-width: 2px;
-
   overflow: visible;
   line-height: 60px;
-  
 }
 
 .item.verbaudet #date-envoi {
-       
-       
   border-left: 2px solid black;
-  
+}
+.item.production #container {
+  display: flex;
+  flex-direction: row;
+  width : 210.8mm;
+  border: black solid 1px;
+  border-radius : 5px;
+}
+.item.production #right {
+  flex : 1;
+}
 
+.item.production  #left {
+  flex : 1;
+}
+.item.systemu #étiquettesystem{
+  font-weight:bolder;
+  display: grid;
+grid-template-columns: 1fr 1fr; 
+grid-template-rows: 1fr 1fr; 
+gap: 10px; 
+}
+.item.systemu #premièrecol{
+  grid-area: 1 / 1 / 2 / 2; 
+  grid-row: 1/2;
+  grid-column: 1/2;
+}
+.item.systemu .classborder{
+  border-left: 4px solid black;
+  grid-area: 1 / 1 / 2 / 2; 
+  grid-row: 1/2;
+  grid-column: 2/2;
+
+}
+.item.systemu #l2col2{
+  border-left: 4px solid black;
+  grid-area: 1 / 1 / 2 / 2; 
+  grid-row: 2/2;
+  grid-column: 2/2;
+}
+.item.adresse #vulli-logo {
+  text-align: left;
+  align-items: center;
+  object-fit: contain;
+  margin-right: 10px;
+}
+.item.adresse  #partie-encadreeadresse {
+  border: 2px solid black;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: 100px;
+  width: 900px;
+  width: 420px;
+  height: 120px;
+  
+}
+.item.adresse  #etiquetteadresse {
+  width: 420px;
+}
+.item.adresse #informations {
+  line-height: 2px;
 }
