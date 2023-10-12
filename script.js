@@ -427,11 +427,11 @@
         <div id="contttwo">
     
             <div id="num-colis">
-                <p>numero de colis:</p>
+                <p>${index + 1}</p>
     
                 <p style="align-content: center;margin-left: 50px;">1</p>
     
-                <p>${item.nb_colis}</p>
+                <p>${item.nb_colis_bp}</p>
                 <p style="align-content: center;margin-left: 50px;">1</p>
     
     
@@ -440,9 +440,9 @@
             </div>
     
             <div id="ref-refproduit">
-                <p style="font-size:x-large;">Réf . reference <span style="margin-left: 10px">produit</span></p>
+                <p style="font-size:x-large;">Réf . reference produit  <span style="margin-left: 10px">${item.ref}</span></p>
                 <div id="barcode" style="display: flex; align-items: center;">
-                    <img src="https://barcode.tec-it.com/barcode.ashx?data=0000003056561&code=EAN13&translate-esc=true&imagetype=Svg&rotation=0" alt="Code-barres">
+                    <img src="https://barcode.tec-it.com/barcode.ashx?data=${item.barcode1}&code=${item.EAN13}&translate-esc=true&imagetype=Svg&rotation=0" alt="Code-barres">
                 </div>
     
             </div>
@@ -455,7 +455,7 @@
                 <hr style="color: black;">
             
                
-                <p style="margin-left: 17px;">123 Pièces</p>
+                <p style="margin-left: 17px;">${item.pi_no_tiers} Pièces</p>
     
             </div>
             </div>
