@@ -379,3 +379,19 @@ gap: 10px;
 .item.adresse #informations {
   line-height: 2px;
 }
+.item.galerielafayette #Vulli_logo{ 
+  text-align: left;
+}
+.item.galerielafayette #partieencadree{ 
+  padding-left: 50px;
+ 
+  display: flex;
+  flex-direction: row;
+}
+.item.galerielafayette #etiquettegalerielafayette{
+  width: 40%;
+}
+.item.galerielafayette #informationss{
+  margin-top: 40px;
+
+}

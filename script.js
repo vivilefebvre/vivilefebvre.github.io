@@ -390,7 +390,7 @@
           itemClass = 'smallable';
           itemContent = `
           <p id="smallable"> smallable </p>
-          <p style="font-weight: 700;font-size: larger; ">COLIS n° <span style="margin-left:20px;">${index + 1}</span><span style="margin-left:20px;">Sur <span style="margin-left:10px;">2</span>
+          <p style="font-weight: 700;font-size: larger; ">COLIS n° <span style="margin-left:20px;">${index + 1}</span><span style="margin-left:20px;">Sur <span style="margin-left:10px;">${index + 1}/${item.nb_colis_bp}</span>
           </p>  
           `;
           break;
@@ -572,7 +572,36 @@
         
             </div>
                 `;
-                break;        
+                break; 
+      case "Modèle GALLAFAY":
+                  itemClass = 'galerielafayette';
+                  itemContent = `
+                  <div id="etiquettegalerielafayette">
+                  <div style=" border: 3px solid black;margin-left: 100px;">
+                  <div id="partieencadree">
+                      <div id="Vulli_logo">
+                          <img src=".images/Vulli_logo-modified.jpg" alt="Code-barres">
+                          </div>
+                      <div id="informationss" >
+                          <p>VULLI S.A</p>
+                          <p>Z.I.Des Granges</p>
+                          <p style="min-width: 10px;">74150 RUMILLY FRANCE</p>
+                          <p>Tél. +33(0)450010620</p>
+          
+                      </div>
+                  </div>
+          
+                  </div>
+                  <div style="line-height : 70px;font-weight: bolder;">
+                  <p>GALERIES LAFAYETTE</p>
+                  <p>REF : ${item.ref}</p>
+          
+              </div>
+              <div style="text-align: right;"><b>3/3</b></div>
+          
+              </div>
+                  `;
+                  break;       
       }
 
       itemContainer.className = `${itemClass} item`;
