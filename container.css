@@ -330,30 +330,24 @@ text-transform: uppercase;
 .item.production  #left {
   flex : 1;
 }
-.item.systemu #étiquettesystem{
+.item.systemu  #etiquettesystem{
   font-weight:bolder;
-  display: grid;
-grid-template-columns: 1fr 1fr; 
-grid-template-rows: 1fr 1fr; 
-gap: 10px; 
 }
-.item.systemu #premièrecol{
-  grid-area: 1 / 1 / 2 / 2; 
-  grid-row: 1/2;
-  grid-column: 1/2;
-}
-.item.systemu .classborder{
+.item.systemu  .classborder{
   border-left: 4px solid black;
-  grid-area: 1 / 1 / 2 / 2; 
-  grid-row: 1/2;
-  grid-column: 2/2;
-
+  margin-left: 81.5mm;
 }
 .item.systemu #l2col2{
   border-left: 4px solid black;
-  grid-area: 1 / 1 / 2 / 2; 
-  grid-row: 2/2;
-  grid-column: 2/2;
+  margin-left: -3.2mm;
+  width: 55%;
+}
+.item.systemu  #firstrow{
+  display: flex; flex-direction: row;
+}
+
+.item.systemu #secondrow{
+  display: flex; flex-direction: row;border-top: 4px solid black;
 }
 .item.adresse #vulli-logo {
   text-align: left;

@@ -498,47 +498,67 @@
       case "Modèle SYS":
               itemClass = 'systemu';
               itemContent = `
-              <div id="etiquettesystem" style="background-color: lightblue;">
- 
-              <div id="premierecol">
-                  <p><h7>Nom fournisseur</h7></p>
-                  <p>VULLI </p>
-                  <p>Z.I.</p>
-                  <p>74150 RUMILLY</p>
-              </div>
-              <div class="classborder"  >
-                  
-                  <p>SYSTEM U </p>
-                  <p>Vendèopôle-Haut bocage</p>
-                  <p>Vendéen</p>
-                  <p>Les champs de Ray </p>
-                  <p>85500 LES HERBIERS</p>
-              </div>
-              <div id="firstcol">
-                  <p>désign :<span style="font-size: x-large;margin-left: 10px;"><sup>Désignation</sup></span></p>
-                  <p>Réf.fournisseur<span style="font-size: x-large;margin-left: 20px;">Réference vulli</span></p>
-                  <p>PCB<span style="margin-left: 8px;font-size: large;">123</span><span style="margin-left: 90px;">SPCB</span></p>
-                  <div style="line-height : 80px;">
-                  <div style="display: flex;flex-direction: row;">
-                      <div><p style="transform: rotate(270deg);">EAN carton</p></div>
-                  <div style="margin-left: 50px;">
-                      <img src="https://barcode.tec-it.com/barcode.ashx?data=&multiplebarcodes=true&translate-esc=true" alt="Code-barres">
-                  </div>
-                  </div>
-                  </div>
-              </div>
-              <div id="l2col2" style="margin-right: 1090px;">
-                  <p style="border-bottom:4px solid black;">colis n° 1<span style="margin-left: 40px;">sur</span><span style="margin-left: 6px;font-size: larger;">31</span></p>
-                  
-                  <p style="border-bottom:4px solid black;">Numéro présentation<span style="margin-left: 12px;font-size: larger;">numero de pr </span></p>
-                  <div style="line-height : 50px;">
-                  <p >Numéro de bon de commande:</p>
-                  <p style="border-bottom:4px solid black;">Code produit national<span style="margin-left: 12px;font-size: larger;">Code Produi</span></p>
-              </div>
-                  <p>Compostition du colis<span style="margin-left: 12px;font-size: larger;">TU</span></p>
-                  <p>Notion allotie<span style="margin-left: 12px;">AL</span></p>   
-          </div>
-       </div>  
+              <div id="etiquettesystem" >
+              <div id="firstrow">
+                   <div >
+                       <p><h7>Nom fournisseur</h7></p>
+                       <p>VULLI </p>
+                       <p>Z.I.</p>
+                       <p>74150 RUMILLY</p>
+           
+                   </div>
+                   
+                   <div class="classborder"  >
+                       <div style="margin-left: 5mm;">
+                       <p>SYSTEM U </p>
+                       <p>Vendèopôle-Haut bocage</p>
+                       <p>Vendéen</p>
+                       <p>Les champs de Ray </p>
+                       <p>85500 LES HERBIERS</p>
+                   </div>
+               </div>
+                   
+               </div>
+               <div id="secondrow">
+                   <div id="firstcol">
+                       <p >désign :<span style="font-size: x-large;margin-left: 10px;"><sup>${item.designation}</sup></span></p>
+                       <p>Réf.fournisseur<span style="font-size: x-large;margin-left: 20px;">${item.Reference}</span></p>
+                       <p>PCB<span style="margin-left: 8px;font-size: large;">${item.pcb}</span><span style="margin-left: 90px;">${item.spcb}</span></p>
+                       <div style="line-height : 80px;">
+           
+                       <div style="display: flex;flex-direction: row;">
+                          
+                           <div><p style="transform: rotate(270deg);">${item.EAN13}</p></div>
+                       <div style="margin-right: 50px;border: 4px solid black;">
+                           <img src="https://barcode.tec-it.com/barcode.ashx?data=&multiplebarcodes=true&translate-esc=true" alt="Code-barres">
+                       </div>
+                       </div>
+                   
+                       </div>
+           
+                   </div>
+                   <div id="l2col2" >
+                       <div style="border-bottom:4px solid black;">
+                       
+                       <p style="margin-left: 5mm;">colis n° ${index + 1}<span style="margin-left: 40px;">sur</span><span style="margin-left: 6px;font-size: larger;">31</span></p>
+                   </div>
+                   <div style="border-bottom:4px solid black;"> 
+                       <p style="margin-left: 5mm;">Numéro présentation<span style="margin-left: 12px;font-size: larger;">numero de pr </span></p>
+                   </div>
+                       <div style="line-height : 50px;border-bottom:4px solid;">
+                       <p style="margin-left: 5mm;">Numéro de bon de commande:</p>
+                       <p  style="margin-left: 5mm;">Code produit national<span style="margin-left: 12px;font-size: larger;">Code Produi</span></p>
+                   </div>
+                       <p  style="margin-left: 5mm;">Compostition du colis<span style="margin-left: 12px;font-size: larger;">TU</span></p>
+                       <p  style="margin-left: 5mm;">Notion allotie<span style="margin-left: 12px;">AL</span></p>
+                       
+           
+           
+                       
+                   
+               </div>
+           </div>
+            </div>  
       
               `;
               break; 
