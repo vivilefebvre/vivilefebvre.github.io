@@ -28,7 +28,7 @@
         })
         .catch(error => console.error(error));
 
-        let worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[0];
+        let worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[1];
 
         unregisterHandlerFunctions.push(worksheet.addEventListener(tableau.TableauEventType.FilterChanged, function (filterEvent) {
           // Get filtered data
@@ -41,14 +41,14 @@
         }));
 
         tableau.extensions.dashboardContent.dashboard.getParametersAsync().then((parameters) => {
-          console.log("Afficher tout les paramètres : ", parameters);
+          console.log("Afficher tous les paramètres : ", parameters);
           const entryTypeParameter = parameters.find(p => p.name === 'type_entree');
           const uniqueReferenceParameter = parameters.find(p => p.name === "unique_ref");
           const manualBNParameter = parameters.find(p => p.name === "manuel_bn");
           const manualReferenceParameter = parameters.find(p => p.name === "manuel_ref");
           const adressePrincipaleParameter = parameters.find(p => p.name === "adresse_principale");
 
-          tableau.extensions.dashboardContent.dashboard.worksheets[0].getSummaryDataAsync().then((sumdata) => {
+          tableau.extensions.dashboardContent.dashboard.worksheets[1].getSummaryDataAsync().then((sumdata) => {
             console.log("=> Initialisation de l'affichage");
             const items = convertDataToItems(sumdata, false);
   
