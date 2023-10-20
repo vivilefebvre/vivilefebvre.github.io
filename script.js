@@ -39,25 +39,22 @@
                     const adressePrincipaleParameter = parameters.find(p => p.name === "adresse_principale");
 
 
-
                     if (entryTypeParameter) {
-                        entryTypeParameter.getInitialValueAsync().then((initialValue) => {
-                            console.log("=> Initialisation de l'affichage");
-                            const initialEntryTypeValue = initialValue.nativeValue;
-                            let worksheet;
+                        console.log("=> Initialisation de l'affichage");
+                        const initialEntryTypeValue = entryTypeParameter.currentValue.nativeValue;
+                        let worksheet;
 
-                            if (initialEntryTypeValue === "Manuel") {
-                                worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[2];
-                            } else if (initialEntryTypeValue === "Adresse") {
-                                worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[0];
-                            } else if (initialEntryTypeValue === "Course") {
-                                worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[1];
-                            }
+                        if (initialEntryTypeValue === "Manuel") {
+                            worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[2];
+                        } else if (initialEntryTypeValue === "Adresse") {
+                            worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[0];
+                        } else if (initialEntryTypeValue === "Course") {
+                            worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[1];
+                        }
 
-                            worksheet.getSummaryDataAsync().then((sumdata) => {
-                                const items = convertDataToItems(sumdata, true);
-                                renderItems(items);
-                            });
+                        worksheet.getSummaryDataAsync().then((sumdata) => {
+                            const items = convertDataToItems(sumdata, true);
+                            renderItems(items);
 
                             // Now attach the parameter change event listener
                             entryTypeParameter.addEventListener(tableau.TableauEventType.ParameterChanged, (parameterChangedEvent) => {
