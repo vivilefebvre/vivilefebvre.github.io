@@ -2,243 +2,211 @@
 
 // Wrap everything in an anonymous function to avoid polluting the global namespace
 (function () {
-  // Event handlers for filter and parameter change
-  let unregisterHandlerFunctions = [];
+    // Event handlers for filter and parameter change
+    let unregisterHandlerFunctions = [];
 
-  // Use the jQuery document ready signal to know when everything has been initialized
-  $(document).ready(function () {
+    // Use the jQuery document ready signal to know when everything has been initialized
+    $(document).ready(function () {
 
-    console.log("Test changement de déploiement")
+        console.log("Test changement de déploiement")
 
-    tableau.extensions.initializeAsync().then(function () {
+        tableau.extensions.initializeAsync().then(function () {
 
-      const container = document.getElementById('my-extension');
+            const container = document.getElementById('my-extension');
 
-      let extensionName = ["manuel_ref", "manuel_bn"];
-      
-      let extensionVisibilityObject = {};
+            let extensionName = ["manuel_ref", "manuel_bn"];
 
-      const url = 'index.html';
+            let extensionVisibilityObject = {};
 
-      // Load the extension HTML content into the container using innerHTML
-      fetch(url)
-        .then(response => response.text())
-        .then(html => {
-          container.innerHTML = html;
-        })
-        .catch(error => console.error(error));
+            const url = 'index.html';
 
-        let worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[1];
+            // Load the extension HTML content into the container using innerHTML
+            fetch(url)
+                .then(response => response.text())
+                .then(html => {
+                    container.innerHTML = html;
+                })
+                .catch(error => console.error(error));
 
-        unregisterHandlerFunctions.push(worksheet.addEventListener(tableau.TableauEventType.FilterChanged, function (filterEvent) {
-          // Get filtered data
-          worksheet.getSummaryDataAsync().then((sumdata) => {
-            const items = convertDataToItems(sumdata, false);
+            let worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[1];
 
-            // Render filtered items
-            renderItems(items);
-          });
-        }));
+            tableau.extensions.dashboardContent.dashboard.getParametersAsync().then((parameters) => {
+                console.log("Afficher tous les paramètres : ", parameters);
+                const entryTypeParameter = parameters.find(p => p.name === 'type_entree');
+                const uniqueReferenceParameter = parameters.find(p => p.name === "unique_ref");
+                const manualBNParameter = parameters.find(p => p.name === "manuel_bn");
+                const manualReferenceParameter = parameters.find(p => p.name === "manuel_ref");
+                const adressePrincipaleParameter = parameters.find(p => p.name === "adresse_principale");
 
-        tableau.extensions.dashboardContent.dashboard.getParametersAsync().then((parameters) => {
-          console.log("Afficher tous les paramètres : ", parameters);
-          const entryTypeParameter = parameters.find(p => p.name === 'type_entree');
-          const uniqueReferenceParameter = parameters.find(p => p.name === "unique_ref");
-          const manualBNParameter = parameters.find(p => p.name === "manuel_bn");
-          const manualReferenceParameter = parameters.find(p => p.name === "manuel_ref");
-          const adressePrincipaleParameter = parameters.find(p => p.name === "adresse_principale");
+                tableau.extensions.dashboardContent.dashboard.worksheets[1].getSummaryDataAsync().then((sumdata) => {
+                    console.log("=> Initialisation de l'affichage");
+                    const items = convertDataToItems(sumdata, false);
 
-          tableau.extensions.dashboardContent.dashboard.worksheets[1].getSummaryDataAsync().then((sumdata) => {
-            console.log("=> Initialisation de l'affichage");
-            const items = convertDataToItems(sumdata, false);
-  
-            // Render filtered items
-            renderItems(items);
-          });
-
-          if (uniqueReferenceParameter) {
-            // Listen for changes to the Page Number parameter
-            uniqueReferenceParameter.addEventListener(tableau.TableauEventType.ParameterChanged, function (parameterChangedEvent) {
-              parameterChangedEvent.getParameterAsync().then((parameter) => {
-                const isDuplicated = parameter.currentValue.nativeValue;
-                worksheet.getSummaryDataAsync().then((sumdata) => {
-                  console.log("=> Récupération 'Voir étiquette unique'");
-                  const items = convertDataToItems(sumdata, isDuplicated);
-  
-                  // Render filtered items
-                  renderItems(items);
+                    // Render filtered items
+                    renderItems(items);
                 });
-              })
-            });
-          };
 
-          if (entryTypeParameter) {
-            entryTypeParameter.addEventListener(tableau.TableauEventType.ParameterChanged, (parameterChangedEvent) => {
-              parameterChangedEvent.getParameterAsync().then((parameter) => {
-                const entryTypeValue = parameter.currentValue.nativeValue;
-                if(entryTypeValue === "Manuel"){
-                    worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[2];
-                    tableau.extensions.dashboardContent.dashboard.objects.forEach((object) => {
-                      if(extensionName.includes(object.name)){
-                        extensionVisibilityObject[object.id] = tableau.ZoneVisibilityType.Show;
-                      }
-                    });
-                    tableau.extensions.dashboardContent.dashboard.setZoneVisibilityAsync(extensionVisibilityObject).then(() => {
-                      console.log("Show Elements");
-                    })
-                    worksheet.getSummaryDataAsync().then((sumdata) => {
-                      const items = convertDataToItems(sumdata, true);
-              
-                      renderItems(items);
-              
-                    });
-                } else if(entryTypeValue === "Adresse"){
-                    worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[0];
-                    tableau.extensions.dashboardContent.dashboard.objects.forEach((object) => {
-                      if(extensionName.includes(object.name)){
-                        extensionVisibilityObject[object.id] = tableau.ZoneVisibilityType.Show;
-                      }
-                    });
-                    tableau.extensions.dashboardContent.dashboard.setZoneVisibilityAsync(extensionVisibilityObject).then(() => {
-                      console.log("Show Elements");
-                    })
-                    worksheet.getSummaryDataAsync().then((sumdata) => {
-                      const items = convertDataToItems(sumdata, true);
+                if (entryTypeParameter) {
+                    entryTypeParameter.addEventListener(tableau.TableauEventType.ParameterChanged, (parameterChangedEvent) => {
+                        parameterChangedEvent.getParameterAsync().then((parameter) => {
+                            const entryTypeValue = parameter.currentValue.nativeValue;
 
-                      renderItems(items);
+                            if (entryTypeValue === "Manuel") {
+                                worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[2];
+                            } else if (entryTypeValue === "Adresse") {
+                                worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[0];
+                            } else if (entryTypeValue === "Course") {
+                                worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[1];
+                            }
 
-                    });
-                } else if (entryTypeValue === "Course") {
-                    worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[1];
-                    tableau.extensions.dashboardContent.dashboard.objects.forEach((object) => {
-                      if(extensionName.includes(object.name)){
-                        extensionVisibilityObject[object.id] = tableau.ZoneVisibilityType.Hide
-                      }
-                    });
-                    tableau.extensions.dashboardContent.dashboard.setZoneVisibilityAsync(extensionVisibilityObject).then(() => {
-                      console.log("Hide Elements");
-                    })
-                    worksheet.getSummaryDataAsync().then((sumdata) => {
-                      const items = convertDataToItems(sumdata, true);
-              
-                      // Render all items initially
-                      renderItems(items);
-              
+                            worksheet.getSummaryDataAsync().then((sumdata) => {
+                                const items = convertDataToItems(sumdata, true);
+                                renderItems(items);
+                            });
+                        });
                     });
                 }
-                
-              })
-            })
-          };
 
-          if (manualBNParameter) {
-            manualBNParameter.addEventListener(tableau.TableauEventType.ParameterChanged, (parameterChangedEvent) => {
-              parameterChangedEvent.getParameterAsync().then(() => {
-                worksheet.getSummaryDataAsync().then((sumdata) => {
-                  const items = convertDataToItems(sumdata, true);
-          
-                  // Render all items initially
-                  renderItems(items);
-                });
-              })
-            })};
+                if (uniqueReferenceParameter) {
+                    // Listen for changes to the Page Number parameter
+                    uniqueReferenceParameter.addEventListener(tableau.TableauEventType.ParameterChanged, function (parameterChangedEvent) {
+                        parameterChangedEvent.getParameterAsync().then((parameter) => {
+                            const isDuplicated = parameter.currentValue.nativeValue;
+                            worksheet.getSummaryDataAsync().then((sumdata) => {
+                                console.log("=> Récupération 'Voir étiquette unique'");
+                                const items = convertDataToItems(sumdata, isDuplicated);
 
-          if (manualReferenceParameter) {
-            manualReferenceParameter.addEventListener(tableau.TableauEventType.ParameterChanged, (parameterChangedEvent) => {
-              parameterChangedEvent.getParameterAsync().then(() => {
-                worksheet.getSummaryDataAsync().then((sumdata) => {
-                  const items = convertDataToItems(sumdata, true);
-          
-                  // Render all items initially
-                  renderItems(items);
-          
-                });
-              })
-            })
-          };
-          if (adressePrincipaleParameter) {
-            adressePrincipaleParameter.addEventListener(tableau.TableauEventType.ParameterChanged, (parameterChangedEvent) => {
-              parameterChangedEvent.getParameterAsync().then(() => {
-                worksheet.getSummaryDataAsync().then((sumdata) => {
-                  const items = convertDataToItems(sumdata, true);
+                                // Render filtered items
+                                renderItems(items);
+                            });
+                        })
+                    });
+                }
+                ;
 
-                  // Render all items initially
-                  renderItems(items);
+                if (manualBNParameter) {
+                    manualBNParameter.addEventListener(tableau.TableauEventType.ParameterChanged, (parameterChangedEvent) => {
+                        parameterChangedEvent.getParameterAsync().then(() => {
+                            worksheet.getSummaryDataAsync().then((sumdata) => {
+                                const items = convertDataToItems(sumdata, true);
 
-                });
-              })
-            })
-          };
+                                // Render all items initially
+                                renderItems(items);
+                            });
+                        })
+                    })
+                }
+                ;
+
+                if (manualReferenceParameter) {
+                    manualReferenceParameter.addEventListener(tableau.TableauEventType.ParameterChanged, (parameterChangedEvent) => {
+                        parameterChangedEvent.getParameterAsync().then(() => {
+                            worksheet.getSummaryDataAsync().then((sumdata) => {
+                                const items = convertDataToItems(sumdata, true);
+
+                                // Render all items initially
+                                renderItems(items);
+
+                            });
+                        })
+                    })
+                }
+                ;
+
+                if (adressePrincipaleParameter) {
+                    adressePrincipaleParameter.addEventListener(tableau.TableauEventType.ParameterChanged, (parameterChangedEvent) => {
+                        parameterChangedEvent.getParameterAsync().then(() => {
+                            worksheet.getSummaryDataAsync().then((sumdata) => {
+                                const items = convertDataToItems(sumdata, true);
+
+                                // Render all items initially
+                                renderItems(items);
+
+                            });
+                        })
+                    })
+                }
+                ;
+
+                unregisterHandlerFunctions.push(worksheet.addEventListener(tableau.TableauEventType.FilterChanged, function (filterEvent) {
+                    // Get filtered data
+                    worksheet.getSummaryDataAsync().then((sumdata) => {
+                        const items = convertDataToItems(sumdata, false);
+
+                        // Render filtered items
+                        renderItems(items);
+                    });
+                }));
+            });
         });
     });
-  });
 
-  /**
-   * Display duplicated items.
-   * @param {Tableau summary data} list - 
-   */
-  function duplicateObjects(list) {
-    return list.reduce((acc, obj) => {
+    /**
+     * Display duplicated items.
+     * @param {Tableau summary data} list -
+     */
+    function duplicateObjects(list) {
+        return list.reduce((acc, obj) => {
 
-      const duplicatedObjects = Array.from({ length : obj.nb_colis_or_man < 1 ? 1 : obj.nb_colis_or_man}, () => ({
-        ...obj
-      }));
+            const duplicatedObjects = Array.from({length: obj.nb_colis_or_man < 1 ? 1 : obj.nb_colis_or_man}, () => ({
+                ...obj
+            }));
 
-      return [...acc, ...duplicatedObjects];
+            return [...acc, ...duplicatedObjects];
 
-    }, []);
-  };
+        }, []);
+    };
 
-  /**
-   * Converts summary data to items array.
-   * @param {Tableau summary data} sumdata - The summary data to convert.
-   * @returns {Array} The items array.
-   */
-  function convertDataToItems(sumdata, isDuplicated) {
-    const { columns, data } = sumdata;
-    console.log("Columns : ", columns);
-    console.log("Data : ", data);
-    const items = data.map((row) => {
-      const item = {};
-      for (let i = 0; i < columns.length; i++) {
-        const field = columns[i].fieldName;
-        item[field] = row[i].formattedValue;
-      }
-      console.log("Item : ", item)
-      return item;
-    });
+    /**
+     * Converts summary data to items array.
+     * @param {Tableau summary data} sumdata - The summary data to convert.
+     * @returns {Array} The items array.
+     */
+    function convertDataToItems(sumdata, isDuplicated) {
+        const {columns, data} = sumdata;
+        console.log("Columns : ", columns);
+        console.log("Data : ", data);
+        const items = data.map((row) => {
+            const item = {};
+            for (let i = 0; i < columns.length; i++) {
+                const field = columns[i].fieldName;
+                item[field] = row[i].formattedValue;
+            }
+            console.log("Item : ", item)
+            return item;
+        });
 
-    if (!isDuplicated) {
-      const duplicatedItems = duplicateObjects(items);
+        if (!isDuplicated) {
+            const duplicatedItems = duplicateObjects(items);
 
-      return duplicatedItems;
-    } else {
+            return duplicatedItems;
+        } else {
 
-      return items;
+            return items;
+        }
+
     }
 
-  }
 
+    /**
+     * Renders the items to the my-extension.html template.
+     * @param {Array} items - The items to render.
+     */
+    function renderItems(items) {
+        const container = document.createElement('div');
+        container.className = 'container';
 
-  /**
-   * Renders the items to the my-extension.html template.
-   * @param {Array} items - The items to render.
-   */
-  function renderItems(items) {
-    const container = document.createElement('div');
-    container.className = 'container';
+        console.log("Items : ", items);
 
-    console.log("Items : ", items);
+        items.forEach((item, index) => {
+            const itemContainer = document.createElement('div');
+            let itemClass = '';
+            let itemContent = '';
 
-    items.forEach((item, index) => {
-      const itemContainer = document.createElement('div');
-      let itemClass = '';
-      let itemContent = '';
-
-      switch (item.model_or_man) {
-        case 'Modèle AUC':
-          itemClass = 'auchan';
-          itemContent = `
+            switch (item.model_or_man) {
+                case 'Modèle AUC':
+                    itemClass = 'auchan';
+                    itemContent = `
           <div id="etiquette-auchan" >
 
             <div id="informations" >
@@ -255,16 +223,16 @@
             </div>
           </div>
           `;
-          break;
+                    break;
 
-        case "Modèle ORC":
-          let number = Number.parseFloat(item.weight.replace(",", ".")).toFixed(4);
-          item.weight = number.toString();
-          item.pcb = Number.parseInt(item.pcb);
+                case "Modèle ORC":
+                    let number = Number.parseFloat(item.weight.replace(",", ".")).toFixed(4);
+                    item.weight = number.toString();
+                    item.pcb = Number.parseInt(item.pcb);
 
 
-          itemClass = 'orchestra';
-          itemContent =`
+                    itemClass = 'orchestra';
+                    itemContent = `
         <div id="firstcont">
 
             <p style=" margin-top: 12.5mm;"><span
@@ -315,20 +283,20 @@
             </div>
 
         </div>`;
-          break;
+                    break;
 
-        case "Modèle AUB":
-          itemClass = 'aubert';
-          itemContent = `
+                case "Modèle AUB":
+                    itemClass = 'aubert';
+                    itemContent = `
     <div id="barcode" >
         <img style="width : 82mm; height : 18.6mm;" src="https://barcode.tec-it.com/barcode.ashx?data=${item.barcode1}&code=${item.barcode1_type}&multiplebarcodes=true&translate-esc=true&unit=Mm&modulewidth=0.5" alt="Code-barres">
     </div>
     `;
-          break;
+                    break;
 
-        case "Modèle OXY":
-          itemClass = 'oxybul';
-          itemContent = `
+                case "Modèle OXY":
+                    itemClass = 'oxybul';
+                    itemContent = `
           <div id="templatefnaceveil" >
             <p style="font-size: 24.2pt; font-weight: normal; font-family: Arial, sans-serif;margin-top: 6mm; margin-left: 5.3mm;  ">EVEIL ET JEUX </p>
             <p class="my-class" style="margin-top:-8mm;">France</p>
@@ -338,17 +306,17 @@
             <P class="my-class" style="margin-top: -1mm;">ean  :<span style="margin-left:6.7mm; ">${item.EAN13}</span></P>
             <P class="my-class"style="margin-top: -1mm;">LIBELLE PRODUIT: <span style="margin-left: 15.7mm;">${item.designation} </span></P>
             <p class="my-class" style="margin-top: -1mm;">nombre de pieces   <span style="margin-left:18.3mm;">${item.nb_colis_bp}</span></p>
-            <P class="my-class" style="margin-left: 4.899999999999999mmmm; margin-top: -1mm;">poids du carton: <span style="margin-left:7mm;">${item.weight}</span></P>
+            <P class="my-class" style="margin-left: 5mm; margin-top: -1mm;">poids du carton: <span style="margin-left:7mm;">${item.weight}</span></P>
             <p class="my-class" style="margin-left: 5mm; margin-top: -3mm;">dimension du carton:      <SPAN style="margin-left:13.3mm;">xxxxx</SPAN></p>
             <P class="my-class" style="margin-top: -4mm;">commande n°:     <span style="margin-left:16.6mm;">${item.pi_no_tiers}</span></P>
             <p class="my-class" style="min-width: max-content;margin-top: -3mm;">CARTON N° :     <span  style="margin-left: 13mm;">${index + 1}</span><span style="margin-left: 9.7mm;">partie de :</span> <span style="margin-left: 6mm;">${item.nb_colis_bp}</span> <span style="margin-left: 8.7mm;">colis</span> </p>
           </div>
           `;
-          break;
-        
-        case "Modèle FNA":
-          itemClass = 'fnac';
-          itemContent = `
+                    break;
+
+                case "Modèle FNA":
+                    itemClass = 'fnac';
+                    itemContent = `
           <div id="etiquettefnac"  >
         
 
@@ -376,15 +344,15 @@
               <p style="margin-left: 5mm;color:white;">​</p>
               <p style="margin-left: 5mm;color:white;">​</p>
             </div>
-          <p style="font-size: 12pt; font-family: Arial, Helvetica, sans-serif; font-weight: normal;margin-left: ${item.nb_colis_bp >= 100 ? '87mm;': '90mm;'} 90mm; margin-top: -6mm;">${index + 1}/${item.nb_colis_bp}</p>
+          <p style="font-size: 12pt; font-family: Arial, Helvetica, sans-serif; font-weight: normal;margin-left: ${item.nb_colis_bp >= 100 ? '87mm;' : '90mm;'} 90mm; margin-top: -6mm;">${index + 1}/${item.nb_colis_bp}</p>
       </div>
           
           `;
-          break;
+                    break;
 
-          case "Modèle MAN":
-            itemClass = 'manual';
-            itemContent = `<div class="subcontainer">
+                case "Modèle MAN":
+                    itemClass = 'manual';
+                    itemContent = `<div class="subcontainer">
             <div class="informations">
                 <p class="reference">Référence : ${item.Reference}</p>
                 <p class="designation">${item.designation}</p>
@@ -415,18 +383,18 @@
                   alt="Code-barres">
             </div>
         </div>`;
-        break;
-        case "Modèle SMAL":
-          itemClass = 'smallable';
-          itemContent = `
+                    break;
+                case "Modèle SMAL":
+                    itemClass = 'smallable';
+                    itemContent = `
           <p id="smallable"> smallable </p>
           <p style="font-weight: 700;font-size: larger; ">COLIS n° <span style="margin-left:20px;">${index + 1}</span><span style="margin-left:20px;">Sur <span style="margin-left:10px;">${index + 1}/${item.nb_colis_bp}</span>
           </p>  
           `;
-          break;
-        case "Modèle VERB":
-            itemClass = 'verbaudet';
-            itemContent = `
+                    break;
+                case "Modèle VERB":
+                    itemClass = 'verbaudet';
+                    itemContent = `
             <div id="etiquetteverbaudet">
             <div id="exp-desti">
                 <div style="margin-left: 30px;">
@@ -497,10 +465,10 @@
         </div>
         </div>
             `;
-            break;
-      case "Modèle PROD":
-            itemClass = 'production';
-            itemContent = `
+                    break;
+                case "Modèle PROD":
+                    itemClass = 'production';
+                    itemContent = `
             <div id="container">
               <div id="right">
                <div>Réference: ${item.tiers_ref}</div>
@@ -524,10 +492,10 @@
              </div>
               </div>
             `;
-            break;
-      case "Modèle SYS":
-              itemClass = 'systemu';
-              itemContent = `
+                    break;
+                case "Modèle SYS":
+                    itemClass = 'systemu';
+                    itemContent = `
               <div id="etiquettesystem" >
               <div id="firstrow">
                    <div >
@@ -591,10 +559,10 @@
             </div>  
       
               `;
-              break; 
-      case "Modèle ADRESSE":
-                itemClass = 'adresse';
-                itemContent = `
+                    break;
+                case "Modèle ADRESSE":
+                    itemClass = 'adresse';
+                    itemContent = `
                 <div id="etiquetteadresse">
       
                 <div id="partie-encadreeadresse">
@@ -622,10 +590,10 @@
         
             </div>
                 `;
-                break; 
-      case "Modèle GALLAFAY":
-                  itemClass = 'galerielafayette';
-                  itemContent = `
+                    break;
+                case "Modèle GALLAFAY":
+                    itemClass = 'galerielafayette';
+                    itemContent = `
                   <div id="etiquettegalerielafayette">
                   <div style=" border: 3px solid black;margin-left: 100px;">
                   <div id="partieencadree">
@@ -651,27 +619,27 @@
           
               </div>
                   `;
-                  break;       
-      }
+                    break;
+            }
 
-      itemContainer.className = `${itemClass} item`;
-      itemContainer.innerHTML = itemContent;
-      container.appendChild(itemContainer);
-    });
+            itemContainer.className = `${itemClass} item`;
+            itemContainer.innerHTML = itemContent;
+            container.appendChild(itemContainer);
+        });
 
-    document.body.innerHTML = '';
-    document.body.appendChild(container);
+        document.body.innerHTML = '';
+        document.body.appendChild(container);
 
-    // Add the print button
-    const printButton = document.createElement('button');
-    printButton.id = 'print-button';
-    printButton.textContent = 'Imprimer';
-    document.body.appendChild(printButton);
-    printButton.addEventListener('click', function () {
-      // Print the extension
-      window.print();
-    });
-  }
+        // Add the print button
+        const printButton = document.createElement('button');
+        printButton.id = 'print-button';
+        printButton.textContent = 'Imprimer';
+        document.body.appendChild(printButton);
+        printButton.addEventListener('click', function () {
+            // Print the extension
+            window.print();
+        });
+    }
 
 
 })();
