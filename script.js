@@ -92,7 +92,7 @@
               
                     });
                 } else if(entryTypeValue === "Adresse"){
-                    worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[0];
+                    worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[2];
                     tableau.extensions.dashboardContent.dashboard.objects.forEach((object) => {
                       if(extensionName.includes(object.name)){
                         extensionVisibilityObject[object.id] = tableau.ZoneVisibilityType.Show;
