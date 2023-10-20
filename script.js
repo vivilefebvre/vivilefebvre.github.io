@@ -38,6 +38,7 @@
                     const manualBNParameter = parameters.find(p => p.name === "manuel_bn");
                     const manualReferenceParameter = parameters.find(p => p.name === "manuel_ref");
                     const adressePrincipaleParameter = parameters.find(p => p.name === "adresse_principale");
+                    const adresseNombreParameter = parameters.find(p => p.name === "adresse_nb");
 
 
                     if (entryTypeParameter) {
@@ -104,6 +105,10 @@
                         handleParameterChange(adressePrincipaleParameter, adresse_ws);
                     }
 
+                    if (adresseNombreParameter) {
+                        handleParameterChange(adresseNombreParameter, adresse_ws, false);
+                    }
+
                     const all_ws = [manuel_ws, adresse_ws, course_ws]
 
                     all_ws.forEach(worksheet => {
@@ -126,12 +131,12 @@
     /**
      * Handle parameter listeners but unique_ref
      */
-    function handleParameterChange(parameter, worksheet) {
+    function handleParameterChange(parameter, worksheet, isUnique=true) {
         parameter.addEventListener(tableau.TableauEventType.ParameterChanged, (parameterChangedEvent) => {
             parameterChangedEvent.getParameterAsync().then(() => {
                 worksheet.getSummaryDataAsync().then((sumdata) => {
                     console.log("=> Ça paramètre ", worksheet.name);
-                    const items = convertDataToItems(sumdata, true);
+                    const items = convertDataToItems(sumdata, isUnique);
                     renderItems(items);
                 });
             });
