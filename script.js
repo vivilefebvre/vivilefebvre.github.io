@@ -56,15 +56,18 @@
                                         const items = convertDataToItems(sumdata, true);
                                         renderItems(items);
                                     });
+                                    console.log(entryTypeParameter.currentValue.nativeValue)
+
                                 });
                             });
+
+                            worksheet = getWorksheetBasedOnEntryType(entryTypeParameter.currentValue.nativeValue)
 
                             if (uniqueReferenceParameter) {
                                 // Listen for changes to the Page Number parameter
                                 uniqueReferenceParameter.addEventListener(tableau.TableauEventType.ParameterChanged, function (parameterChangedEvent) {
                                     parameterChangedEvent.getParameterAsync().then((parameter) => {
                                         const isDuplicated = parameter.currentValue.nativeValue;
-                                        worksheet = getWorksheetBasedOnEntryType(entryTypeParameter.currentValue.nativeValue)
                                         worksheet.getSummaryDataAsync().then((sumdata) => {
                                             console.log("=> Récupération 'Voir étiquette unique'");
                                             const items = convertDataToItems(sumdata, isDuplicated);
@@ -80,7 +83,6 @@
 
                             parametersRendering.forEach(parameter => {
                                 if (parameter) {
-                                    console.log("=> Ça paramètre ", worksheet.name);
                                     handleParameterChange(parameter, worksheet);
                                 }
                             });
@@ -126,6 +128,7 @@
     function handleParameterChange(parameter, worksheet) {
         parameter.addEventListener(tableau.TableauEventType.ParameterChanged, (parameterChangedEvent) => {
             parameterChangedEvent.getParameterAsync().then(() => {
+                console.log("=> Ça paramètre ", worksheet.name);
                 worksheet.getSummaryDataAsync().then((sumdata) => {
                     const items = convertDataToItems(sumdata, true);
                     renderItems(items);
