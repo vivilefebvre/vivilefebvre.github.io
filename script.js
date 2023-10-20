@@ -106,7 +106,7 @@
                     }
 
                     if (adresseNombreParameter) {
-                        handleParameterChange(adresseNombreParameter, adresse_ws, false);
+                        handleParameterChange(adresseNombreParameter, adresse_ws);
                     }
 
                     const all_ws = [manuel_ws, adresse_ws, course_ws]
@@ -131,7 +131,7 @@
     /**
      * Handle parameter listeners but unique_ref
      */
-    function handleParameterChange(parameter, worksheet, isUnique=true) {
+    function handleParameterChange(parameter, worksheet, isUnique=false) {
         parameter.addEventListener(tableau.TableauEventType.ParameterChanged, (parameterChangedEvent) => {
             parameterChangedEvent.getParameterAsync().then(() => {
                 worksheet.getSummaryDataAsync().then((sumdata) => {
