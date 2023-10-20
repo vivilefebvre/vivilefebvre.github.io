@@ -42,6 +42,7 @@
 
                     if (entryTypeParameter) {
                         console.log("=> Initialisation de l'affichage");
+                        const isUnique = uniqueReferenceParameter.currentValue.nativeValue;
                         const entryTypeValue = entryTypeParameter.currentValue.nativeValue;
                         if (entryTypeValue === "Manuel") {
                             worksheet = manuel_ws;
@@ -51,7 +52,7 @@
                             worksheet = course_ws;
                         }
                         worksheet.getSummaryDataAsync().then((sumdata) => {
-                            const items = convertDataToItems(sumdata, true);
+                            const items = convertDataToItems(sumdata, isUnique);
                             renderItems(items);
 
                             // Now attach the parameter change event listener
@@ -66,7 +67,7 @@
                                         worksheet = course_ws;
                                     }
                                     worksheet.getSummaryDataAsync().then((sumdata) => {
-                                        const items = convertDataToItems(sumdata, true);
+                                        const items = convertDataToItems(sumdata, isUnique);
                                         renderItems(items);
                                     });
                                 });
@@ -79,10 +80,10 @@
                         // Listen for changes to the Page Number parameter
                         uniqueReferenceParameter.addEventListener(tableau.TableauEventType.ParameterChanged, function (parameterChangedEvent) {
                             parameterChangedEvent.getParameterAsync().then((parameter) => {
-                                const isDuplicated = parameter.currentValue.nativeValue;
+                                const isUnique = parameter.currentValue.nativeValue;
                                 course_ws.getSummaryDataAsync().then((sumdata) => {
                                     console.log("=> Récupération 'Voir étiquette unique'");
-                                    const items = convertDataToItems(sumdata, isDuplicated);
+                                    const items = convertDataToItems(sumdata, isUnique);
 
                                     // Render filtered items
                                     renderItems(items);
@@ -110,7 +111,7 @@
                             // Get filtered data
                             console.log("=> Ça filtre ", worksheet.name);
                             worksheet.getSummaryDataAsync().then((sumdata) => {
-                                const items = convertDataToItems(sumdata, true);
+                                const items = convertDataToItems(sumdata, false);
                                 // Render filtered items
                                 renderItems(items);
                             });
@@ -123,7 +124,7 @@
     });
 
     /**
-     * Handle basix parameter listener
+     * Handle parameter listeners but unique_ref
      */
     function handleParameterChange(parameter, worksheet) {
         parameter.addEventListener(tableau.TableauEventType.ParameterChanged, (parameterChangedEvent) => {
@@ -158,7 +159,7 @@
      * @param {Tableau summary data} sumdata - The summary data to convert.
      * @returns {Array} The items array.
      */
-    function convertDataToItems(sumdata, isDuplicated) {
+    function convertDataToItems(sumdata, isUnique) {
         const {columns, data} = sumdata;
         console.log("Columns : ", columns);
         console.log("Data : ", data);
@@ -172,7 +173,7 @@
             return item;
         });
 
-        if (!isDuplicated) {
+        if (!isUnique) {
             const duplicatedItems = duplicateObjects(items);
 
             return duplicatedItems;
