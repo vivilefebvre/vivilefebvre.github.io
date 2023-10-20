@@ -43,9 +43,10 @@
         tableau.extensions.dashboardContent.dashboard.getParametersAsync().then((parameters) => {
           console.log("Afficher tout les paramètres : ", parameters);
           const entryTypeParameter = parameters.find(p => p.name === 'type_entree');
-          const pageNumberParameter = parameters.find(p => p.name === "unique_ref");
+          const uniqueReferenceParameter = parameters.find(p => p.name === "unique_ref");
           const manualBNParameter = parameters.find(p => p.name === "manuel_bn");
           const manualReferenceParameter = parameters.find(p => p.name === "manuel_ref");
+          const adressePrincipaleParameter = parameters.find(p => p.name === "adresse_principale");
 
           tableau.extensions.dashboardContent.dashboard.worksheets[0].getSummaryDataAsync().then((sumdata) => {
             console.log("=> Initialisation de l'affichage");
@@ -55,9 +56,9 @@
             renderItems(items);
           });
 
-          if (pageNumberParameter) {
+          if (uniqueReferenceParameter) {
             // Listen for changes to the Page Number parameter
-            pageNumberParameter.addEventListener(tableau.TableauEventType.ParameterChanged, function (parameterChangedEvent) {
+            uniqueReferenceParameter.addEventListener(tableau.TableauEventType.ParameterChanged, function (parameterChangedEvent) {
               parameterChangedEvent.getParameterAsync().then((parameter) => {
                 const isDuplicated = parameter.currentValue.nativeValue;
                 worksheet.getSummaryDataAsync().then((sumdata) => {
@@ -151,6 +152,19 @@
                   // Render all items initially
                   renderItems(items);
           
+                });
+              })
+            })
+          };
+          if (adressePrincipaleParameter) {
+            adressePrincipaleParameter.addEventListener(tableau.TableauEventType.ParameterChanged, (parameterChangedEvent) => {
+              parameterChangedEvent.getParameterAsync().then(() => {
+                worksheet.getSummaryDataAsync().then((sumdata) => {
+                  const items = convertDataToItems(sumdata, true);
+
+                  // Render all items initially
+                  renderItems(items);
+
                 });
               })
             })
