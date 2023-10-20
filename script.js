@@ -584,7 +584,7 @@
                 <div id="etiquetteadresse">
       
                 <div id="partie-encadreeadresse">
-                    <img id="vulli-logo" src="./images/Vulli_logo-modified.jpg" alt="Code-barres"
+                    <img id="vulli-logo" src="./images/vulli_logo.jpg" alt="logo"
                         style="height : 120px;align-items: center;" />
                     <div id="informations" >
                         <p>VULLI S.A.S.</p>
