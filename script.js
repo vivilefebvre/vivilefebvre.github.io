@@ -82,6 +82,7 @@
 
                     parametersRendering.forEach(parameter => {
                         if (parameter) {
+                            console.log("=> Ça paramètre ",worksheet.name);
                             handleParameterChange(parameter, worksheet);
                         }
                     });
@@ -89,7 +90,7 @@
 
                     unregisterHandlerFunctions.push(worksheet.addEventListener(tableau.TableauEventType.FilterChanged, function (filterEvent) {
                         // Get filtered data
-                        console.log("=> Ça filtre ",worksheet);
+                        console.log("=> Ça filtre ",worksheet.name);
                         worksheet.getSummaryDataAsync().then((sumdata) => {
                             const items = convertDataToItems(sumdata, true);
                             // Render filtered items
