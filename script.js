@@ -583,7 +583,7 @@
                   <p>${item.adresse_cp}<span style="margin-left: 20px;">${item.adresse_ville}</span>  </p>
                     <p>${item.adresse_pays}</p>
                 </div>
-                <div style="margin-left: 478px;margin-top: -28px;"><b>1/1</b></div>
+                <div style="margin-left: 478px;margin-top: -28px;"><b>${index + 1}/${item.nb_colis_or_man}</b></div>
         
             </div>
                 `;
