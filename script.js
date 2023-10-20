@@ -91,6 +91,22 @@
                       renderItems(items);
               
                     });
+                } else if(entryTypeValue === "Adresse"){
+                    worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[0];
+                    tableau.extensions.dashboardContent.dashboard.objects.forEach((object) => {
+                      if(extensionName.includes(object.name)){
+                        extensionVisibilityObject[object.id] = tableau.ZoneVisibilityType.Show;
+                      }
+                    });
+                    tableau.extensions.dashboardContent.dashboard.setZoneVisibilityAsync(extensionVisibilityObject).then(() => {
+                      console.log("Show Elements");
+                    })
+                    worksheet.getSummaryDataAsync().then((sumdata) => {
+                      const items = convertDataToItems(sumdata, true);
+
+                      renderItems(items);
+
+                    });
                 } else if (entryTypeValue === "Course") {
                     worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[0];
                     tableau.extensions.dashboardContent.dashboard.objects.forEach((object) => {
@@ -571,8 +587,8 @@
                     <img id="vulli-logo" src="./images/Vulli_logo-modified.jpg" alt="Code-barres"
                         style="height : 120px;align-items: center;" />
                     <div id="informations" >
-                        <p>VULLI S.A</p>
-                        <p>Z.I.Des Granges</p>
+                        <p>VULLI S.A.S.</p>
+                        <p>1 Avenue des Alpes</p>
                         <p>74150 RUMILLY FRANCE</p>
                         <p>Tél. +33(0)450010620</p>
                     </div>
@@ -580,13 +596,13 @@
                 
         
                 <div style="line-height : 10px; margin-left: 42px;font-family: Arial, sans-serif;font-size: large;">
-                    <p>Sophie Giraf</p>
-                    <p>C/O Precious Toy ApS</p>
-                    <p>Havremarken 4, Hal V</p>
+                    <p>${item.adresse_nom}</p>
+                    <p>${item.adresse_adr1}</p>
+                    <p>${item.adresse_adr2}</p>
                 </div>
                     <div style= "line-height : 10px; margin-left: 42px;margin-top: 40px;font-family: Arial, sans-serif;font-size: large;">
-                  <p>3650 <span style="margin-left: 20px;">0elstykke</span>  </p>
-                    <p>DANEMARK</p>
+                  <p>${item.adresse_cp}<span style="margin-left: 20px;">${item.adresse_ville}</span>  </p>
+                    <p>${item.adresse_pays}</p>
                 </div>
                 <div style="margin-left: 478px;margin-top: -28px;"><b>1/1</b></div>
         
