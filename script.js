@@ -28,7 +28,7 @@
                 })
                 .catch(error => console.error(error));
 
-            let worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[1];
+            let worksheet;
 
             tableau.extensions.dashboardContent.dashboard.getParametersAsync().then((parameters) => {
                     console.log("Afficher les paramètres : ", parameters);
@@ -42,16 +42,7 @@
                     if (entryTypeParameter) {
                         console.log("=> Initialisation de l'affichage");
                         const initialEntryTypeValue = entryTypeParameter.currentValue.nativeValue;
-                        let worksheet;
-
-                        if (initialEntryTypeValue === "Manuel") {
-                            worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[2];
-                        } else if (initialEntryTypeValue === "Adresse") {
-                            worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[0];
-                        } else if (initialEntryTypeValue === "Course") {
-                            worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[1];
-                        }
-
+                        worksheet = getWorksheetBasedOnEntryType(initialEntryTypeValue)
                         worksheet.getSummaryDataAsync().then((sumdata) => {
                             const items = convertDataToItems(sumdata, true);
                             renderItems(items);
@@ -60,24 +51,11 @@
                             entryTypeParameter.addEventListener(tableau.TableauEventType.ParameterChanged, (parameterChangedEvent) => {
                                 parameterChangedEvent.getParameterAsync().then((parameter) => {
                                     const entryTypeValue = parameter.currentValue.nativeValue;
-                                    let newWorksheet;
-
-                                    if (entryTypeValue === "Manuel") {
-                                        newWorksheet = tableau.extensions.dashboardContent.dashboard.worksheets[2];
-                                    } else if (entryTypeValue === "Adresse") {
-                                        newWorksheet = tableau.extensions.dashboardContent.dashboard.worksheets[0];
-                                    } else if (entryTypeValue === "Course") {
-                                        newWorksheet = tableau.extensions.dashboardContent.dashboard.worksheets[1];
-                                    }
-
-                                    if (newWorksheet !== worksheet) {
-                                        // Update worksheet only if it's different
-                                        worksheet = newWorksheet;
-                                        worksheet.getSummaryDataAsync().then((sumdata) => {
-                                            const items = convertDataToItems(sumdata, true);
-                                            renderItems(items);
-                                        });
-                                    }
+                                    worksheet = getWorksheetBasedOnEntryType(entryTypeValue);
+                                    worksheet.getSummaryDataAsync().then((sumdata) => {
+                                        const items = convertDataToItems(sumdata, true);
+                                        renderItems(items);
+                                    });
                                 });
                             });
                         });
@@ -99,66 +77,61 @@
                             })
                         });
                     }
-                    ;
 
-                    if (manualBNParameter) {
-                        manualBNParameter.addEventListener(tableau.TableauEventType.ParameterChanged, (parameterChangedEvent) => {
-                            parameterChangedEvent.getParameterAsync().then(() => {
-                                worksheet.getSummaryDataAsync().then((sumdata) => {
-                                    const items = convertDataToItems(sumdata, true);
+                    const parametersRendering = [manualBNParameter, manualReferenceParameter, adressePrincipaleParameter];
 
-                                    // Render all items initially
-                                    renderItems(items);
-                                });
-                            })
-                        })
-                    }
-                    ;
+                    parametersRendering.forEach(parameter => {
+                        if (parameter) {
+                            handleParameterChange(parameter, worksheet);
+                        }
+                    });
 
-                    if (manualReferenceParameter) {
-                        manualReferenceParameter.addEventListener(tableau.TableauEventType.ParameterChanged, (parameterChangedEvent) => {
-                            parameterChangedEvent.getParameterAsync().then(() => {
-                                worksheet.getSummaryDataAsync().then((sumdata) => {
-                                    const items = convertDataToItems(sumdata, true);
-
-                                    // Render all items initially
-                                    renderItems(items);
-
-                                });
-                            })
-                        })
-                    }
-                    ;
-
-                    if (adressePrincipaleParameter) {
-                        adressePrincipaleParameter.addEventListener(tableau.TableauEventType.ParameterChanged, (parameterChangedEvent) => {
-                            parameterChangedEvent.getParameterAsync().then(() => {
-                                worksheet.getSummaryDataAsync().then((sumdata) => {
-                                    const items = convertDataToItems(sumdata, true);
-
-                                    // Render all items initially
-                                    renderItems(items);
-
-                                });
-                            })
-                        })
-                    }
-                    ;
 
                     unregisterHandlerFunctions.push(worksheet.addEventListener(tableau.TableauEventType.FilterChanged, function (filterEvent) {
                         // Get filtered data
+                        console.log("=> Ça filtre ",worksheet);
                         worksheet.getSummaryDataAsync().then((sumdata) => {
-                            const items = convertDataToItems(sumdata, false);
-
+                            const items = convertDataToItems(sumdata, true);
                             // Render filtered items
                             renderItems(items);
                         });
                     }));
                 }
             )
-            ;
+
         });
     });
+
+    /**
+     * Return the correct worksheet.
+     */
+    function getWorksheetBasedOnEntryType(entryTypeValue) {
+        let worksheet;
+
+        if (entryTypeValue === "Manuel") {
+            worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[2];
+        } else if (entryTypeValue === "Adresse") {
+            worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[0];
+        } else if (entryTypeValue === "Course") {
+            worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[1];
+        }
+
+        return worksheet;
+    }
+
+    /**
+     * Handle basix parameter listener
+     */
+    function handleParameterChange(parameter, worksheet) {
+        parameter.addEventListener(tableau.TableauEventType.ParameterChanged, (parameterChangedEvent) => {
+            parameterChangedEvent.getParameterAsync().then(() => {
+                worksheet.getSummaryDataAsync().then((sumdata) => {
+                    const items = convertDataToItems(sumdata, true);
+                    renderItems(items);
+                });
+            });
+        });
+    }
 
     /**
      * Display duplicated items.
@@ -174,7 +147,7 @@
             return [...acc, ...duplicatedObjects];
 
         }, []);
-    };
+    }
 
     /**
      * Converts summary data to items array.
