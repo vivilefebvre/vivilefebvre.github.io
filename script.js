@@ -76,7 +76,7 @@
               parameterChangedEvent.getParameterAsync().then((parameter) => {
                 const entryTypeValue = parameter.currentValue.nativeValue;
                 if(entryTypeValue === "Manuel"){
-                    worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[1];
+                    worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[2];
                     tableau.extensions.dashboardContent.dashboard.objects.forEach((object) => {
                       if(extensionName.includes(object.name)){
                         extensionVisibilityObject[object.id] = tableau.ZoneVisibilityType.Show;
@@ -92,7 +92,7 @@
               
                     });
                 } else if(entryTypeValue === "Adresse"){
-                    worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[2];
+                    worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[0];
                     tableau.extensions.dashboardContent.dashboard.objects.forEach((object) => {
                       if(extensionName.includes(object.name)){
                         extensionVisibilityObject[object.id] = tableau.ZoneVisibilityType.Show;
@@ -108,7 +108,7 @@
 
                     });
                 } else if (entryTypeValue === "Course") {
-                    worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[0];
+                    worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[1];
                     tableau.extensions.dashboardContent.dashboard.objects.forEach((object) => {
                       if(extensionName.includes(object.name)){
                         extensionVisibilityObject[object.id] = tableau.ZoneVisibilityType.Hide
