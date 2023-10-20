@@ -14,9 +14,6 @@
 
             const container = document.getElementById('my-extension');
 
-            let extensionName = ["manuel_ref", "manuel_bn"];
-
-            let extensionVisibilityObject = {};
 
             const url = 'index.html';
 
@@ -28,9 +25,13 @@
                 })
                 .catch(error => console.error(error));
 
-            let worksheet;
-
             tableau.extensions.dashboardContent.dashboard.getParametersAsync().then((parameters) => {
+                    let worksheet;
+
+                    const manuel_ws = tableau.extensions.dashboardContent.dashboard.worksheets[2];
+                    const adresse_ws = tableau.extensions.dashboardContent.dashboard.worksheets[0];
+                    const course_ws = tableau.extensions.dashboardContent.dashboard.worksheets[1];
+
                     console.log("Afficher les paramètres : ", parameters);
                     const entryTypeParameter = parameters.find(p => p.name === 'type_entree');
                     const uniqueReferenceParameter = parameters.find(p => p.name === "unique_ref");
@@ -41,8 +42,14 @@
 
                     if (entryTypeParameter) {
                         console.log("=> Initialisation de l'affichage");
-                        const initialEntryTypeValue = entryTypeParameter.currentValue.nativeValue;
-                        worksheet = getWorksheetBasedOnEntryType(initialEntryTypeValue)
+                        const entryTypeValue = entryTypeParameter.currentValue.nativeValue;
+                        if (entryTypeValue === "Manuel") {
+                            worksheet = manuel_ws;
+                        } else if (entryTypeValue === "Adresse") {
+                            worksheet = adresse_ws;
+                        } else if (entryTypeValue === "Course") {
+                            worksheet = course_ws;
+                        }
                         worksheet.getSummaryDataAsync().then((sumdata) => {
                             const items = convertDataToItems(sumdata, true);
                             renderItems(items);
@@ -51,54 +58,64 @@
                             entryTypeParameter.addEventListener(tableau.TableauEventType.ParameterChanged, (parameterChangedEvent) => {
                                 parameterChangedEvent.getParameterAsync().then((parameter) => {
                                     const entryTypeValue = parameter.currentValue.nativeValue;
-                                    worksheet = getWorksheetBasedOnEntryType(entryTypeValue);
+                                    if (entryTypeValue === "Manuel") {
+                                        worksheet = manuel_ws;
+                                    } else if (entryTypeValue === "Adresse") {
+                                        worksheet = adresse_ws;
+                                    } else if (entryTypeValue === "Course") {
+                                        worksheet = course_ws;
+                                    }
                                     worksheet.getSummaryDataAsync().then((sumdata) => {
                                         const items = convertDataToItems(sumdata, true);
                                         renderItems(items);
                                     });
-                                    console.log(entryTypeParameter.currentValue.nativeValue)
-
                                 });
                             });
-
-                            worksheet = getWorksheetBasedOnEntryType(entryTypeParameter.currentValue.nativeValue)
-
-                            if (uniqueReferenceParameter) {
-                                // Listen for changes to the Page Number parameter
-                                uniqueReferenceParameter.addEventListener(tableau.TableauEventType.ParameterChanged, function (parameterChangedEvent) {
-                                    parameterChangedEvent.getParameterAsync().then((parameter) => {
-                                        const isDuplicated = parameter.currentValue.nativeValue;
-                                        worksheet.getSummaryDataAsync().then((sumdata) => {
-                                            console.log("=> Récupération 'Voir étiquette unique'");
-                                            const items = convertDataToItems(sumdata, isDuplicated);
-
-                                            // Render filtered items
-                                            renderItems(items);
-                                        });
-                                    })
-                                });
-                            }
-
-                            const parametersRendering = [manualBNParameter, manualReferenceParameter, adressePrincipaleParameter];
-
-                            parametersRendering.forEach(parameter => {
-                                if (parameter) {
-                                    handleParameterChange(parameter, worksheet);
-                                }
-                            });
+                        });
+                    }
 
 
-                            unregisterHandlerFunctions.push(worksheet.addEventListener(tableau.TableauEventType.FilterChanged, function (filterEvent) {
-                                // Get filtered data
-                                console.log("=> Ça filtre ", worksheet.name);
-                                worksheet.getSummaryDataAsync().then((sumdata) => {
-                                    const items = convertDataToItems(sumdata, true);
+                    if (uniqueReferenceParameter) {
+                        // Listen for changes to the Page Number parameter
+                        uniqueReferenceParameter.addEventListener(tableau.TableauEventType.ParameterChanged, function (parameterChangedEvent) {
+                            parameterChangedEvent.getParameterAsync().then((parameter) => {
+                                const isDuplicated = parameter.currentValue.nativeValue;
+                                course_ws.getSummaryDataAsync().then((sumdata) => {
+                                    console.log("=> Récupération 'Voir étiquette unique'");
+                                    const items = convertDataToItems(sumdata, isDuplicated);
+
                                     // Render filtered items
                                     renderItems(items);
                                 });
-                            }));
+                            })
                         });
                     }
+
+                    if (manualBNParameter) {
+                        handleParameterChange(manualBNParameter, manuel_ws);
+                    }
+
+                    if (manualReferenceParameter) {
+                        handleParameterChange(manualReferenceParameter, manuel_ws);
+                    }
+
+                    if (adressePrincipaleParameter) {
+                        handleParameterChange(adressePrincipaleParameter, adresse_ws);
+                    }
+
+                    const all_ws = [manuel_ws, adresse_ws, course_ws]
+
+                    all_ws.forEach(worksheet => {
+                        unregisterHandlerFunctions.push(worksheet.addEventListener(tableau.TableauEventType.FilterChanged, function (filterEvent) {
+                            // Get filtered data
+                            console.log("=> Ça filtre ", worksheet.name);
+                            worksheet.getSummaryDataAsync().then((sumdata) => {
+                                const items = convertDataToItems(sumdata, true);
+                                // Render filtered items
+                                renderItems(items);
+                            });
+                        }));
+                    });
                 }
             )
 
@@ -106,30 +123,13 @@
     });
 
     /**
-     * Return the correct worksheet.
-     */
-    function getWorksheetBasedOnEntryType(entryTypeValue) {
-        let worksheet;
-
-        if (entryTypeValue === "Manuel") {
-            worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[2];
-        } else if (entryTypeValue === "Adresse") {
-            worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[0];
-        } else if (entryTypeValue === "Course") {
-            worksheet = tableau.extensions.dashboardContent.dashboard.worksheets[1];
-        }
-
-        return worksheet;
-    }
-
-    /**
      * Handle basix parameter listener
      */
     function handleParameterChange(parameter, worksheet) {
         parameter.addEventListener(tableau.TableauEventType.ParameterChanged, (parameterChangedEvent) => {
             parameterChangedEvent.getParameterAsync().then(() => {
-                console.log("=> Ça paramètre ", worksheet.name);
                 worksheet.getSummaryDataAsync().then((sumdata) => {
+                    console.log("=> Ça paramètre ", worksheet.name);
                     const items = convertDataToItems(sumdata, true);
                     renderItems(items);
                 });
