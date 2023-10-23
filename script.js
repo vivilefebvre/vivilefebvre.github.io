@@ -560,6 +560,7 @@
                     <p>${item.adresse_nom}</p>
                     <p>${item.adresse_adr1}</p>
                     <p>${item.adresse_adr2}</p>
+                    <p>${item.adresse_rue}</p>
                 </div>
                     <div style= "line-height : 10px; margin-left: 42px;margin-top: 40px;font-family: Arial, sans-serif;font-size: large;">
                   <p>${item.adresse_cp}<span style="margin-left: 20px;">${item.adresse_ville}</span>  </p>
