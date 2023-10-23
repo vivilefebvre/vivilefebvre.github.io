@@ -131,7 +131,7 @@
     /**
      * Handle parameter listeners but unique_ref
      */
-    function handleParameterChange(parameter, worksheet, isUnique=false) {
+    function handleParameterChange(parameter, worksheet, isUnique = false) {
         parameter.addEventListener(tableau.TableauEventType.ParameterChanged, (parameterChangedEvent) => {
             parameterChangedEvent.getParameterAsync().then(() => {
                 worksheet.getSummaryDataAsync().then((sumdata) => {
@@ -329,7 +329,7 @@
             
               <div id="informations" >
                   <p >VULLI S.A</p> 
-                  <p >Z.I.Des Granges</p>
+                  <p >1 Avenue des Alpes</p>
                   <p >74150 RUMILLY / FRANCE</p>
                   <p >Tél. +33(0)450010620</p>
               </div>
@@ -352,45 +352,11 @@
           `;
                     break;
 
-                case "Modèle MAN":
-                    itemClass = 'manual';
-                    itemContent = `<div class="subcontainer">
-            <div class="informations">
-                <p class="reference">Référence : ${item.Reference}</p>
-                <p class="designation">${item.designation}</p>
-                <div style="display: flex; flex-direction: row;">
-                    <p class="bn">BN: ${item.manuel_bn}</p>
-                    <p class="pcb">PCB: ${item.pcb}</p>
-                </div>
-            </div>
-            <div id="barcode">
-                <img style="height: 33.5mm; width: 90mm;"
-                  src="https://barcode.tec-it.com/barcode.ashx?data=${item.barcode_manuel}&code=GS1-128&translate-esc=true"
-                  alt="Code-barres">
-              </div>
-        </div>
-    
-        <div class="subcontainer">
-            <div class="informations">
-                <p class="reference">Référence : ${item.Reference}</p>
-                <p class="designation">${item.designation}</p>
-                <div style="display: flex; flex-direction: row;">
-                    <p class="bn">BN: ${item.manuel_bn}</p>
-                    <p class="pcb">PCB: ${item.pcb}</p>
-                </div>
-            </div>
-            <div id="barcode">
-                <img style="height: 33.5mm; width: 90mm;"
-                  src="https://barcode.tec-it.com/barcode.ashx?data=${item.barcode_manuel}&code=GS1-128&translate-esc=true"
-                  alt="Code-barres">
-            </div>
-        </div>`;
-                    break;
                 case "Modèle SMAL":
                     itemClass = 'smallable';
                     itemContent = `
-          <p id="smallable"> smallable </p>
-          <p style="font-weight: 700;font-size: larger; ">COLIS n° <span style="margin-left:20px;">${index + 1}</span><span style="margin-left:20px;">Sur <span style="margin-left:10px;">${index + 1}/${item.nb_colis_bp}</span>
+          <p id="smallable">SMALLABLE</p>
+          <p style="font-weight: 700;font-size: larger; ">COLIS n° <span style="margin-left:20px;">${index + 1}</span><span style="margin-left:20px;"> sur <span style="margin-left:10px;">${item.nb_colis_bp}</span>
           </p>  
           `;
                     break;
@@ -405,7 +371,7 @@
                         <p>VULLI SAS</p>
                     </div>
                     <div style="line-height : 5px;">
-                        <p>1 avenue des alpes</p>
+                        <p>1 Avenue des Alpes</p>
                         <p>74150 RUMILLY</p>
                     </div>
                 </div>
@@ -427,12 +393,12 @@
         <div id="contttwo">
     
             <div id="num-colis">
-                <p>${index + 1}</p>
+                <p>numero de colis :</p>
     
-                <p style="align-content: center;margin-left: 50px;">1</p>
+                <p style="align-content: center;margin-left: 50px;">${index + 1}</p>
     
-                <p>${item.nb_colis_bp}</p>
-                <p style="align-content: center;margin-left: 50px;">1</p>
+                <p>nbre de colis :</p>
+                <p style="align-content: center;margin-left: 50px;">${item.nb_colis_bp}</p>
     
     
     
@@ -440,22 +406,22 @@
             </div>
     
             <div id="ref-refproduit">
-                <p style="font-size:x-large;">Réf . reference produit  <span style="margin-left: 10px">${item.ref}</span></p>
+                <p style="font-size:x-large;">Réf . reference <span style="margin-left: 10px">${item.ref}</span></p>
                 <div id="barcode" style="display: flex; align-items: center;">
-                    <img src="https://barcode.tec-it.com/barcode.ashx?data=${item.barcode1}&code=${item.EAN13}&translate-esc=true&imagetype=Svg&rotation=0" alt="Code-barres">
+                    <img src="https://barcode.tec-it.com/barcode.ashx?data=${item.barcode1}&code=${item.barcode1_type}&translate-esc=true&imagetype=Svg&rotation=0" alt="Code-barres">
                 </div>
     
             </div>
     
             <div id="date-envoi">
-                <p style="margin-left: 17px;">Date d'envoie </p>
+                <p style="margin-left: 17px;">Date d'envoi </p>
     
-                <p style="align-content: center;margin-left: 17px;">27/03/2019</p>
+                <p style="align-content: center;margin-left: 17px;">x</p>
                 <div style="line-height:70px";>
                 <hr style="color: black;">
             
                
-                <p style="margin-left: 17px;">${item.pi_no_tiers} Pièces</p>
+                <p style="margin-left: 17px;">${item.pcb} Pièces</p>
     
             </div>
             </div>
@@ -503,7 +469,7 @@
                    <div >
                        <p><h7>Nom fournisseur</h7></p>
                        <p>VULLI </p>
-                       <p>Z.I.</p>
+                       <p>1 Avenue des Alpes</p>
                        <p>74150 RUMILLY</p>
            
                    </div>
@@ -511,9 +477,9 @@
                    <div class="classborder"  >
                        <div style="margin-left: 5mm;">
                        <p>SYSTEM U </p>
-                       <p>Vendèopôle-Haut bocage</p>
-                       <p>Vendéen</p>
-                       <p>Les champs de Ray </p>
+                       <p>Vendéopôle - Haut bocage</p>
+                       <p>vendéen</p>
+                       <p>Les Champs de Ray</p>
                        <p>85500 LES HERBIERS</p>
                    </div>
                </div>
@@ -523,14 +489,14 @@
                    <div id="firstcol">
                        <p >désign :<span style="font-size: x-large;margin-left: 10px;"><sup>${item.designation}</sup></span></p>
                        <p>Réf.fournisseur<span style="font-size: x-large;margin-left: 20px;">${item.Reference}</span></p>
-                       <p>PCB<span style="margin-left: 8px;font-size: large;">${item.pcb}</span><span style="margin-left: 90px;">${item.spcb}</span></p>
+                       <p>PCB<span style="margin-left: 8px;font-size: large;">${item.pcb}</span><span style="margin-left: 90px;">SPCB</span></p>
                        <div style="line-height : 80px;">
            
                        <div style="display: flex;flex-direction: row;">
                           
-                           <div><p style="transform: rotate(270deg);">${item.EAN13}</p></div>
+                           <div><p style="transform: rotate(270deg);">EAN carton</p></div>
                        <div style="margin-right: 50px;border: 4px solid black;">
-                           <img src="https://barcode.tec-it.com/barcode.ashx?data=&multiplebarcodes=true&translate-esc=true" alt="Code-barres">
+                           <img src="https://barcode.tec-it.com/barcode.ashx?data=${item.barcode1}&code=${item.barcode1_type}&multiplebarcodes=true&translate-esc=true" alt="Code-barres">
                        </div>
                        </div>
                    
@@ -540,16 +506,16 @@
                    <div id="l2col2" >
                        <div style="border-bottom:4px solid black;">
                        
-                       <p style="margin-left: 5mm;">colis n° ${index + 1}<span style="margin-left: 40px;">sur</span><span style="margin-left: 6px;font-size: larger;">31</span></p>
+                       <p style="margin-left: 5mm;">colis n° ${index + 1}<span style="margin-left: 40px;">sur</span><span style="margin-left: 6px;font-size: larger;">${item.nb_colis_bp}</span></p>
                    </div>
                    <div style="border-bottom:4px solid black;"> 
-                       <p style="margin-left: 5mm;">Numéro présentation<span style="margin-left: 12px;font-size: larger;">numero de pr </span></p>
+                       <p style="margin-left: 5mm;">Numéro présentation<span style="margin-left: 12px;font-size: larger;"></span></p>
                    </div>
                        <div style="line-height : 50px;border-bottom:4px solid;">
                        <p style="margin-left: 5mm;">Numéro de bon de commande:</p>
-                       <p  style="margin-left: 5mm;">Code produit national<span style="margin-left: 12px;font-size: larger;">Code Produi</span></p>
+                       <p  style="margin-left: 5mm;">Code produit national<span style="margin-left: 12px;font-size: larger;"></span></p>
                    </div>
-                       <p  style="margin-left: 5mm;">Compostition du colis<span style="margin-left: 12px;font-size: larger;">TU</span></p>
+                       <p  style="margin-left: 5mm;">Composition du colis<span style="margin-left: 12px;font-size: larger;">TU</span></p>
                        <p  style="margin-left: 5mm;">Notion allotie<span style="margin-left: 12px;">AL</span></p>
                        
            
@@ -562,6 +528,37 @@
       
               `;
                     break;
+
+                case "Modèle GALLAFAY":
+                    itemClass = 'galerielafayette';
+                    itemContent = `
+                  <div id="etiquettegalerielafayette">
+                  <div style=" border: 3px solid black;margin-left: 100px;">
+                  <div id="partieencadree">
+                      <div id="Vulli_logo">
+                          <img src="./images/vulli_logo.jpg" alt="logo">
+                          </div>
+                      <div id="informationss" >
+                          <p>VULLI S.A</p>
+                          <p>1 Avenue des Alpes</p>
+                          <p style="min-width: 10px;">74150 RUMILLY FRANCE</p>
+                          <p>Tél. +33(0)450010620</p>
+          
+                      </div>
+                  </div>
+          
+                  </div>
+                  <div style="line-height : 70px;font-weight: bolder;">
+                  <p>GALERIES LAFAYETTE</p>
+                  <p>REF : ${item.ref}</p>
+          
+              </div>
+              <div style="text-align: right;"><b>${index + 1}/${item.nb_colis_bp}</b></div>
+          
+              </div>
+                  `;
+                    break;
+
                 case "Modèle ADRESSE":
                     itemClass = 'adresse';
                     itemContent = `
@@ -593,34 +590,40 @@
             </div>
                 `;
                     break;
-                case "Modèle GALLAFAY":
-                    itemClass = 'galerielafayette';
-                    itemContent = `
-                  <div id="etiquettegalerielafayette">
-                  <div style=" border: 3px solid black;margin-left: 100px;">
-                  <div id="partieencadree">
-                      <div id="Vulli_logo">
-                          <img src=".images/Vulli_logo-modified.jpg" alt="Code-barres">
-                          </div>
-                      <div id="informationss" >
-                          <p>VULLI S.A</p>
-                          <p>Z.I.Des Granges</p>
-                          <p style="min-width: 10px;">74150 RUMILLY FRANCE</p>
-                          <p>Tél. +33(0)450010620</p>
-          
-                      </div>
-                  </div>
-          
-                  </div>
-                  <div style="line-height : 70px;font-weight: bolder;">
-                  <p>GALERIES LAFAYETTE</p>
-                  <p>REF : ${item.ref}</p>
-          
+
+                case "Modèle MAN":
+                    itemClass = 'manual';
+                    itemContent = `<div class="subcontainer">
+            <div class="informations">
+                <p class="reference">Référence : ${item.Reference}</p>
+                <p class="designation">${item.designation}</p>
+                <div style="display: flex; flex-direction: row;">
+                    <p class="bn">BN: ${item.manuel_bn}</p>
+                    <p class="pcb">PCB: ${item.pcb}</p>
+                </div>
+            </div>
+            <div id="barcode">
+                <img style="height: 33.5mm; width: 90mm;"
+                  src="https://barcode.tec-it.com/barcode.ashx?data=${item.barcode_manuel}&code=GS1-128&translate-esc=true"
+                  alt="Code-barres">
               </div>
-              <div style="text-align: right;"><b>3/3</b></div>
-          
-              </div>
-                  `;
+        </div>
+    
+        <div class="subcontainer">
+            <div class="informations">
+                <p class="reference">Référence : ${item.Reference}</p>
+                <p class="designation">${item.designation}</p>
+                <div style="display: flex; flex-direction: row;">
+                    <p class="bn">BN: ${item.manuel_bn}</p>
+                    <p class="pcb">PCB: ${item.pcb}</p>
+                </div>
+            </div>
+            <div id="barcode">
+                <img style="height: 33.5mm; width: 90mm;"
+                  src="https://barcode.tec-it.com/barcode.ashx?data=${item.barcode_manuel}&code=GS1-128&translate-esc=true"
+                  alt="Code-barres">
+            </div>
+        </div>`;
                     break;
             }
 
