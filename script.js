@@ -503,7 +503,7 @@
               `;
                     break;
 
-                    case "Modèle GALERIELAFAYETTE":
+                    case "Modèle GALLAFAY":
                         itemClass = 'galerielafayette';
                         itemContent = `
               <div id="etiquettegalerielafayette"  >

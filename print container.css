@@ -341,20 +341,7 @@
 .item.verbaudet #date-envoi {
   border-left: 2px solid black;
 }
-.item.production #container {
-  display: flex;
-  flex-direction: row;
-  width : 210.8mm;
-  border: black solid 1px;
-  border-radius : 5px;
-}
-.item.production #right {
-  flex : 1;
-}
 
-.item.production  #left {
-  flex : 1;
-}
 .item.systemu  #etiquettesystem{
   font-weight:bolder;
 }
