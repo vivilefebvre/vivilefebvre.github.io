@@ -434,33 +434,7 @@
         </div>
             `;
                     break;
-                case "Modèle PROD":
-                    itemClass = 'production';
-                    itemContent = `
-            <div id="container">
-              <div id="right">
-               <div>Réference: ${item.tiers_ref}</div>
-               <div>${item.manuel_bn}</div>
-             <div>${item.pcb}</div>
-             <div class="barcode">
-              <img style="height: 34.7mm; margin-left: 8.4mm;"
-             src="https://barcode.tec-it.com/barcode.ashx?data=${item.barcode1}&code=${item.barcode1_type}&multiplebarcodes=true&translate-esc=true&unit=Px&imagetype=Jpg&modulewidth=0.20&dpi=300&unit=Mm"
-             alt="Code-barres">
-             </div>
-             </div>
-             <div id="left">
-             <div>Réference: ${item.tiers_ref}</div>
-             <div>${item.manuel_bn}</div>
-             <div>${item.pcb}</div>
-             <div class="barcode">
-             <img style="height: 34.7mm; margin-left: 8.4mm;"
-             src="https://barcode.tec-it.com/barcode.ashx?data=${item.barcode1}&code=${item.barcode1_type}&multiplebarcodes=true&translate-esc=true&unit=Px&imagetype=Jpg&modulewidth=0.20&dpi=300&unit=Mm"
-             alt="Code-barres">
-             </div>
-             </div>
-              </div>
-            `;
-                    break;
+                
                 case "Modèle SYS":
                     itemClass = 'systemu';
                     itemContent = `
@@ -529,35 +503,41 @@
               `;
                     break;
 
-                case "Modèle GALLAFAY":
-                    itemClass = 'galerielafayette';
-                    itemContent = `
-                  <div id="etiquettegalerielafayette">
-                  <div style=" border: 3px solid black;margin-left: 100px;">
-                  <div id="partieencadree">
-                      <div id="Vulli_logo">
-                          <img src="./images/vulli_logo.jpg" alt="logo">
-                          </div>
-                      <div id="informationss" >
-                          <p>VULLI S.A</p>
-                          <p>1 Avenue des Alpes</p>
-                          <p style="min-width: 10px;">74150 RUMILLY FRANCE</p>
-                          <p>Tél. +33(0)450010620</p>
+                    case "Modèle GALERIELAFAYETTE":
+                        itemClass = 'galerielafayette';
+                        itemContent = `
+              <div id="etiquettegalerielafayette"  >
+            
+    
           
-                      </div>
+                <div id="partie-encadree"  >
+                
+                  <img  style= "width: 29mm; height: 31mm; " src="./images/vulli_logo.jpg" \>
+                
+                  <div id="informations" >
+                      <p >VULLI S.A</p> 
+                      <p >1 Avenue des Alpes</p>
+                      <p >74150 RUMILLY / FRANCE</p>
+                      <p >Tél. +33(0)450010620</p>
                   </div>
+                
+                </div>
           
-                  </div>
-                  <div style="line-height : 70px;font-weight: bolder;">
-                  <p>GALERIES LAFAYETTE</p>
-                  <p>REF : ${item.ref}</p>
-          
-              </div>
-              <div style="text-align: right;"><b>${index + 1}/${item.nb_colis_bp}</b></div>
-          
-              </div>
-                  `;
-                    break;
+    
+                <div style="line-height: 2mm;font-size: 12pt; font-family: Arial, Helvetica, sans-serif; font-weight: normal;">
+              
+                  <p style="margin-left:5mm ;margin-top: 3mm;">GALERIES LAFAYETTE</p>
+                  <p style="margin-left: 5mm;">​</p>
+                  <p style="margin-left: 5mm;color:white;">​</p>
+                  <p style="margin-left:5mm ;">REF : ${item.ref}</p>
+                  <p style="margin-left: 5mm;color:white;">​</p>
+                  <p style="margin-left: 5mm;color:white;">​</p>
+                </div>
+              <p style="font-size: 12pt; font-family: Arial, Helvetica, sans-serif; font-weight: normal;margin-left: ${item.nb_colis_bp >= 100 ? '87mm;' : '90mm;'} 90mm; margin-top: -6mm;">${index + 1}/${item.nb_colis_bp}</p>
+          </div>
+              
+              `;
+                        break;
 
                 case "Modèle ADRESSE":
                     itemClass = 'adresse';
