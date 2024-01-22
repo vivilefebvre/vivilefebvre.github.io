@@ -149,16 +149,9 @@
      */
     function duplicateObjects(list) {
         return list.reduce((acc, obj) => {
-    
-            // Check if nb_colis_or_man is null, default to 1
-            const numDuplicates = obj.nb_colis_or_man === null ? 1 : Math.max(1, obj.nb_colis_or_man);
-    
-            const duplicatedObjects = Array.from({ length: numDuplicates }, () => ({
-                ...obj
-            }));
-    
+            const numDuplicates = entryTypeValue === "Manuel" ? 1 : Math.max(1, obj.nb_colis_or_man || 0);
+            const duplicatedObjects = Array.from({ length: numDuplicates }, () => ({ ...obj }));
             return [...acc, ...duplicatedObjects];
-    
         }, []);
     }
 
