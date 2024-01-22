@@ -149,7 +149,7 @@
      */
     function duplicateObjects(list) {
         return list.reduce((acc, obj) => {
-            const numDuplicates = entryTypeValue === "Manuel" ? 1 : Math.max(1, obj.nb_colis_or_man || 0);
+            const numDuplicates = Math.max(1, obj.nb_colis_or_man || 1);
             const duplicatedObjects = Array.from({ length: numDuplicates }, () => ({ ...obj }));
             return [...acc, ...duplicatedObjects];
         }, []);
