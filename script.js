@@ -149,7 +149,7 @@
      */
     function duplicateObjects(list) {
         return list.reduce((acc, obj) => {
-            const numDuplicates = Math.max(1, obj.nb_colis_or_man || 1);
+            const numDuplicates = Math.max(1, obj.ATTR(nb_colis_or_man) || 1);
             const duplicatedObjects = Array.from({ length: numDuplicates }, () => ({ ...obj }));
             return [...acc, ...duplicatedObjects];
         }, []);
@@ -563,7 +563,7 @@
                   <p>${item.adresse_cp}<span style="margin-left: 20px;">${item.adresse_ville}</span>  </p>
                     <p>${item.adresse_pays}</p>
                 </div>
-                <div style="margin-left: 478px;margin-top: -28px;"><b>${index + 1}/${item.nb_colis_or_man}</b></div>
+                <div style="margin-left: 478px;margin-top: -28px;"><b>${index + 1}/${item.ATTR(nb_colis_or_man)}</b></div>
         
             </div>
                 `;
